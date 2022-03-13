@@ -26,7 +26,7 @@ export default function MainRoutes() {
     return (
         <Stack.Navigator
             screenOptions={{ headerShown: false }}
-            initialRouteName="Home">
+            initialRouteName="Onboarding">
             <Stack.Screen name="Onboarding" component={Onboarding} />
             <Stack.Screen name="ChooseLang" component={ChooseLang} />
             <Stack.Screen name="Login" component={Login} />
