@@ -11,6 +11,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowRadius: 5,
         elevation: 5,
+      },
+      img:{
+        width:'90%',
+        marginLeft:'5%',
+        height:140,
+        marginTop:7,
+        borderRadius:10
       }
 })
 

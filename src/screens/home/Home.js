@@ -1,5 +1,6 @@
 import React from 'react';
 import { verticalScale, moderateScale } from 'react-native-size-matters';
+import { Image } from 'react-native';
 
 import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
 import ScrollableView from '../../components/containers/ScrollableView';
@@ -7,7 +8,8 @@ import Spacer from '../../components/containers/Spacer';
 import Header from '../../components/common/Header/Header';
 import SubHeader from '../../components/common/Text/SubHeader_16px';
 import Slider from '../../components/CursonSlider';
-// import HorizontalMenue from '../../components/HorizontalMenue'
+import HorizontalMenue from '../../components/HorizontalMenue'
+import HorizontalProduct from '../../components/HorizontalProduct'
 
 import { CarouselImages, BarCodeSkinWrap, BarCodeSkinAnalContainer, SanText } from './styledcomp';
 import styles from './styles';
@@ -15,11 +17,14 @@ import styles from './styles';
 import BarScan from '../../assets/svg/common/bar_scan.svg';
 import SkinAnalysis from '../../assets/svg/common/skin_analysiz.svg';
 
+import Banner from '../../assets/svg/etc/main_carousel.png'
 
 
 
 
 const Home = () => {
+
+  console.log('Banner', Banner)
 
   return (
     <SafeAreaContainer>
@@ -48,13 +53,23 @@ const Home = () => {
         </BarCodeSkinWrap>
 
         <Spacer height={verticalScale(32)} />
+
         <SubHeader label={'Categories'} paddingHorizontal={moderateScale(28)}
           seeAllLabel={'See all'} seeAll={'seeAll'} />
 
-        <Spacer width={moderateScale(19)} />
+
+        <HorizontalMenue />
+
+        <Image source={Banner} style={styles.img} />
 
 
-       
+        <Spacer height={verticalScale(32)} />
+
+        <SubHeader label={'Popular Products'} paddingHorizontal={moderateScale(28)}
+          seeAllLabel={'See all'} seeAll={'seeAll'} />
+
+
+        <HorizontalProduct/>
 
 
       </ScrollableView>
