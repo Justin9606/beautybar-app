@@ -6,7 +6,7 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 20,
-    marginTop: 20,
+    marginTop: 35,
     height:100,
 
   },

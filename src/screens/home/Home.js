@@ -1,6 +1,6 @@
 import React from 'react';
 import { verticalScale, moderateScale } from 'react-native-size-matters';
-import { Image } from 'react-native';
+import { Image,View } from 'react-native';
 
 import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
 import ScrollableView from '../../components/containers/ScrollableView';
@@ -60,7 +60,9 @@ const Home = () => {
 
         <HorizontalMenue />
 
-        <Image source={Banner} style={styles.img} />
+        <View style={{marginTop:30}}>
+          <Image source={Banner} style={styles.img} />
+        </View>
 
 
         <Spacer height={verticalScale(32)} />
@@ -69,7 +71,7 @@ const Home = () => {
           seeAllLabel={'See all'} seeAll={'seeAll'} />
 
 
-        <HorizontalProduct/>
+        <HorizontalProduct />
 
 
       </ScrollableView>

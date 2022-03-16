@@ -13,11 +13,12 @@ const Styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 1,
     },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
     margin: 20,
     backgroundColor: '#fff',
     width: 174,
@@ -26,13 +27,13 @@ const Styles = StyleSheet.create({
 
   },
   text: {
-    marginLeft:10,
+    marginLeft: 10,
     fontSize: 12,
     color: '#323234'
   },
   textdes: {
     marginTop: 2,
-    marginLeft:10,
+    marginLeft: 10,
     fontSize: 12,
     color: '#323234'
   },
