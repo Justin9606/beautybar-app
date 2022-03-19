@@ -45,7 +45,7 @@ const ChooseLang = () => {
 
   return (
     <SafeAreaContainer>
-      <Header lang_select_left={'language'} onPressLang={() => handleOpen(0)} />
+      {/* <Header lang_select_left={'language'} onPressLang={() => handleOpen(0)} /> */}
 
       {/* <Bottomsheet
         bottomSheetModalRef={bottomSheetModalRef}

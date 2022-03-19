@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
+
 
 //react-navigation-native
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //styled components
 import styled from 'styled-components';
 
 //normalize from constants
-import {normalize} from '../../components/constants/responsive';
+import { normalize } from '../../components/constants/responsive';
 
 //Containers
 import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
@@ -31,6 +33,10 @@ import Gmail from '../../assets/svg/login/gmail.svg';
 import Kakao from '../../assets/svg/login/kakao.svg';
 import Apple from '../../assets/svg/login/apple.svg';
 import Facebook from '../../assets/svg/login/facebook.svg';
+
+import { View, Text, TouchableOpacity } from 'react-native';
+import { Modalize } from 'react-native-modalize'
+import StringsOfLanguages from '../../assets/languages';
 
 const data = [
   {
@@ -64,12 +70,38 @@ const allSocialSign = index => {
 //
 
 //Login Components starts
-const Login = ({}) => {
+const Login = () => {
+
+  const modalizeRef = useRef(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
+
   const navigation = useNavigation();
+
+  const settext = (value) => {
+    StringsOfLanguages.setLanguage(value);
+    
+    
+  };
+
+  const close = (value) => {
+    settext(value)
+    modalizeRef.current?.close();
+
+  };
+
+
+
+
+ 
+
+
 
   return (
     <SafeAreaContainer>
-      <Header back_with_rec_icon={'back_with_rec_icon'} />
+      <Header lang_select_left={'language'} />
 
       <ScrollableView>
         <Spacer height={26} />
@@ -92,7 +124,7 @@ const Login = ({}) => {
         />
         <Spacer height={35} />
         <Button
-          title="Sign in"
+          title={StringsOfLanguages?.siginin}
           onPress={() => navigation.navigate('Verification')}
         />
 
@@ -133,6 +165,42 @@ const Login = ({}) => {
           color={'#7F7E83'}
         />
       </HavingTroubleWrap>
+
+
+
+      <TouchableOpacity onPress={onOpen}>
+        <Text>Change Language</Text>
+      </TouchableOpacity>
+
+      <Modalize ref={modalizeRef} modalHeight={300}
+        scrollViewProps={{ showsVerticalScrollIndicator: false }}
+        // snapPoint={1000}
+        HeaderComponent={
+          <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+            <Text style={{ fontSize: 17 }}>Select Language</Text>
+          </View>
+        }
+        withHandle={false}>
+
+        <View style={{ width: '90%', marginLeft: '5%' }}>
+
+          <TouchableOpacity 
+          onPress={()=>close('en')} style={{ width: '100%', height: 60, backgroundColor: '#E74779', alignItems: 'center', justifyContent: 'center' ,}}>
+            <Text style={{ color: '#fff', fontSize: 17 }}>English</Text>
+          </TouchableOpacity >
+          <TouchableOpacity 
+          onPress={()=>close('ko')} style={{ width: '100%', height: 60, backgroundColor: '#E74779', alignItems: 'center', justifyContent: 'center',marginTop:10 }}>
+            <Text style={{ color: '#fff', fontSize: 17 }}>Korean</Text>
+          </TouchableOpacity >
+          <TouchableOpacity 
+          onPress={()=>close('ru')} style={{ width: '100%', height: 60, backgroundColor: '#E74779', alignItems: 'center', justifyContent: 'center',marginTop:10 }}>
+            <Text style={{ color: '#fff', fontSize: 17 }}>Russian</Text>
+          </TouchableOpacity >
+
+        </View>
+
+      </Modalize>
+
     </SafeAreaContainer>
   );
 };

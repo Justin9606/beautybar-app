@@ -46,7 +46,7 @@ const Verification = () => {
 
   return (
     <SafeAreaContainer>
-      <Header back_with_rec_icon={'back_with_rec_icon'} />
+      <Header  back_with_rec_icon={'back_with_rec_icon'} />
       <ScrollableView>
         <Spacer height={normalize(30)} />
         <ControlAlignCenter>

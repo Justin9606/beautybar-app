@@ -1,10 +1,11 @@
-import React from 'react';
-
+import React, { useRef } from 'react';
+import { Modalize } from 'react-native-modalize';
 //react-navigation-native
-import {useNavigation} from '@react-navigation/native';
-import {View, StyleSheet, Text} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet, Text } from 'react-native';
 //styled components
-import { DownArrow,LangText,LangWrap,ButtonWrap,RightContainer,LeftContainer,Container} from './styled'
+import { DownArrow, LangText, LangWrap, ButtonWrap, RightContainer, LeftContainer, Container } from './styled';
+
 
 //Containers
 import Row from '../../containers/Row';
@@ -20,7 +21,7 @@ import Notification from '../../../assets/svg/header/notification_bell.svg';
 import DownArrowImage from '../../../assets/icons/arrow_down.png';
 
 
-console.log('Notification==>',Notification)
+console.log('Notification==>', Notification)
 
 const Header = ({
   back_with_rec_icon,
@@ -35,9 +36,14 @@ const Header = ({
   marginBottom,
 }) => {
   const navigation = useNavigation();
+  const modalizeRef = useRef < Modalize > (null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
   return (
     <Container marginBottom={marginBottom}>
-     
+
       <LeftContainer>
         {back_with_rec_icon === 'back_with_rec_icon' && (
           <ButtonWrap onPress={() => navigation.goBack()}>
@@ -69,7 +75,7 @@ const Header = ({
             activeOpacity={0.7}
             underlayColor="#DDDDDD">
             <>
-              <LangText>English</LangText>
+              <LangText onOpen={onOpen}>English</LangText>
               <DownArrow source={DownArrowImage} />
             </>
           </LangWrap>
@@ -109,10 +115,10 @@ const Header = ({
           )}
         </Row>
       </RightContainer>
-    
-    
+
+
     </Container>
-    
+
   );
 };
 

@@ -18,6 +18,8 @@ target 'beautyproducts' do
 
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
+  pod 'ReactNativeLocalization', :path => '../node_modules/react-native-localization'
+
   target 'beautyproductsTests' do
     inherit! :complete
     # Pods for testing
