@@ -3,8 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //Screens
 import Onboarding from '../screens/onboarding/Onboarding';
-import ChooseLang from '../screens/introscreens/ChooseLang';
-import Login from '../screens/introscreens/Login';
+import WelComeScreen from '../screens/welcome/WelComeScreen';
+import Login from '../screens/login/Login';
 import Verification from '../screens/verification/Verification';
 import SkinProfile_1 from '../screens/skin_profile/SkinProfile_1';
 import SkinProfile_2 from '../screens/skin_profile/SkinProfile_2';
@@ -21,7 +21,7 @@ export default function MainRoutes() {
       screenOptions={{headerShown: false}}
       initialRouteName="Onboarding">
       <Stack.Screen name="Onboarding" component={Onboarding} />
-      <Stack.Screen name="ChooseLang" component={ChooseLang} />
+      <Stack.Screen name="WelComeScreen" component={WelComeScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Verification" component={Verification} />
       <Stack.Screen name="SkinProfile_1" component={SkinProfile_1} />

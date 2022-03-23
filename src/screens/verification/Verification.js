@@ -9,17 +9,19 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 
+//styled components
+import styled from 'styled-components';
+
 import VerificationCells from './VerificationCells';
 
 //normalize from constants
-import {normalize} from '../../components/constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
-import Spacer from '../../components/containers/Spacer';
-import ScrollableView from '../../components/containers/ScrollableView';
-import ControlAlignCenter from '../../components/containers/ControlAlignCenter';
-import Row from '../../components/containers/Row';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Spacer from '../../containers/Spacer';
+import ScrollableView from '../../containers/ScrollableView';
+import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';
@@ -31,7 +33,6 @@ import Smalltext from '../../components/common/Text/SmallText';
 
 //SVG
 import VerifySvg from '../../assets/svg/login/verification.svg';
-import styled from 'styled-components';
 
 const CELL_COUNT = 4;
 const Verification = () => {
@@ -46,7 +47,7 @@ const Verification = () => {
 
   return (
     <SafeAreaContainer>
-      <Header  back_with_rec_icon={'back_with_rec_icon'} />
+      <Header back_with_rec_icon={'back_with_rec_icon'} />
       <ScrollableView>
         <Spacer height={normalize(30)} />
         <ControlAlignCenter>

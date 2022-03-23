@@ -1,20 +1,18 @@
 //React
-import React, {useRef, useCallback, useMemo} from 'react';
+import React from 'react';
 //styled components
 import styled from 'styled-components';
 //react navigation native
 import {useNavigation} from '@react-navigation/native';
-//Bounycheck box from react-native-bouncy
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
+
+// //react-i18next
+import {useTranslation} from 'react-i18next';
 
 //normalize
-import {normalize} from '../../components/constants/responsive';
-
-//custom bottomsheet modal
-// import Bottomsheet from '../../common/Modals/BottomSheet';
+import {normalize} from '../../constants/responsive';
 
 //container
-import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
@@ -22,37 +20,15 @@ import Smalltext from '../../components/common/Text/SmallText';
 
 //ui
 import Button from '../../components/common/Buttons/Button';
-import Header from '../../components/common/Header/Header';
 
-//  <BouncyCheckbox
-//    textStyle={{
-//      textDecorationLine: 'none',
-//    }}
-//    fillColor={'#E74779'}
-//    text="English"
-//  />;
-
-const ChooseLang = () => {
+const WelComeScreen = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
-  // const bottomSheetModalRef = useRef(null);
-
-  const snapPoints = useMemo(() => ['50%'], []);
-
-  // const handleOpen = useCallback(index => {
-  //   bottomSheetModalRef.current?.snapToIndex(index);
-  // });
+  console.log(t);
 
   return (
     <SafeAreaContainer>
-      {/* <Header lang_select_left={'language'} onPressLang={() => handleOpen(0)} /> */}
-
-      {/* <Bottomsheet
-        bottomSheetModalRef={bottomSheetModalRef}
-        index={-1}
-        snapPoints={snapPoints}
-        enablePanDownToClose={true}
-        enableOverDrag={false}></Bottomsheet> */}
       <Scrollable>
         <LogoWrapp>
           <Logo>Logo</Logo>
@@ -64,12 +40,12 @@ const ChooseLang = () => {
             width={340}
             height={35}
             textAlign={'center'}
-            title="By clicking Sign Up or Sign In, you agree with our Terms of Service and Privacy Policy"
+            title={t('agreementToThePolicyandTerms')}
           />
         </PolicyTextWrap>
         <ButtonWrap>
           <Button
-            title={'Sign In'}
+            title={t('start')}
             onPress={() => {
               try {
                 navigation.push('Login');
@@ -83,7 +59,7 @@ const ChooseLang = () => {
     </SafeAreaContainer>
   );
 };
-export default ChooseLang;
+export default WelComeScreen;
 
 const Scrollable = styled.ScrollView`
   background-color: #fff;
@@ -117,10 +93,4 @@ const PolicyTextWrap = styled.View`
 
 const ButtonWrap = styled.View`
   margin-top: ${normalize(48)}px;
-`;
-
-const CloseButtonWrap = styled.TouchableOpacity`
-  position: absolute;
-  right: 25px;
-  top: 25px;
 `;

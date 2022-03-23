@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 //normalizer
-import {normalize} from '../../components/constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -11,11 +11,11 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components';
 
 //containers
-import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
-import Spacer from '../../components/containers/Spacer';
-import ScrollableView from '../../components/containers/ScrollableView';
-import ControlAlignCenter from '../../components/containers/ControlAlignCenter';
-import Absolutebutton from '../../components/containers/AbsoluteButton';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Spacer from '../../containers/Spacer';
+import ScrollableView from '../../containers/ScrollableView';
+import ControlAlignCenter from '../../containers/ControlAlignCenter';
+import Absolutebutton from '../../containers/AbsoluteButton';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';

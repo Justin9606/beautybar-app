@@ -1,15 +1,16 @@
 import React from 'react';
 import {StatusBar, Platform} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-// import KeyboardManager from 'react-native-keyboard-manager';
-import MainRoutes from './src/navigation';
+import KeyboardManager from 'react-native-keyboard-manager';
+import MainRoutes from './navigation';
+import './i18next/i18next';
 
 const App = () => {
-  // if (Platform.OS === 'ios') {
-  //   KeyboardManager.setEnable(true);
-  //   KeyboardManager.setKeyboardDistanceFromTextField(20);
-  //   KeyboardManager.setToolbarDoneBarButtonItemText('Done');
-  // }
+  if (Platform.OS === 'ios') {
+    KeyboardManager.setEnable(true);
+    KeyboardManager.setKeyboardDistanceFromTextField(20);
+    KeyboardManager.setToolbarDoneBarButtonItemText('Done');
+  }
 
   return (
     <NavigationContainer>

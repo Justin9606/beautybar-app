@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {StyleSheet, Text} from 'react-native';
-
 //validator
 import {CodeField} from 'react-native-confirmation-code-field';
 

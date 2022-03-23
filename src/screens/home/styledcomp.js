@@ -30,6 +30,4 @@ const SanText = styled.Text`
   color: #323234;
 `;
 
-export {
-    CarouselImages,BarCodeSkinWrap,BarCodeSkinAnalContainer,SanText
-}
+export {CarouselImages, BarCodeSkinWrap, BarCodeSkinAnalContainer, SanText};

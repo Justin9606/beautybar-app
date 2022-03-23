@@ -6,11 +6,11 @@ import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
 
 //containers
-import SafeAreaContainer from '../../components/containers/SafeAreaContainer';
-import Absolutebutton from '../../components/containers/AbsoluteButton';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Absolutebutton from '../../containers/AbsoluteButton';
 
 //normalizer
-import {normalize} from '../../components/constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //ui
 import Header from '../../components/common/Header/Header';
@@ -20,7 +20,6 @@ import Button from '../../components/common/Buttons/Button';
 import Onboarding_1 from '../../assets/svg/onboarding/onboarding_1.svg';
 import Onboarding_2 from '../../assets/svg/onboarding/onboarding_2.svg';
 import Onboarding_3 from '../../assets/svg/onboarding/onboarding_3.svg';
-import OnboardingRightArrow from '../../assets/svg/onboarding/onboarding_right_arrow.svg';
 
 const onboardinData = [
   {
@@ -82,7 +81,7 @@ const Onboarding = () => {
       <Absolutebutton>
         <Button
           title={'Start'}
-          onPress={() => navigation.navigate('ChooseLang')}
+          onPress={() => navigation.navigate('WelComeScreen')}
         />
       </Absolutebutton>
     </SafeAreaContainer>

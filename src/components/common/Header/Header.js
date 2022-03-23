@@ -1,15 +1,14 @@
-import React, { useRef } from 'react';
-import { Modalize } from 'react-native-modalize';
-//react-navigation-native
-import { useNavigation } from '@react-navigation/native';
-import { View, StyleSheet, Text } from 'react-native';
-//styled components
-import { DownArrow, LangText, LangWrap, ButtonWrap, RightContainer, LeftContainer, Container } from './styled';
+import React from 'react';
 
+//react-navigation-native
+import {useNavigation} from '@react-navigation/native';
+
+//styled components
+import {ButtonWrap, RightContainer, LeftContainer, Container} from './styled';
 
 //Containers
-import Row from '../../containers/Row';
-import Spacer from '../../containers/Spacer';
+import Row from '../../../containers/Row';
+import Spacer from '../../../containers/Spacer';
 
 //Small text
 import Smalltext from '../Text/SmallText';
@@ -18,10 +17,6 @@ import BackButton from '../../../assets/svg/header/back_btn.svg';
 import Search from '../../../assets/svg/header/search_right.svg';
 import WishList from '../../../assets/svg/header/wishlist.svg';
 import Notification from '../../../assets/svg/header/notification_bell.svg';
-import DownArrowImage from '../../../assets/icons/arrow_down.png';
-
-
-console.log('Notification==>', Notification)
 
 const Header = ({
   back_with_rec_icon,
@@ -31,22 +26,18 @@ const Header = ({
   search_right,
   wish_right,
   notif_right,
-  lang_select_left,
-  onPressLang,
+
   marginBottom,
 }) => {
   const navigation = useNavigation();
-  const modalizeRef = useRef < Modalize > (null);
 
-  const onOpen = () => {
-    modalizeRef.current?.open();
-  };
+  const os = Platform.OS;
+
   return (
     <Container marginBottom={marginBottom}>
-
       <LeftContainer>
         {back_with_rec_icon === 'back_with_rec_icon' && (
-          <ButtonWrap onPress={() => navigation.goBack()}>
+          <ButtonWrap onPress={() => navigation.goBack()} activeOpacity={0.7}>
             <BackButton />
           </ButtonWrap>
         )}
@@ -64,27 +55,17 @@ const Header = ({
         )}
 
         {search_right === 'search' && (
-          <ButtonWrap onPress={() => alert('Search Icon Clicked')}>
+          <ButtonWrap
+            onPress={() => alert('Search Icon Clicked')}
+            activeOpacity={0.7}>
             <Search />
           </ButtonWrap>
-        )}
-
-        {lang_select_left === 'language' && (
-          <LangWrap
-            onPress={onPressLang}
-            activeOpacity={0.7}
-            underlayColor="#DDDDDD">
-            <>
-              <LangText onOpen={onOpen}>English</LangText>
-              <DownArrow source={DownArrowImage} />
-            </>
-          </LangWrap>
         )}
       </LeftContainer>
 
       <RightContainer>
         {skip_right === 'skip' && (
-          <ButtonWrap onPress={() => alert('Clicked Skip')}>
+          <ButtonWrap onPress={() => alert('Clicked Skip')} activeOpacity={0.7}>
             <Smalltext
               title="Skip"
               color={'#e74779'}
@@ -99,7 +80,9 @@ const Header = ({
           {wish_right === 'wishlist' && (
             <>
               <Spacer width={16.98} />
-              <ButtonWrap onPress={() => alert('Heart Icon Clicked')}>
+              <ButtonWrap
+                onPress={() => alert('Heart Icon Clicked')}
+                activeOpacity={0.7}>
                 <WishList />
               </ButtonWrap>
             </>
@@ -108,20 +91,17 @@ const Header = ({
           {notif_right === 'notification' && (
             <>
               <Spacer width={15.78} />
-              <ButtonWrap onPress={() => alert('Notification Icon Clicked')}>
+              <ButtonWrap
+                onPress={() => alert('Notification Icon Clicked')}
+                activeOpacity={0.7}>
                 <Notification />
               </ButtonWrap>
             </>
           )}
         </Row>
       </RightContainer>
-
-
     </Container>
-
   );
 };
 
-export default Header
-
-
+export default Header;
