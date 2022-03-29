@@ -27,7 +27,7 @@ export default function TabBar() {
       switch (routeName) {
         case 'Home':
           return routeName === selectedTab ? <HomeActive /> : <Home />;
-        case 'Feed':
+        case 'Community':
           return routeName === selectedTab ? <FeedActive /> : <Feed />;
         case 'Product':
           return routeName === selectedTab ? <ProductActive /> : <Product />;
@@ -101,7 +101,7 @@ export default function TabBar() {
         />
 
         <CurvedBottomBar.Screen
-          name="Feed"
+          name="Community"
           position="left"
           component={({navigate}) => <Feedmainpage />}
         />

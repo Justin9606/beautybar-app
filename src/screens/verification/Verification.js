@@ -68,7 +68,7 @@ const Verification = () => {
         <PhoneNumber>+628393***4738</PhoneNumber>
         <Spacer height={32} />
         <VerificationCells
-          ref={ref}
+          // ref={ref}
           onChangeText={text => setValue(text)}
           value={value}
           {...props}

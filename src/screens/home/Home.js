@@ -8,7 +8,7 @@ import Spacer from '../../containers/Spacer';
 import Header from '../../components/common/Header/Header';
 import SubHeader from '../../components/common/Text/SubHeader_16px';
 import Slider from '../../components/CursonSlider';
-import HorizontalMenue from '../../components/HorizontalMenue';
+import CategoryCard from '../../productcards/Categories/index';
 import HorizontalProduct from '../../components/HorizontalProduct';
 
 import {
@@ -32,12 +32,9 @@ const Home = () => {
         wish_right={'wishlist'}
         search_right={'search'}
       />
-
       <ScrollableView>
         <Slider CarouselImages={CarouselImages} />
-
         <Spacer height={moderateScale(27)} />
-
         <BarCodeSkinWrap>
           <BarCodeSkinAnalContainer style={styles.TabStyle}>
             <BarScan />
@@ -51,9 +48,7 @@ const Home = () => {
             <SanText>Skin Analysis</SanText>
           </BarCodeSkinAnalContainer>
         </BarCodeSkinWrap>
-
         <Spacer height={verticalScale(32)} />
-
         <SubHeader
           label={'Categories'}
           paddingHorizontal={moderateScale(28)}
@@ -61,7 +56,7 @@ const Home = () => {
           seeAll={'seeAll'}
         />
 
-        <HorizontalMenue />
+        <CategoryCard />
 
         <View style={{marginTop: 30}}>
           <Image source={Banner} style={styles.img} />

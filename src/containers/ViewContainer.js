@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Viewcontainer = ({children, backgroundColor}) => {
-  return <Container>{children}</Container>;
+  return <Container backgroundColor={backgroundColor}>{children}</Container>;
 };
 
 export default Viewcontainer;

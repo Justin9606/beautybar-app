@@ -23,7 +23,6 @@ import Largetext from '../../components/common/Text/LargeText';
 import Button from '../../components/common/Buttons/Button';
 import Header from '../../components/common/Header/Header';
 import TextInput from '../../components/common/TextInputs/TextInput';
-import Viewcontainer from '../../containers/ViewContainer';
 
 //
 
@@ -32,30 +31,35 @@ const Login = () => {
   const navigation = useNavigation();
   const {t} = useTranslation();
   return (
-    <Viewcontainer>
-      <Largetext title={t('welcomeback')} textAlign="center" />
-      <ControlAlignCenter>
-        <Smalltext
-          textAlign="center"
-          title="Enter your registered Phone Number to Sign in"
-          width={200}
-          height={35}
+    <>
+      {/* <Header /> */}
+
+      <ScrollableView
+        contentContainerStyle={{justifyContent: 'center', flex: 1}}>
+        <Spacer height={26} />
+        <Largetext title={t('welcomeback')} textAlign="center" />
+        <ControlAlignCenter>
+          <Smalltext
+            textAlign="center"
+            title="Enter your registered Phone Number to Sign in"
+            width={200}
+            height={35}
+          />
+        </ControlAlignCenter>
+        <Spacer height={36} />
+
+        <TextInput
+          // hasCountryCode={'hasCountryCode'}
+          inputeLabel={t('phoneNumber')}
+          placeholder="01083960506"
+          keyboardType={'phone-pad'}
         />
-      </ControlAlignCenter>
-      <Spacer height={36} />
-
-      <TextInput
-        // hasCountryCode={'hasCountryCode'}
-        inputeLabel={t('phoneNumber')}
-        placeholder="01083960506"
-        keyboardType={'phone-pad'}
-      />
-      <Spacer height={35} />
-      <Button
-        title={t('signIn')}
-        onPress={() => navigation.navigate('Verification')}
-      />
-
+        <Spacer height={35} />
+        <Button
+          title={t('signIn')}
+          onPress={() => navigation.navigate('Verification')}
+        />
+      </ScrollableView>
       <HavingTroubleWrap onPress={() => alert('Having trouble?')}>
         <Smalltext
           title="Trouble Signing in?"
@@ -65,7 +69,7 @@ const Login = () => {
           color={'#7F7E83'}
         />
       </HavingTroubleWrap>
-    </Viewcontainer>
+    </>
   );
 };
 

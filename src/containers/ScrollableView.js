@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ScrollableView = ({children, backgroundColor}) => {
-  return <Container backgroundColor={backgroundColor}>{children}</Container>;
+const ScrollableView = ({children, backgroundColor, contentContainerStyle}) => {
+  return (
+    <Container
+      backgroundColor={backgroundColor}
+      contentContainerStyle={contentContainerStyle}>
+      {children}
+    </Container>
+  );
 };
 
 export default ScrollableView;

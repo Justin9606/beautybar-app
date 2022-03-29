@@ -31,8 +31,6 @@ const Header = ({
 }) => {
   const navigation = useNavigation();
 
-  const os = Platform.OS;
-
   return (
     <Container marginBottom={marginBottom}>
       <LeftContainer>

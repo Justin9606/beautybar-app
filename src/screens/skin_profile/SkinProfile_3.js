@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 //react-navigation/native
 import {useNavigation} from '@react-navigation/native';
