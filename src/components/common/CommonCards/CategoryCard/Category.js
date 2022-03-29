@@ -1,4 +1,7 @@
-import React, {FlatList} from 'react';
+import React from 'react';
+
+//react native
+import {FlatList} from 'react-native';
 
 //styled components
 import styled from 'styled-components';
