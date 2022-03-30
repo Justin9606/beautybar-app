@@ -3,15 +3,16 @@ import styled from 'styled-components';
 const CarouselImages = styled.Image``;
 
 const BarCodeSkinWrap = styled.View`
-  flex-direction: row;
   justify-content: center;
+  flex-direction: row;
 `;
 
-const BarCodeSkinAnalContainer = styled.View`
+const BarCodeSkinAnallContainer = styled.TouchableOpacity`
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
   flex-direction: row;
   align-items: center;
   background-color: white;
-  width: 154px;
+  width: 160px;
   height: 64px;
   border-radius: 12px;
   padding-left: 8px;
@@ -30,4 +31,4 @@ const SanText = styled.Text`
   color: #323234;
 `;
 
-export {CarouselImages, BarCodeSkinWrap, BarCodeSkinAnalContainer, SanText};
+export {CarouselImages, BarCodeSkinWrap, BarCodeSkinAnallContainer, SanText};

@@ -1,7 +1,21 @@
 import React from 'react';
-import {Alert, Animated, TouchableOpacity, Text, Platform} from 'react-native';
+import {
+  Alert,
+  Animated,
+  TouchableOpacity,
+  Text,
+  Platform,
+  View,
+} from 'react-native';
+
+//react-native-curved-bottom-bar
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
+
+//styles
 import {styles} from './style';
+
+//rect-native-device-info
+import Device from 'react-native-device-info';
 
 //Svg
 import HomeActive from '../assets/svg/tabBar/HomeActive.svg';
@@ -19,7 +33,6 @@ import HomeScreen from '../screens/home/Home';
 import Feedmainpage from '../screens/feed/FeedMainPage';
 import Productmainpage from '../screens/product/ProductMainPage';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
-import Viewcontainer from '../containers/ViewContainer';
 
 export default function TabBar() {
   const _renderIcon = (routeName, selectedTab) => {
@@ -70,13 +83,16 @@ export default function TabBar() {
     );
   };
 
+  //checking DeviceModel
+  const model = Device.getModel();
+
   return (
-    <Viewcontainer>
+    <View style={{flex: 1, backgroundColor: 'red'}}>
       <CurvedBottomBar.Navigator
         type="up"
         style={styles.bottomBar}
         strokeWidth={0.12}
-        height={Platform.OS === 'android' ? 60 : 80}
+        height={Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 80}
         circleWidth={55}
         bgColor="white"
         initialRouteName="Home"
@@ -116,6 +132,6 @@ export default function TabBar() {
           position="right"
         />
       </CurvedBottomBar.Navigator>
-    </Viewcontainer>
+    </View>
   );
 }

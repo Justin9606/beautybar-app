@@ -1,28 +1,37 @@
 import React from 'react';
-import {verticalScale, moderateScale} from 'react-native-size-matters';
-import {Image, View} from 'react-native';
 
+//conainers
 import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import ScrollableView from '../../containers/ScrollableView';
 import Spacer from '../../containers/Spacer';
-import Header from '../../components/common/Header/Header';
+
+//Texts
 import SubHeader from '../../components/common/Text/SubHeader_16px';
+
+//common
+import Header from '../../components/common/Header/Header';
 import Slider from '../../components/CursonSlider';
-import CategoryCard from '../../productcards/Categories/index';
-import HorizontalProduct from '../../components/HorizontalProduct';
+
+//Rounded Categories section
+import RoundedCategories from '../../productcards/Categories/RoundedCategories';
+
+//Popular production section
+import PopularProducts from '../../productcards/PopularProducts/PopularProducts';
+//Best match products
+import BestMathProducts from '../../productcards/BestMatchProducts/BestMatchProducts';
 
 import {
   CarouselImages,
   BarCodeSkinWrap,
-  BarCodeSkinAnalContainer,
+  BarCodeSkinAnallContainer,
   SanText,
 } from './styledcomp';
-import styles from './styles';
+import styled from 'styled-components';
 
 import BarScan from '../../assets/svg/common/bar_scan.svg';
 import SkinAnalysis from '../../assets/svg/common/skin_analysiz.svg';
 
-import Banner from '../../assets/svg/etc/main_carousel.png';
+import AnalysisResultSVG from '../../assets/svg/etc/analysis_result.svg';
 
 const Home = () => {
   return (
@@ -34,47 +43,127 @@ const Home = () => {
       />
       <ScrollableView>
         <Slider CarouselImages={CarouselImages} />
-        <Spacer height={moderateScale(27)} />
+        <Spacer height={27} />
         <BarCodeSkinWrap>
-          <BarCodeSkinAnalContainer style={styles.TabStyle}>
+          <BarCodeSkinAnallContainer activeOpacity={0.7}>
             <BarScan />
             <SanText>Bar Scan</SanText>
-          </BarCodeSkinAnalContainer>
+          </BarCodeSkinAnallContainer>
 
-          <Spacer width={moderateScale(19)} />
+          <Spacer width={19} />
 
-          <BarCodeSkinAnalContainer style={styles.TabStyle}>
+          <BarCodeSkinAnallContainer activeOpacity={0.7}>
             <SkinAnalysis />
             <SanText>Skin Analysis</SanText>
-          </BarCodeSkinAnalContainer>
+          </BarCodeSkinAnallContainer>
         </BarCodeSkinWrap>
-        <Spacer height={verticalScale(32)} />
+        <Spacer height={32} />
         <SubHeader
           label={'Categories'}
-          paddingHorizontal={moderateScale(28)}
           seeAllLabel={'See all'}
           seeAll={'seeAll'}
         />
-
-        <CategoryCard />
-
-        <View style={{marginTop: 30}}>
-          <Image source={Banner} style={styles.img} />
-        </View>
-
-        <Spacer height={verticalScale(32)} />
-
+        <RoundedCategories />
+        <Spacer height={32} />
+        <AnaysisResultWrap>
+          <AnalysisResultAllTextsWrap>
+            <AnalysisTitle>Analysis Your Skin</AnalysisTitle>
+            <AnalysisContent>
+              to see the analysis of your skin problems
+            </AnalysisContent>
+            <AnalysisResultBtn
+              onPress={() => alert('Analysis Result pressed')}
+              activeOpacity={0.7}>
+              <AnalysisResultBtnText>Analysis result</AnalysisResultBtnText>
+            </AnalysisResultBtn>
+          </AnalysisResultAllTextsWrap>
+          <SVGWrap>
+            <AnalysisResultSVG />
+          </SVGWrap>
+        </AnaysisResultWrap>
+        <Spacer height={32} />
+        <SubHeader
+          label={'Best Match Products '}
+          seeAllLabel={'See all'}
+          seeAll={'seeAll'}
+        />
+        <BestMathProducts />
         <SubHeader
           label={'Popular Products'}
-          paddingHorizontal={moderateScale(28)}
           seeAllLabel={'See all'}
           seeAll={'seeAll'}
         />
-
-        <HorizontalProduct />
+        <PopularProducts />
+        {/* WILL BE REMOVED HEIGHT */}
+        <Spacer height={50} />
+        {/* WILL BE REMOVED HEIGHT */}
       </ScrollableView>
     </SafeAreaContainer>
   );
 };
 
 export default Home;
+
+const AnaysisResultWrap = styled.View`
+  background-color: #fce8ef;
+  margin-horizontal: 24px;
+  border-radius: 16px;
+  height: 154px;
+`;
+
+const AnalysisResultAllTextsWrap = styled.View`
+  padding-top: 26px;
+  padding-left: 20px;
+`;
+
+const SVGWrap = styled.View`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+`;
+
+const AnalysisTitle = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+
+  /* Black 100 */
+  color: #323234;
+`;
+
+const AnalysisContent = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 7px;
+  width: 130px;
+  align-items: center;
+  /* Black 50 */
+  color: #7f7e83;
+`;
+
+const AnalysisResultBtn = styled.TouchableOpacity`
+  background: #e74779;
+  width: 139px;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 12px;
+
+  margin-bottom: 21px;
+`;
+
+const AnalysisResultBtnText = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  color: #ffffff;
+`;

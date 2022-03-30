@@ -1,9 +1,8 @@
 import {Dimensions, Platform, PixelRatio} from 'react-native';
 import Device from 'react-native-device-info';
 
-const {width, height} = Dimensions.get('window');
-
 const model = Device.getModel();
+const {width, height} = Dimensions.get('window');
 
 export function normalize(size, multiplier = 2) {
   const scale = (width / height) * multiplier;

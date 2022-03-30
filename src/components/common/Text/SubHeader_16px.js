@@ -34,7 +34,7 @@ const SubHeader_16px = ({
 export default SubHeader_16px;
 
 const SubHeaderWrap = styled.View`
-  padding-horizontal: ${props => props.paddingHorizontal || 25}px;
+  padding-horizontal: ${props => props.paddingHorizontal || 24}px;
   margin-top: ${props => props.marginTop || 0}px;
   align-items: center;
   flex-direction: row;

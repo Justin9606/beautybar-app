@@ -16,6 +16,20 @@ import Cool from '../../assets/svg/skin_profiling/skin_under_tone/cool.svg';
 import Warm from '../../assets/svg/skin_profiling/skin_under_tone/warm.svg';
 import Neutral from '../../assets/svg/skin_profiling/skin_under_tone/neutral.svg';
 
+//CATEGOY CARD LIST
+import Lips from '../../assets/svg/categories/lips.svg';
+import Eyes from '../../assets/svg/categories/eye.svg';
+import Skin from '../../assets/svg/categories/skin.svg';
+import Face from '../../assets/svg/categories/face.svg';
+
+//POPULARPORUCT
+import Product1 from '../../assets/svg/products/product_1.svg';
+import Product2 from '../../assets/svg/products/product_2.svg';
+import Product3 from '../../assets/svg/products/product_3.svg';
+import Product4 from '../../assets/svg/products/product_4.svg';
+import Product5 from '../../assets/svg/products/product_5.svg';
+import HeartnotLiked from '../../assets/svg/products/heart_notlike.svg';
+
 export const SKIN_TYPE_DATA = [
   {
     skin_type_svg: Normal,
@@ -69,5 +83,63 @@ export const SKIN_UNDER_TONE_DATA = [
   {
     skin_under_tone_svg: Neutral,
     text: 'Neutral',
+  },
+];
+
+export const CATEGORY_ROUND_DATA = [
+  {id: 0, svg: Face, name: 'Face'},
+  {id: 1, svg: Eyes, name: 'Eyes'},
+  {id: 2, svg: Lips, name: 'Lips'},
+  {id: 3, svg: Skin, name: 'Skin'},
+];
+
+export const POPULAR_PRODUCT_DEMO_DATA = [
+  {
+    icon: Product5,
+    name: 'NIVEA',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '120.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product4,
+    name: 'RATED GREEN',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '140.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product3,
+    name: 'NIVEA',
+    description: 'Shooting Cleansing Oil',
+    star: 4,
+    price: '150.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product2,
+    name: 'RATED GREEN',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '130.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product1,
+    name: 'NIVEA',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '170.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product5,
+    name: 'RATED GREEN',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '140.000',
+    heart_like: HeartnotLiked,
   },
 ];

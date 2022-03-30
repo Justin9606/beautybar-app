@@ -25,8 +25,6 @@ const WelComeScreen = () => {
   const navigation = useNavigation();
   const {t} = useTranslation();
 
-  console.log(t);
-
   return (
     <SafeAreaContainer>
       <Scrollable>
@@ -50,7 +48,7 @@ const WelComeScreen = () => {
               try {
                 navigation.push('Login');
               } catch (err) {
-                console.log(err);
+                return err;
               }
             }}
           />

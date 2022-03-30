@@ -5,7 +5,6 @@ import ControlAlignCenter from '../../containers/ControlAlignCenter';
 import Carousel from 'react-native-snap-carousel';
 import DotIndicator from '../common/DotIndicator/DotIndicator';
 import Spacer from '../../containers/Spacer';
-import {moderateScale} from 'react-native-size-matters';
 
 const data = [
   {
@@ -19,14 +18,14 @@ const data = [
   },
 ];
 
-export default function index(props) {
+export default function Index(props) {
   const itemWidth = Dimensions.get('window').width;
   const [currentIndex, setCurrentIndex] = useState(0);
   let CarouselImages = props?.CarouselImages;
 
   const _renderItem = ({item, index}) => {
     return (
-      <Viewcontainer>
+      <Viewcontainer index={index}>
         <ControlAlignCenter>
           <CarouselImages resizeMode="contain" source={item.image} />
         </ControlAlignCenter>
@@ -44,10 +43,10 @@ export default function index(props) {
         sliderWidth={itemWidth}
         autoplay={true}
         loop={true}
-        onSnapToItem={currentIndex => setCurrentIndex(currentIndex)}
+        onSnapToItem={currentIdx => setCurrentIndex(currentIdx)}
       />
 
-      <Spacer height={moderateScale(12)} />
+      <Spacer height={12} />
 
       <DotIndicator
         currentIndex={currentIndex}

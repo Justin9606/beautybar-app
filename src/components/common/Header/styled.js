@@ -9,7 +9,7 @@ const Container = styled.View`
   align-items: center;
   justify-content: center;
 
-  margin-bottom: ${props => props.marginBottom || 10}px;
+  margin-bottom: ${props => props.marginBottom || 5}px;
 `;
 
 const LeftContainer = styled.View`

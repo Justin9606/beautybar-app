@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import styled from 'styled-components';
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,13 +11,13 @@ export const styles = StyleSheet.create({
   },
 
   bottomBar: {
-    shadowColor: 'rgba(0, 0, 0, 0.06)',
+    shadowColor: 'rgba(5, 7, 22, 0.06)',
     shadowOffset: {
-      width: 2,
-      height: 4,
+      width: 0,
+      height: -5,
     },
     shadowOpacity: 0.8,
-    shadowRadius: 5,
+    shadowRadius: 19,
     elevation: 5,
   },
   btnCircleUp: {
