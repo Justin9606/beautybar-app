@@ -18,7 +18,6 @@ const PopularProducts = () => {
       data={POPULAR_PRODUCT_DEMO_DATA}
       renderItem={({item, index}) => {
         const SVG = item.icon;
-
         const HeartnotLikedSvg = item.heart_like;
         return (
           <_renderProductItem

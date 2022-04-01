@@ -3,9 +3,10 @@ import React from 'react';
 //styled components
 import styled from 'styled-components';
 
-//top10products
+//product components
 import Top10Products from '../../productcards/Top10Products/Top10Products';
 import RoundedCategories from '../../productcards/Categories/RoundedCategories';
+import PromoProducts from '../../productcards/PromoProducts/PromoProducts';
 
 //Header
 import Header from '../../components/common/Header/Header';
@@ -87,6 +88,8 @@ const Productmainpage = () => {
             );
           })}
         </PopularBrandsWrap>
+        <Spacer height={32} />
+        <PromoProducts />
 
         <Spacer height={130} />
       </ScrollableView>
