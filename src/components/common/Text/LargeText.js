@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Largetext = ({title, textAlign, marginBottom, marginTop}) => {
+const Largetext = ({title, textAlign, marginBottom, marginTop, marginLeft}) => {
   return (
     <Title
       textAlign={textAlign}
       marginBottom={marginBottom}
-      marginTop={marginTop}>
+      marginTop={marginTop}
+      marginLeft={marginLeft}>
       {title}
     </Title>
   );
@@ -22,6 +23,7 @@ const Title = styled.Text`
   text-align: ${props => props.textAlign || ''};
   margin-bottom: ${props => props.marginBottom || 16}px;
   margin-top: ${props => props.marginTop || 0}px;
+  margin-left: ${props => props.marginLeft || 0}px;
   line-height: 29px;
   font-style: normal;
 `;

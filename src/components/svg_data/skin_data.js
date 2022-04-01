@@ -30,6 +30,18 @@ import Product4 from '../../assets/svg/products/product_4.svg';
 import Product5 from '../../assets/svg/products/product_5.svg';
 import HeartnotLiked from '../../assets/svg/products/heart_notlike.svg';
 
+//top10product
+import Top1 from '../../assets/svg/products/top10products/top_1.svg';
+import Top2 from '../../assets/svg/products/top10products/top_2.svg';
+import Top3 from '../../assets/svg/products/top10products/top_3.svg';
+import Top4 from '../../assets/svg/products/top10products/top_4.svg';
+import Top5 from '../../assets/svg/products/top10products/top_5.svg';
+import Top6 from '../../assets/svg/products/top10products/top_6.svg';
+import Top7 from '../../assets/svg/products/top10products/top_7.svg';
+import Top8 from '../../assets/svg/products/top10products/top_8.svg';
+import Top9 from '../../assets/svg/products/top10products/top_9.svg';
+import Top10 from '../../assets/svg/products/top10products/top_10.svg';
+
 export const SKIN_TYPE_DATA = [
   {
     skin_type_svg: Normal,
@@ -96,6 +108,7 @@ export const CATEGORY_ROUND_DATA = [
 export const POPULAR_PRODUCT_DEMO_DATA = [
   {
     icon: Product5,
+    top_product_icon: Top1,
     name: 'NIVEA',
     description: 'Shooting Cleansing Oil',
     star: 4.8,
@@ -104,6 +117,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
   },
   {
     icon: Product4,
+    top_product_icon: Top2,
     name: 'RATED GREEN',
     description: 'Shooting Cleansing Oil',
     star: 4.8,
@@ -112,6 +126,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
   },
   {
     icon: Product3,
+    top_product_icon: Top3,
     name: 'NIVEA',
     description: 'Shooting Cleansing Oil',
     star: 4,
@@ -120,6 +135,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
   },
   {
     icon: Product2,
+    top_product_icon: Top4,
     name: 'RATED GREEN',
     description: 'Shooting Cleansing Oil',
     star: 4.8,
@@ -128,6 +144,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
   },
   {
     icon: Product1,
+    top_product_icon: Top5,
     name: 'NIVEA',
     description: 'Shooting Cleansing Oil',
     star: 4.8,
@@ -136,10 +153,47 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
   },
   {
     icon: Product5,
+    top_product_icon: Top6,
     name: 'RATED GREEN',
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '140.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product5,
+    top_product_icon: Top7,
+    name: 'RATED GREEN',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '140.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product5,
+    top_product_icon: Top8,
+    name: 'RATED GREEN',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '140.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product5,
+    top_product_icon: Top9,
+    name: 'RATED GREEN',
+    description: 'Shooting Cleansing Oil',
+    star: 4.8,
+    price: '140.000',
+    heart_like: HeartnotLiked,
+  },
+  {
+    icon: Product3,
+    top_product_icon: Top10,
+    name: 'NIVEA',
+    description: 'Shooting Cleansing Oil',
+    star: 4,
+    price: '150.000',
     heart_like: HeartnotLiked,
   },
 ];

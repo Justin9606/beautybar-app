@@ -24,9 +24,9 @@ const Header = ({
   skip_right,
   center_title,
   search_right,
+  search_left,
   wish_right,
   notif_right,
-
   marginBottom,
 }) => {
   const navigation = useNavigation();
@@ -75,6 +75,16 @@ const Header = ({
           </ButtonWrap>
         )}
         <Row>
+          {search_left === 'search_left' && (
+            <>
+              <Spacer width={16.98} />
+              <ButtonWrap
+                onPress={() => alert('Heart Icon Clicked')}
+                activeOpacity={0.7}>
+                <Search />
+              </ButtonWrap>
+            </>
+          )}
           {wish_right === 'wishlist' && (
             <>
               <Spacer width={16.98} />

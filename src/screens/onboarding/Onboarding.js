@@ -1,126 +1,160 @@
 import React, {useRef} from 'react';
-import {FlatList} from 'react-native';
-import styled from 'styled-components';
 
-//react navigation native
-import {useNavigation} from '@react-navigation/native';
+import {
+  SafeAreaView,
+  Image,
+  FlatList,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Absolutebutton from '../../containers/AbsoluteButton';
-
-//normalizer
-import {normalize} from '../../constants/responsive';
-
-//ui
-import Header from '../../components/common/Header/Header';
+//common button
 import Button from '../../components/common/Buttons/Button';
 
-//onboarding svgs
-import Onboarding_1 from '../../assets/svg/onboarding/onboarding_1.svg';
-import Onboarding_2 from '../../assets/svg/onboarding/onboarding_2.svg';
-import Onboarding_3 from '../../assets/svg/onboarding/onboarding_3.svg';
+import Onboarding_1 from '../../assets/icons/onboarding/onboarding_1.png';
+import Onboarding_2 from '../../assets/icons/onboarding/onboarding_2.png';
+import Onboarding_3 from '../../assets/icons/onboarding/onboarding_3.png';
+import OnboardingRightArrow from '../../assets/svg/onboarding/onboarding_right_arrow.svg';
+//style.js
+import styles from './style';
 
-const onboardinData = [
+const slides = [
   {
-    svg: Onboarding_1,
-    largeText: 'Skincare & Makeup',
-    smallText:
-      'Dapatkan rekomendasi skincare and makeup sesuai jenis kulit anda',
+    id: '1',
+    image: Onboarding_1,
+    title: 'Skincare & Makeup',
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    svg: Onboarding_2,
-    largeText: 'Skincare & Makeup',
-    smallText:
-      'Dapatkan rekomendasi skincare and makeup sesuai jenis kulit anda',
+    id: '2',
+    image: Onboarding_2,
+    title: 'Skincare & Makeup',
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    svg: Onboarding_3,
-    largeText: 'Skincare & Makeup',
-    smallText:
-      'Dapatkan rekomendasi skincare and makeup sesuai jenis kulit anda',
+    id: '3',
+    image: Onboarding_3,
+    title: 'Skincare & Makeup',
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
 
-const _renderItem = ({svg, largeText, smallText}) => {
+const {width, height} = Dimensions.get('window');
+
+const Slide = ({item}) => {
+  let Icon = item?.image;
+
   return (
-    <Container>
-      <SvgWrap>{svg}</SvgWrap>
-      <LargeText>{largeText}</LargeText>
-      <SmallText>{smallText}</SmallText>
-    </Container>
+    <View style={{alignItems: 'center', marginTop: 50}}>
+      <Image source={Icon} style={[styles.image, {width}]} />
+      <View>
+        <Text style={styles.title}>{item?.title}</Text>
+        <Text style={styles.subtitle}>{item?.subtitle}</Text>
+      </View>
+    </View>
   );
 };
 
-const Onboarding = () => {
-  const ref = useRef();
-  const navigation = useNavigation();
+const OnboardingScreen = ({navigation}) => {
+  const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
+  const ref = React.useRef();
+
+  const updateCurrentSlideIndex = e => {
+    const contentOffsetX = e.nativeEvent.contentOffset.x;
+    const currentIndex = Math.round(contentOffsetX / width);
+    setCurrentSlideIndex(currentIndex);
+  };
+
+  const goToNextSlide = () => {
+    const nextSlideIndex = currentSlideIndex + 1;
+    if (nextSlideIndex !== slides.length) {
+      const offset = nextSlideIndex * width;
+      ref?.current.scrollToOffset({offset});
+      setCurrentSlideIndex(currentSlideIndex + 1);
+    }
+  };
+  const goToPreviousSlide = () => {
+    const nextSlideIndex = currentSlideIndex - 1;
+    if (nextSlideIndex !== slides.length) {
+      const offset = nextSlideIndex * width;
+      ref?.current.scrollToOffset({offset});
+      setCurrentSlideIndex(currentSlideIndex - 1);
+    }
+  };
+
+  const Footer = () => {
+    return (
+      <View style={[styles.footer, {height: height * 0.25}]}>
+        <View style={styles.indicator_container}>
+          {slides.map((_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.indicator,
+                currentSlideIndex === index && {backgroundColor: '#E74779'},
+              ]}
+            />
+          ))}
+        </View>
+
+        <View style={{marginBottom: 60}}>
+          {currentSlideIndex === slides.length - 1 ? (
+            <View style={{height: 50}}>
+              <Absolutebutton>
+                <Button
+                  title={'Start'}
+                  onPress={() => navigation.navigate('WelComeScreen')}
+                />
+              </Absolutebutton>
+            </View>
+          ) : (
+            <TouchableOpacity
+              onPress={goToNextSlide}
+              style={{alignSelf: 'center'}}>
+              <OnboardingRightArrow />
+            </TouchableOpacity>
+          )}
+        </View>
+      </View>
+    );
+  };
 
   return (
-    <SafeAreaContainer>
-      <Header skip_right={'skip'} />
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 24,
+          marginTop: 20,
+        }}>
+        {currentSlideIndex > 0 ? (
+          <TouchableOpacity onPress={goToPreviousSlide}>
+            <Text style={styles.text}>Back</Text>
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
+        <TouchableOpacity onPress={() => navigation.navigate('WelComeScreen')}>
+          <Text style={styles.text}>Skip</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
+        data={slides}
         ref={ref}
         showsHorizontalScrollIndicator={false}
-        horizontal
+        onMomentumScrollEnd={updateCurrentSlideIndex}
         pagingEnabled
-        data={onboardinData}
-        renderItem={({item, index}) => {
-          const SVG = item.svg;
-          return (
-            <_renderItem
-              key={index}
-              svg={<SVG />}
-              largeText={item.largeText}
-              smallText={item.smallText}
-            />
-          );
-        }}
+        horizontal
+        renderItem={({item}) => <Slide item={item} />}
       />
-
-      <Absolutebutton>
-        <Button
-          title={'Start'}
-          onPress={() => navigation.navigate('WelComeScreen')}
-        />
-      </Absolutebutton>
-    </SafeAreaContainer>
+      <Footer />
+    </SafeAreaView>
   );
 };
 
-export default Onboarding;
-
-const Container = styled.View`
-  align-items: center;
-  margin-horizontal: 24px;
-`;
-
-const SvgWrap = styled.View`
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-`;
-
-const LargeText = styled.Text`
-  font-family: Montserrat-Bold;
-  font-weight: bold;
-  font-size: 24px;
-  color: #323234;
-  text-align: center;
-  line-height: 29px;
-  font-style: normal;
-  margin-top: ${normalize(60)}px;
-`;
-
-const SmallText = styled.Text`
-  width: 328px;
-  height: 44px;
-  font-family: Montserrat-Medium;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  text-align: center;
-  color: #7f7e83;
-  margin-top: 16px;
-`;
+export default OnboardingScreen;

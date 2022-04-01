@@ -58,11 +58,7 @@ const Home = () => {
           </BarCodeSkinAnallContainer>
         </BarCodeSkinWrap>
         <Spacer height={32} />
-        <SubHeader
-          label={'Categories'}
-          seeAllLabel={'See all'}
-          seeAll={'seeAll'}
-        />
+        <SubHeader label={'Categories'} seeAll={'seeAll'} />
         <RoundedCategories />
         <Spacer height={32} />
         <AnaysisResultWrap>
@@ -84,14 +80,14 @@ const Home = () => {
         <Spacer height={32} />
         <SubHeader
           label={'Best Match Products '}
-          seeAllLabel={'See all'}
           seeAll={'seeAll'}
+          onPressSeeAllBtn={() => alert('Best Match See all Pressed')}
         />
         <BestMathProducts />
         <SubHeader
           label={'Popular Products'}
-          seeAllLabel={'See all'}
           seeAll={'seeAll'}
+          onPressSeeAllBtn={() => alert('Popular Product See all Pressed')}
         />
         <PopularProducts />
         {/* WILL BE REMOVED HEIGHT */}

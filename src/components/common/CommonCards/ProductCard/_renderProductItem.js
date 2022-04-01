@@ -19,6 +19,7 @@ const _renderProductItem = ({
   price,
   heart_like,
   index,
+  top_product_icon,
   POPULAR_PRODUCT_DEMO_DATA,
 }) => {
   return (
@@ -29,7 +30,8 @@ const _renderProductItem = ({
       index={index}
       activeOpacity={0.7}
       onPress={() => alert('Product pressed')}>
-      <ImgWrapper>{icon}</ImgWrapper>
+      <TopProductIcom>{top_product_icon}</TopProductIcom>
+      <ProductImageWrap>{icon}</ProductImageWrap>
 
       <ProductTitle>{title}</ProductTitle>
       <ProductDescript>{descript}</ProductDescript>
@@ -70,8 +72,14 @@ const Wrapper = styled.TouchableOpacity`
   elevation: 5;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
 `;
+const TopProductIcom = styled.View`
+  position: absolute;
+  top: -18px;
+  z-index: 1;
+  overflow: hidden;
+`;
 
-const ImgWrapper = styled.View`
+const ProductImageWrap = styled.View`
   justify-content: center;
   align-items: center;
   background-color: transparent;

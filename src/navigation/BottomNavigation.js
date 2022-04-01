@@ -87,7 +87,7 @@ export default function TabBar() {
   const model = Device.getModel();
 
   return (
-    <View style={{flex: 1, backgroundColor: 'red'}}>
+    <View style={{flex: 1}}>
       <CurvedBottomBar.Navigator
         type="up"
         style={styles.bottomBar}

@@ -13,6 +13,7 @@ const SubHeader_16px = ({
   paddingHorizontal,
   seeAll,
   seeAllLabel,
+  onPressSeeAllBtn,
 }) => {
   return (
     <SubHeaderWrap
@@ -23,8 +24,8 @@ const SubHeader_16px = ({
       <Label>{label}</Label>
 
       {seeAll === 'seeAll' && (
-        <SeeAllButtonWrap>
-          <SeeAllText>{seeAllLabel}</SeeAllText>
+        <SeeAllButtonWrap onPress={onPressSeeAllBtn} activeOpacity={0.7}>
+          <SeeAllText>See all</SeeAllText>
         </SeeAllButtonWrap>
       )}
     </SubHeaderWrap>
