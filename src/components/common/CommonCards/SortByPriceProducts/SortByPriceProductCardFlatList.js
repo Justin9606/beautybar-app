@@ -7,19 +7,25 @@ import {FlatList} from 'react-native';
 //styled components
 import styled from 'styled-components';
 
-const PromoProductCardFlatList = ({data, renderItem, horizontal}) => {
+import Spacer from '../../../../containers/Spacer';
+
+const SortByPriceProductCardFlatList = ({data, renderItem, numColumns}) => {
   return (
     <Container>
       <FlatList
+        scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
-        horizontal={horizontal}
         data={data}
+        contentContainerStyle={{alignSelf: 'flex-start'}}
+        numColumns={numColumns}
         renderItem={renderItem}
       />
+      <Spacer height={32} />
     </Container>
   );
 };
-export default PromoProductCardFlatList;
+export default SortByPriceProductCardFlatList;
 const Container = styled.View`
   justify-content: center;
+  margin-left: 24px;
 `;

@@ -43,7 +43,7 @@ import Top9 from '../../assets/svg/products/top10products/top_9.svg';
 import Top10 from '../../assets/svg/products/top10products/top_10.svg';
 
 //small discount Banner
-import SmallDispcountBanner from '../../assets/svg/promo/small_discount_banner.svg';
+import SmallDiscountBanner from '../../assets/svg/promo/small_discount_banner.svg';
 
 export const SKIN_TYPE_DATA = [
   {
@@ -116,7 +116,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '120.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -128,7 +128,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '140.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -140,7 +140,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4,
     price: '150.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -152,7 +152,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '130.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -164,7 +164,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '170.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -176,7 +176,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '140.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -188,7 +188,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '140.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -200,7 +200,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '140.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -212,7 +212,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4.8,
     price: '140.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
@@ -224,7 +224,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     description: 'Shooting Cleansing Oil',
     star: 4,
     price: '150.000',
-    small_discount_banner: SmallDispcountBanner,
+    small_discount_banner: SmallDiscountBanner,
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,

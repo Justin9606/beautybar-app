@@ -30,7 +30,7 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 
 //Screens
 import HomeScreen from '../screens/home/Home';
-import Feedmainpage from '../screens/feed/FeedMainPage';
+import Feedmainpage from '../screens/community/FeedMainPage';
 import Productmainpage from '../screens/product/ProductMainPage';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
 
@@ -52,7 +52,7 @@ export default function TabBar() {
     return (
       <>
         {returnDay()}
-        <Text
+        {/* <Text
           style={[
             styles.routnames,
             {
@@ -62,7 +62,7 @@ export default function TabBar() {
             },
           ]}>
           {routeName}
-        </Text>
+        </Text> */}
       </>
     );
   };

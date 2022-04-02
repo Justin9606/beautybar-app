@@ -7,7 +7,7 @@ import {FlatList} from 'react-native';
 //styled components
 import styled from 'styled-components';
 
-const PromoProductCardFlatList = ({data, renderItem, horizontal}) => {
+const TopReviewProductCardFlatList = ({data, renderItem, horizontal}) => {
   return (
     <Container>
       <FlatList
@@ -19,7 +19,7 @@ const PromoProductCardFlatList = ({data, renderItem, horizontal}) => {
     </Container>
   );
 };
-export default PromoProductCardFlatList;
+export default TopReviewProductCardFlatList;
 const Container = styled.View`
   justify-content: center;
 `;

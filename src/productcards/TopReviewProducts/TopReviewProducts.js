@@ -4,29 +4,29 @@ import React from 'react';
 import styled from 'styled-components';
 
 //Promo products card flatList
-import PromoProductCardFlatList from '../../components/common/CommonCards/PromoProductCard/PromoProductCardFlatList';
+import TopReviewProductCardFlatList from '../../components/common/CommonCards/TopReviewProductCard/TopReviewProductCardFlatList';
 //_render promo item
-import _renderPromoProductItem from '../../components/common/CommonCards/PromoProductCard/_renderPromoProductItem';
+import _renderTopReviewItem from '../../components/common/CommonCards/TopReviewProductCard/_renderTopReviewItem';
 
 //Promo
 
-import PromoProductBcgBannerImg from '../../assets/svg/promo/promoProductBcgBanner.png';
-import BigDiscountBanner from '../../assets/svg/promo/big_discount_banner.svg';
+import TopReviewProductBcgBannerImg from '../../assets/svg/topreview/topreviewbcgbanner.png';
+import BigReviewStar from '../../assets/svg/topreview/big_star.svg';
 //product review star icon
 import ReviewStar from '../../assets/icons/productreviewstar.png';
 
 //svg demo data
 import {POPULAR_PRODUCT_DEMO_DATA} from '../../components/svg_data/skin_data';
 
-const PromoProducts = () => {
+const TopReviewProducts = () => {
   return (
-    <PromoProductsWrap>
-      <PromoProductBcgBannerWrap source={PromoProductBcgBannerImg} />
-      <PromoTextwithDiscountBanWrap>
-        <PromoText>Promo</PromoText>
-        <BigDiscountBanner />
-      </PromoTextwithDiscountBanWrap>
-      <PromoProductCardFlatList
+    <TopReviewProductsWrap>
+      <TopReviewProductBcgBannerWrap source={TopReviewProductBcgBannerImg} />
+      <TopReviewTextwithStarBanWrap>
+        <BigReviewStar />
+        <TopReviewText>Top Review Product</TopReviewText>
+      </TopReviewTextwithStarBanWrap>
+      <TopReviewProductCardFlatList
         horizontal
         data={POPULAR_PRODUCT_DEMO_DATA}
         renderItem={({item, index}) => {
@@ -35,7 +35,7 @@ const PromoProducts = () => {
 
           const HeartnotLikedSvg = item.heart_like;
           return (
-            <_renderPromoProductItem
+            <_renderTopReviewItem
               POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
               index={index}
               icon={<SVG width={117} height={120} />}
@@ -52,36 +52,36 @@ const PromoProducts = () => {
           );
         }}
       />
-    </PromoProductsWrap>
+    </TopReviewProductsWrap>
   );
 };
 
-export default PromoProducts;
+export default TopReviewProducts;
 
-const PromoProductsWrap = styled.View`
+const TopReviewProductsWrap = styled.View`
   height: 412px;
 `;
-const PromoProductBcgBannerWrap = styled.Image`
+const TopReviewProductBcgBannerWrap = styled.Image`
   width: 342px;
-  height: 412px;
+  height: 387px;
   position: absolute;
   align-self: center;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
 `;
-const PromoTextwithDiscountBanWrap = styled.View`
-  margin-left: 46px;
+const TopReviewTextwithStarBanWrap = styled.View`
+  margin-left: 52.5px;
   margin-right: 46px;
-  margin-top: 21px;
+  margin-top: 30px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 22px;
 `;
-const PromoText = styled.Text`
+const TopReviewText = styled.Text`
+  width: 145px;
   font-family: Montserrat-Medium;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
-  color: #ffffff;
+  color: #323234;
 `;

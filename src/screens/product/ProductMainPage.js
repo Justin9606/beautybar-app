@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import Top10Products from '../../productcards/Top10Products/Top10Products';
 import RoundedCategories from '../../productcards/Categories/RoundedCategories';
 import PromoProducts from '../../productcards/PromoProducts/PromoProducts';
+import SortByPriceProducts from '../../productcards/SortByPriceProduct/SortByPriceProduct';
+import TopReviewProducts from '../../productcards/TopReviewProducts/TopReviewProducts';
 
 //Header
 import Header from '../../components/common/Header/Header';
@@ -90,7 +92,15 @@ const Productmainpage = () => {
         </PopularBrandsWrap>
         <Spacer height={32} />
         <PromoProducts />
+        <Largetext
+          title={'Sorting by Price'}
+          marginLeft={24}
+          textAlign={'left'}
+          marginTop={32}
+        />
 
+        <SortByPriceProducts />
+        <TopReviewProducts />
         <Spacer height={130} />
       </ScrollableView>
     </SafeAreaContainer>
