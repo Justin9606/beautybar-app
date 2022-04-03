@@ -9,6 +9,7 @@ import RoundedCategories from '../../productcards/Categories/RoundedCategories';
 import PromoProducts from '../../productcards/PromoProducts/PromoProducts';
 import SortByPriceProducts from '../../productcards/SortByPriceProduct/SortByPriceProduct';
 import TopReviewProducts from '../../productcards/TopReviewProducts/TopReviewProducts';
+import AllVerticalProducts from '../../productcards/AllVerticalProducts/AllVerticalProducts';
 
 //Header
 import Header from '../../components/common/Header/Header';
@@ -97,10 +98,20 @@ const Productmainpage = () => {
           marginLeft={24}
           textAlign={'left'}
           marginTop={32}
+          marginBottom={0.1}
         />
 
         <SortByPriceProducts />
         <TopReviewProducts />
+        <Largetext
+          title={'All Products'}
+          marginLeft={24}
+          textAlign={'left'}
+          marginTop={32}
+          marginBottom={24}
+        />
+
+        <AllVerticalProducts />
         <Spacer height={130} />
       </ScrollableView>
     </SafeAreaContainer>

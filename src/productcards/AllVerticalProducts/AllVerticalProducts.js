@@ -1,14 +1,12 @@
-//react
 import React from 'react';
 
 //styled components
 import styled from 'styled-components';
 
-//_renderSortByPriceItem
-import _renderSortByPriceItem from '../../components/common/CommonCards/SortByPriceProducts/_renderSortByPriceItem';
-
-//SortByPriceProductCardFlatList.js
-import SortByPriceProductCardFlatList from '../../components/common/CommonCards/SortByPriceProducts/SortByPriceProductCardFlatList';
+//Promo products card flatList
+import AllVerticalProductCardFlatList from '../../components/common/CommonCards/AllVerticalProductCard/AllVerticalProductCardFlatList';
+//_render promo item
+import _renderAllVerticalItem from '../../components/common/CommonCards/AllVerticalProductCard/_renderAllVerticalItem';
 
 //product review star icon
 import ReviewStar from '../../assets/icons/productreviewstar.png';
@@ -16,20 +14,17 @@ import ReviewStar from '../../assets/icons/productreviewstar.png';
 //svg demo data
 import {POPULAR_PRODUCT_DEMO_DATA} from '../../components/svg_data/skin_data';
 
-const SortByPriceProducts = () => {
+const AllVerticalProducts = () => {
   return (
-    <SortByPriceCardWrap horizontal showsHorizontalScrollIndicator={false}>
-      <SortByPriceProductCardFlatList
-        numColumns={Math.ceil(POPULAR_PRODUCT_DEMO_DATA.length / 2)}
+    <Wrapper>
+      <AllVerticalProductCardFlatList
         data={POPULAR_PRODUCT_DEMO_DATA}
         renderItem={({item, index}) => {
           const SVG = item.icon;
           const SmallDiscountBanner = item.small_discount_banner;
           const HeartnotLikedSvg = item.heart_like;
           return (
-            <_renderSortByPriceItem
-              key={index}
-              POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
+            <_renderAllVerticalItem
               index={index}
               icon={<SVG width={117} height={120} />}
               small_discount_banner={<SmallDiscountBanner />}
@@ -45,14 +40,12 @@ const SortByPriceProducts = () => {
           );
         }}
       />
-    </SortByPriceCardWrap>
+    </Wrapper>
   );
 };
 
-export default SortByPriceProducts;
+export default AllVerticalProducts;
 
-const SortByPriceCardWrap = styled.ScrollView`
-  flex-direction: row;
-  flex-wrap: wrap;
+const Wrapper = styled.View`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
 `;

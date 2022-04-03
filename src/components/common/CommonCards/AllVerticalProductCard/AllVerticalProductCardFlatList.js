@@ -7,24 +7,21 @@ import {FlatList} from 'react-native';
 //styled components
 import styled from 'styled-components';
 
-import Spacer from '../../../../containers/Spacer';
-
-const SortByPriceProductCardFlatList = ({data, renderItem, numColumns}) => {
+const AllVerticalProductCardFlatList = ({data, renderItem}) => {
   return (
     <Container>
       <FlatList
-        scrollEnabled={false}
+        columnWrapperStyle={{justifyContent: 'space-between', marginBottom: 20}}
+        numColumns={2}
         showsHorizontalScrollIndicator={false}
         data={data}
-        numColumns={numColumns}
         renderItem={renderItem}
       />
-      <Spacer height={32} />
     </Container>
   );
 };
-export default SortByPriceProductCardFlatList;
+export default AllVerticalProductCardFlatList;
+
 const Container = styled.View`
-  justify-content: center;
-  margin-left: 24px;
+  padding-horizontal: 24px;
 `;

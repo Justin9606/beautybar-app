@@ -59,7 +59,7 @@ const TopReviewProducts = () => {
 export default TopReviewProducts;
 
 const TopReviewProductsWrap = styled.View`
-  height: 412px;
+  height: 385px;
 `;
 const TopReviewProductBcgBannerWrap = styled.Image`
   width: 342px;
