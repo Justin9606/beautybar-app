@@ -35,7 +35,7 @@ const _renderTopReviewItem = ({
       <ProductImageWrap>{icon}</ProductImageWrap>
 
       <TopReviewStarWithRateTextWrap>
-        <ProductReviewStarIcon source={starRate} />
+        <ProductReviewStarIcon source={starRate} style={{marginRight: 0}} />
         <ProductRateTextTop>{rateText}</ProductRateTextTop>
       </TopReviewStarWithRateTextWrap>
 
@@ -95,6 +95,7 @@ const TopReviewStarWithRateTextWrap = styled.View`
 const ProductReviewStarIcon = styled.Image`
   width: 9.33px;
   height: 9.33px;
+  margin-right: 6.67px;
 `;
 const ProductRateTextTop = styled.Text`
   text-align: center;

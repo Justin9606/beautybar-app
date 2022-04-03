@@ -1,30 +1,28 @@
-//react
 import React from 'react';
 
-//react-native
+//react-native FlatList
 import {FlatList} from 'react-native';
 
-//styled components
+//styled
 import styled from 'styled-components';
 
-const AllVerticalProductCardFlatList = ({data, renderItem}) => {
+const NewestProductsCardFlatlistList = ({data, numColumns, renderItem}) => {
   return (
     <Container>
       <FlatList
-        columnWrapperStyle={{
-          justifyContent: 'space-between',
-          marginBottom: 20,
-        }}
-        numColumns={2}
+        scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         data={data}
+        numColumns={numColumns}
         renderItem={renderItem}
       />
     </Container>
   );
 };
-export default AllVerticalProductCardFlatList;
+
+export default NewestProductsCardFlatlistList;
 
 const Container = styled.View`
-  padding-horizontal: 23px;
+  justify-content: center;
+  align-items: center;
 `;

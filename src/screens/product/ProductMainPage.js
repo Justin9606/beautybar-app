@@ -10,6 +10,7 @@ import PromoProducts from '../../productcards/PromoProducts/PromoProducts';
 import SortByPriceProducts from '../../productcards/SortByPriceProduct/SortByPriceProduct';
 import TopReviewProducts from '../../productcards/TopReviewProducts/TopReviewProducts';
 import AllVerticalProducts from '../../productcards/AllVerticalProducts/AllVerticalProducts';
+import NewestProducts from '../../productcards/NewestProduct/NewestProducts';
 
 //Header
 import Header from '../../components/common/Header/Header';
@@ -102,6 +103,13 @@ const Productmainpage = () => {
         />
 
         <SortByPriceProducts />
+        <Largetext
+          title={'Newest Products'}
+          marginLeft={24}
+          textAlign={'left'}
+          marginBottom={28}
+        />
+        <NewestProducts />
         <TopReviewProducts />
         <Largetext
           title={'All Products'}

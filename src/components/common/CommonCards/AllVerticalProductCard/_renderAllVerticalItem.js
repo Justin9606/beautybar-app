@@ -70,12 +70,10 @@ export default _renderAllVerticalItem;
 
 const Wrapper = styled.TouchableOpacity`
   justify-content: center;
-
   background-color: white;
-  width: ${props => props.cardWidth || 164}px;
-
+  width: ${props => props.cardWidth || 160}px;
+  /* height: 235px; */
   border-radius: 12px;
-
   elevation: 5;
 `;
 

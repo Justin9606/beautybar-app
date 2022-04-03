@@ -7,7 +7,6 @@ import styled from 'styled-components';
 //containers
 import Spacer from '../../../../containers/Spacer';
 import Row from '../../../../containers/Row';
-import {POPULAR_PRODUCT_DEMO_DATA} from '../../../svg_data/skin_data';
 
 const _renderSortByPriceItem = ({
   cardWidth,

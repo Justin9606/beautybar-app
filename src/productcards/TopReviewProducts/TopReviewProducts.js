@@ -78,6 +78,7 @@ const TopReviewTextwithStarBanWrap = styled.View`
 `;
 const TopReviewText = styled.Text`
   width: 145px;
+  margin-left: 14.5px;
   font-family: Montserrat-Medium;
   font-style: normal;
   font-weight: 700;

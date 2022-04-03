@@ -1,12 +1,11 @@
 import React, {useState, useCallback} from 'react';
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
 import PostPictuer from '../../assets/svg/Post/post.svg';
 import Like from '../../assets/svg/Post/like.svg';
 import Comment from '../../assets/svg/Post/comment.svg';
 import ReadMore from '../../assets/svg/Post/read.svg';
 import Dots from '../../assets/svg/common/dots.svg';
-import FollwImage from '../../assets/svg/common/followplus.png';
 
 import styles from './style';
 
