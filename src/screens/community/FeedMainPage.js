@@ -1,9 +1,15 @@
 import React, {useState, useCallback} from 'react';
-import {View, StyleSheet, Text, FlatList, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import styles from './style';
 import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import ScrollableView from '../../containers/ScrollableView';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import Divider from '../../components/common/Divider/Divider';
 import Feed from './Feed';

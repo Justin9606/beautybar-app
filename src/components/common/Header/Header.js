@@ -14,6 +14,7 @@ import Spacer from '../../../containers/Spacer';
 import Smalltext from '../Text/SmallText';
 
 import BackButton from '../../../assets/svg/header/back_btn.svg';
+import BackButtonWithTail from '../../../assets/svg/header/back_btn_has_tail.svg';
 import Search from '../../../assets/svg/header/search_right.svg';
 import WishList from '../../../assets/svg/header/wishlist.svg';
 import Notification from '../../../assets/svg/header/notification_bell.svg';
@@ -37,6 +38,11 @@ const Header = ({
         {back_with_rec_icon === 'back_with_rec_icon' && (
           <ButtonWrap onPress={() => navigation.goBack()} activeOpacity={0.7}>
             <BackButton />
+          </ButtonWrap>
+        )}
+        {back_with_rec_icon === 'back_with_tail_icon' && (
+          <ButtonWrap onPress={() => navigation.goBack()} activeOpacity={0.7}>
+            <BackButtonWithTail />
           </ButtonWrap>
         )}
         {back_with_text === 'back_with_text' && (

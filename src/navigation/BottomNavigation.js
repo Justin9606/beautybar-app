@@ -1,12 +1,5 @@
-import React from 'react';
-import {
-  Alert,
-  Animated,
-  TouchableOpacity,
-  Text,
-  Platform,
-  View,
-} from 'react-native';
+import React, {useMemo} from 'react';
+import {Alert, Animated, TouchableOpacity, Platform, View} from 'react-native';
 
 //react-native-curved-bottom-bar
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
@@ -31,10 +24,10 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 //Screens
 import HomeScreen from '../screens/home/Home';
 import Feedmainpage from '../screens/community/FeedMainPage';
-import Productmainpage from '../screens/product/ProductMainPage';
+import Productmainpage from '../screens/product/ProductMainSceen';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
 
-export default function TabBar() {
+const TabBar = () => {
   const _renderIcon = (routeName, selectedTab) => {
     function returnDay(val) {
       switch (routeName) {
@@ -76,7 +69,8 @@ export default function TabBar() {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
-          paddingBottom: 10,
+          paddingBottom:
+            Platform.OS === 'android' || model === 'iPhone 8' ? 10 : 25,
         }}>
         {_renderIcon(routeName, selectedTab)}
       </TouchableOpacity>
@@ -85,53 +79,57 @@ export default function TabBar() {
 
   //checking DeviceModel
   const model = Device.getModel();
+  const renderMain = useMemo(() => {
+    return (
+      <View style={{flex: 1}}>
+        <CurvedBottomBar.Navigator
+          type="up"
+          style={styles.bottomBar}
+          strokeWidth={0.12}
+          height={Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 85}
+          circleWidth={55}
+          bgColor="white"
+          initialRouteName="Home"
+          swipeEnabled={false}
+          renderCircle={({selectedTab, navigate}) => (
+            <Animated.View style={styles.btnCircleUp}>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  justifyContent: 'center',
+                }}
+                onPress={() => Alert.alert('Click Action')}>
+                <TryCameraon />
+              </TouchableOpacity>
+            </Animated.View>
+          )}
+          tabBar={renderTabBar}>
+          <CurvedBottomBar.Screen
+            name="Home"
+            position="left"
+            component={({navigate}) => <HomeScreen />}
+          />
 
-  return (
-    <View style={{flex: 1}}>
-      <CurvedBottomBar.Navigator
-        type="up"
-        style={styles.bottomBar}
-        strokeWidth={0.12}
-        height={Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 80}
-        circleWidth={55}
-        bgColor="white"
-        initialRouteName="Home"
-        swipeEnabled={false}
-        renderCircle={({selectedTab, navigate}) => (
-          <Animated.View style={styles.btnCircleUp}>
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                justifyContent: 'center',
-              }}
-              onPress={() => Alert.alert('Click Action')}>
-              <TryCameraon />
-            </TouchableOpacity>
-          </Animated.View>
-        )}
-        tabBar={renderTabBar}>
-        <CurvedBottomBar.Screen
-          name="Home"
-          position="left"
-          component={({navigate}) => <HomeScreen />}
-        />
+          <CurvedBottomBar.Screen
+            name="Community"
+            position="left"
+            component={({navigate}) => <Feedmainpage />}
+          />
+          <CurvedBottomBar.Screen
+            name="Product"
+            component={({navigate}) => <Productmainpage />}
+            position="right"
+          />
+          <CurvedBottomBar.Screen
+            name="Profile"
+            component={({navigate}) => <Profilemainpage />}
+            position="right"
+          />
+        </CurvedBottomBar.Navigator>
+      </View>
+    );
+  }, []);
+  return <View style={{flex: 1, backgroundColor: 'red'}}>{renderMain}</View>;
+};
 
-        <CurvedBottomBar.Screen
-          name="Community"
-          position="left"
-          component={({navigate}) => <Feedmainpage />}
-        />
-        <CurvedBottomBar.Screen
-          name="Product"
-          component={({navigate}) => <Productmainpage />}
-          position="right"
-        />
-        <CurvedBottomBar.Screen
-          name="Profile"
-          component={({navigate}) => <Profilemainpage />}
-          position="right"
-        />
-      </CurvedBottomBar.Navigator>
-    </View>
-  );
-}
+export default TabBar;
