@@ -40,6 +40,7 @@ const Home = () => {
         notif_right={'notification'}
         wish_right={'wishlist'}
         search_right={'search'}
+        center_title={'hasCenterTitle'}
       />
       <ScrollableView>
         <Slider CarouselImages={CarouselImages} />

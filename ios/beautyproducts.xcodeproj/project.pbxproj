@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* beautyproductsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* beautyproductsTests.m */; };
 		03D840DF9FF14952948A2900 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E631DCC91C84CC18ADE7735 /* Montserrat-ExtraLightItalic.ttf */; };
-		048E5F66FC24EE34DAF03150 /* libPods-beautyproducts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D45C7136B91E33CE399F3 /* libPods-beautyproducts.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -20,8 +19,8 @@
 		34D4FAEAB2624B0DB9E41A9C /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 406693349F9A43CAB51861B2 /* Montserrat-Black.ttf */; };
 		478B9BBD6AC74F0F9E5265C2 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3037018E9B704CA48A1AE938 /* Montserrat-Medium.ttf */; };
 		527421B227EAE0F700F5B970 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527421B127EAE0F700F5B970 /* KeyboardManager.swift */; };
+		5E70A57A2CCE9B444DB14DB9 /* libPods-beautyproducts-beautyproductsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FACA767B77E6FAE15B2CB63 /* libPods-beautyproducts-beautyproductsTests.a */; };
 		6735F7A5D1C14473B94C442E /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4BE892756FA421293B21187 /* Montserrat-ExtraBoldItalic.ttf */; };
-		77055BBE3CE28ED502ABCA24 /* libPods-beautyproducts-beautyproductsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D62055C02C37460F78548A /* libPods-beautyproducts-beautyproductsTests.a */; };
 		79BE2B0629EA45B6A04EC537 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7F8E581ECA3403FB6D3F311 /* Montserrat-MediumItalic.ttf */; };
 		804689B9153948C5A828076B /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F979FF8848719B8838FB /* Montserrat-ExtraLight.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -32,6 +31,7 @@
 		CC44F3A0EC6340148210C844 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00E7A26418D544408E47AEA1 /* Montserrat-Light.ttf */; };
 		CE6BAC298C3A4F41ABC38BCD /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38DA43AA38454FB781EC5526 /* Montserrat-BoldItalic.ttf */; };
 		E5F487BD2B4640A1B04B9961 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92B1835B131A482486750B1C /* Montserrat-Thin.ttf */; };
+		E9FF95537C01343675707846 /* libPods-beautyproducts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A163FF05CA1C22A8926F6 /* libPods-beautyproducts.a */; };
 		F4D9E4EA8C474FC3AF76AB0C /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D3958ADFF4D4FD792EA3BBF /* Montserrat-Italic.ttf */; };
 /* End PBXBuildFile section */
 
@@ -66,15 +66,15 @@
 		527421B027EAE0F700F5B970 /* beautyproducts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beautyproducts-Bridging-Header.h"; sourceTree = "<group>"; };
 		527421B127EAE0F700F5B970 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		5637168A5D274F81890FA1DF /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-LightItalic.ttf"; path = "../src/assets/fonts/Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		5FACA767B77E6FAE15B2CB63 /* libPods-beautyproducts-beautyproductsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beautyproducts-beautyproductsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2A4A68BFBE4241AC70F2C2 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ThinItalic.ttf"; path = "../src/assets/fonts/Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7D3958ADFF4D4FD792EA3BBF /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Italic.ttf"; path = "../src/assets/fonts/Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = beautyproducts/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E631DCC91C84CC18ADE7735 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		92B1835B131A482486750B1C /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Thin.ttf"; path = "../src/assets/fonts/Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		947B25B31A16E3EF1D0E3209 /* Pods-beautyproducts-beautyproductsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beautyproducts-beautyproductsTests.debug.xcconfig"; path = "Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B43D45C7136B91E33CE399F3 /* libPods-beautyproducts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beautyproducts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A9D964788B42309D166369 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../src/assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
-		C1D62055C02C37460F78548A /* libPods-beautyproducts-beautyproductsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beautyproducts-beautyproductsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9A163FF05CA1C22A8926F6 /* libPods-beautyproducts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beautyproducts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E109D112744F2E9D1EA71C /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		D4BE892756FA421293B21187 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		DA8C8CEA204D4FCF84E0C332 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77055BBE3CE28ED502ABCA24 /* libPods-beautyproducts-beautyproductsTests.a in Frameworks */,
+				5E70A57A2CCE9B444DB14DB9 /* libPods-beautyproducts-beautyproductsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				048E5F66FC24EE34DAF03150 /* libPods-beautyproducts.a in Frameworks */,
+				E9FF95537C01343675707846 /* libPods-beautyproducts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				B43D45C7136B91E33CE399F3 /* libPods-beautyproducts.a */,
-				C1D62055C02C37460F78548A /* libPods-beautyproducts-beautyproductsTests.a */,
+				CE9A163FF05CA1C22A8926F6 /* libPods-beautyproducts.a */,
+				5FACA767B77E6FAE15B2CB63 /* libPods-beautyproducts-beautyproductsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,8 +230,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				541F1ADD87078B5815F38432 /* [CP] Embed Pods Frameworks */,
-				5C08576271C6CE07151FEB28 /* [CP] Copy Pods Resources */,
+				5B6D3FE0E0C4A099C7E48A71 /* [CP] Copy Pods Resources */,
+				8F1911806C6D83522DA46500 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,8 +253,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				5EB689439FA8593E47DC7888 /* [CP] Embed Pods Frameworks */,
-				A495D93169F35FDBDA259518 /* [CP] Copy Pods Resources */,
+				52B90768690DFCB99F42A1D9 /* [CP] Copy Pods Resources */,
+				72D75FC7AF64ABA968983CA9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,7 +271,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -375,24 +375,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		541F1ADD87078B5815F38432 /* [CP] Embed Pods Frameworks */ = {
+		52B90768690DFCB99F42A1D9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5C08576271C6CE07151FEB28 /* [CP] Copy Pods Resources */ = {
+		5B6D3FE0E0C4A099C7E48A71 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,7 +409,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5EB689439FA8593E47DC7888 /* [CP] Embed Pods Frameworks */ = {
+		72D75FC7AF64ABA968983CA9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -426,21 +426,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A495D93169F35FDBDA259518 /* [CP] Copy Pods Resources */ = {
+		8F1911806C6D83522DA46500 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beautyproducts/Pods-beautyproducts-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beautyproducts-beautyproductsTests/Pods-beautyproducts-beautyproductsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1DC6F75F94B4BD3C169F1B5 /* [CP] Check Pods Manifest.lock */ = {

@@ -17,14 +17,13 @@ const Top10Products = () => {
     <ProductCardFlatList
       data={POPULAR_PRODUCT_DEMO_DATA}
       renderItem={({item, index}) => {
-        const SVG = item.icon;
         const Top10ProductSVG = item.top_product_icon;
         const HeartnotLikedSvg = item.heart_like;
         return (
           <_renderProductItem
             POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
             index={index}
-            icon={<SVG />}
+            icon={item.icon}
             top_product_icon={<Top10ProductSVG />}
             title={item.name}
             descript={item.description}

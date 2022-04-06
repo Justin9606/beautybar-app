@@ -20,15 +20,13 @@ const NewestProducts = () => {
         data={POPULAR_PRODUCT_DEMO_DATA}
         numColumns={Math.ceil(POPULAR_PRODUCT_DEMO_DATA.length / 3)}
         renderItem={({item, index}) => {
-          const SVG = item.icon;
-
           const HeartnotLikedSvg = item.heart_like;
           return (
             <_renderNewestItem
               key={index}
               POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
               index={index}
-              icon={<SVG width={120} height={120} />}
+              icon={item.icon}
               title={item.name}
               descript={item.description}
               price={item.price}

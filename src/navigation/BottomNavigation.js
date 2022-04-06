@@ -23,7 +23,7 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 
 //Screens
 import HomeScreen from '../screens/home/Home';
-import Feedmainpage from '../screens/community/FeedMainPage';
+import Feedmainpage from '../screens/community/FeedMainScreen';
 import Productmainpage from '../screens/product/ProductMainSceen';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
 

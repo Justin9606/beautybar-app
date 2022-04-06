@@ -1,12 +1,5 @@
-import React, {useState, useCallback} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
 import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import ScrollableView from '../../containers/ScrollableView';

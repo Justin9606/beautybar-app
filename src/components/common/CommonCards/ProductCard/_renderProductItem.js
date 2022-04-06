@@ -1,6 +1,9 @@
 //react
 import React from 'react';
 
+//import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image';
+
 //styled components
 import styled from 'styled-components';
 
@@ -31,8 +34,21 @@ const _renderProductItem = ({
       activeOpacity={0.7}
       onPress={() => alert('Product pressed')}>
       <TopProductIcom>{top_product_icon}</TopProductIcom>
-      <ProductImageWrap>{icon}</ProductImageWrap>
 
+      <FastImage
+        source={icon}
+        style={{
+          alignSelf: 'center',
+          justifyContent: 'center',
+          width: 117,
+          height: 120,
+          backgroundColor: 'transparent',
+          marginTop: 12,
+          priority: FastImage.priority.high,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
+      />
+      {/* <ProductImageWrap source={icon} resizeMode={'contain'} /> */}
       <ProductTitle>{title}</ProductTitle>
       <ProductDescript>{descript}</ProductDescript>
       <Spacer height={8.33} />
@@ -79,12 +95,13 @@ const TopProductIcom = styled.View`
   overflow: hidden;
 `;
 
-const ProductImageWrap = styled.View`
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  padding-top: 12px;
-`;
+// const ProductImageWrap = styled.Image`
+//   align-self: center;
+//   width: 117px;
+//   height: 120px;
+//   background-color: transparent;
+//   padding-top: 12px;
+// `;
 
 const ProductTitle = styled.Text`
   margin-top: 15px;

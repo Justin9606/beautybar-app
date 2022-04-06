@@ -57,12 +57,25 @@ const brandsData = [
     id: 6,
     brand_svg: Innisfree,
   },
+  {
+    id: 5,
+    brand_svg: Corx,
+  },
+  {
+    id: 6,
+    brand_svg: Innisfree,
+  },
 ];
 
 const Productmainpage = () => {
   return (
     <SafeAreaContainer>
-      <Header search_left={'search_left'} wish_right={'wishlist'} />
+      <Header
+        search_left={'search_left'}
+        wish_right={'wishlist'}
+        appName={'appName'}
+        hiUserName={'Hi, Justin'}
+      />
       <ScrollableView>
         <Largetext
           title={'Top 10 Products'}
@@ -132,7 +145,7 @@ const PopularBrandsWrap = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding-horizontal: 24px;
+  padding-left: 24px;
 `;
 
 const PopularBrandsContainer = styled.TouchableOpacity`

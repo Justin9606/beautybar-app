@@ -12,7 +12,7 @@ const ProductCardFlatList = ({data, renderItem}) => {
     <Container>
       <FlatList
         showsHorizontalScrollIndicator={false}
-        horizontal
+        horizontal={true}
         data={data}
         renderItem={renderItem}
       />

@@ -2,6 +2,8 @@ import React from 'react';
 
 //styled
 import styled from 'styled-components';
+//fase image
+import FastImage from 'react-native-fast-image';
 
 //containers
 import Spacer from '../../../../containers/Spacer';
@@ -28,7 +30,21 @@ const _renderNewestItem = ({
         <NewBannerText>NEW</NewBannerText>
       </NewBannerTextWrap>
       <Row>
-        <NewestProductsMainImgs>{icon}</NewestProductsMainImgs>
+        <FastImage
+          source={icon}
+          style={{
+            alignSelf: 'center',
+            justifyContent: 'center',
+            marginLeft: 16,
+            width: 92,
+            height: 95,
+            backgroundColor: 'transparent',
+            marginTop: 13,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+        />
+        {/* <NewestProductsMainImgs source={icon} resizeMode={'contain'} /> */}
         <Wrap>
           <NewestProductsTitle>{title}</NewestProductsTitle>
           <NewestProductsDescript>{descript}</NewestProductsDescript>
@@ -88,9 +104,11 @@ const Wrap = styled.View`
   justify-content: flex-start;
 `;
 
-const NewestProductsMainImgs = styled.View`
-  margin-left: 16px;
-`;
+// const NewestProductsMainImgs = styled.Image`
+//   margin-left: 16px;
+//   width: 92px;
+//   height: 95px;
+// `;
 
 const NewestProductsTitle = styled.Text`
   font-family: Montserrat-Medium;

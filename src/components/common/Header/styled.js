@@ -8,7 +8,6 @@ const Container = styled.View`
   height: ${os === 'android' ? 50 : 60}px;
   align-items: center;
   justify-content: center;
-
   margin-bottom: ${props => props.marginBottom || 5}px;
 `;
 
@@ -50,6 +49,29 @@ const DownArrow = styled.Image`
   margin-top: 2px;
 `;
 
+const AppNameText = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* Black 100 */
+  color: #323234;
+`;
+const AppNameWrap = styled.View``;
+
+const HiUserName = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  /* Black 50 */
+
+  color: #7f7e83;
+
+  opacity: 0.9;
+`;
 export {
   DownArrow,
   LangText,
@@ -58,4 +80,7 @@ export {
   RightContainer,
   LeftContainer,
   Container,
+  AppNameWrap,
+  HiUserName,
+  AppNameText,
 };

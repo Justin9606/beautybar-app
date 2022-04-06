@@ -17,13 +17,12 @@ const BestMathProducts = () => {
     <ProductCardFlatList
       data={POPULAR_PRODUCT_DEMO_DATA}
       renderItem={({item, index}) => {
-        const SVG = item.icon;
         const HeartnotLikedSvg = item.heart_like;
         return (
           <_renderProductItem
             POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
             index={index}
-            icon={<SVG />}
+            icon={item.icon}
             title={item.name}
             descript={item.description}
             price={item.price}

@@ -4,7 +4,15 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 //styled components
-import {ButtonWrap, RightContainer, LeftContainer, Container} from './styled';
+import {
+  ButtonWrap,
+  RightContainer,
+  LeftContainer,
+  Container,
+  AppNameWrap,
+  HiUserName,
+  AppNameText,
+} from './styled';
 
 //Containers
 import Row from '../../../containers/Row';
@@ -29,6 +37,8 @@ const Header = ({
   wish_right,
   notif_right,
   marginBottom,
+  appName,
+  hiUserName,
 }) => {
   const navigation = useNavigation();
 
@@ -44,6 +54,12 @@ const Header = ({
           <ButtonWrap onPress={() => navigation.goBack()} activeOpacity={0.7}>
             <BackButtonWithTail />
           </ButtonWrap>
+        )}
+        {appName === 'appName' && (
+          <AppNameWrap>
+            <HiUserName>{hiUserName}</HiUserName>
+            <AppNameText>Discover your Beauty</AppNameText>
+          </AppNameWrap>
         )}
         {back_with_text === 'back_with_text' && (
           <ButtonWrap onPress={() => navigation.goBack()}>

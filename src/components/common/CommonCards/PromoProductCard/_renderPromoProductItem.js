@@ -4,6 +4,8 @@ import React from 'react';
 //styled components
 import styled from 'styled-components';
 
+//fast image
+import FastImage from 'react-native-fast-image';
 //containers
 import Spacer from '../../../../containers/Spacer';
 import Row from '../../../../containers/Row';
@@ -32,7 +34,20 @@ const _renderPromoProductItem = ({
       index={index}
       activeOpacity={0.7}
       onPress={() => alert('Product pressed')}>
-      <ProductImageWrap>{icon}</ProductImageWrap>
+      <FastImage
+        source={icon}
+        style={{
+          alignSelf: 'center',
+          justifyContent: 'center',
+          width: 117,
+          height: 120,
+          backgroundColor: 'transparent',
+          marginTop: 12,
+          priority: FastImage.priority.high,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
+      />
+      {/* <ProductImageWrap source={icon} resizeMode={'contain'} /> */}
 
       <SmallDiscountBanner>
         {small_discount_banner}
@@ -110,12 +125,14 @@ const DiscountPercentage = styled.Text`
   color: #323234;
 `;
 
-const ProductImageWrap = styled.View`
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  padding-top: 12px;
-`;
+// const ProductImageWrap = styled.Image`
+//   justify-content: center;
+//   align-self: center;
+//   width: 117px;
+//   height: 120px;
+//   background-color: transparent;
+//   padding-top: 12px;
+// `;
 
 const ProductTitle = styled.Text`
   margin-top: 15px;

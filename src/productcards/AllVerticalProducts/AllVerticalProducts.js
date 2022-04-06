@@ -19,14 +19,14 @@ const AllVerticalProducts = () => {
     <Wrapper>
       <AllVerticalProductCardFlatList
         data={POPULAR_PRODUCT_DEMO_DATA}
+        horizontal={false}
         renderItem={({item, index}) => {
-          const SVG = item.icon;
           const SmallDiscountBanner = item.small_discount_banner;
           const HeartnotLikedSvg = item.heart_like;
           return (
             <_renderAllVerticalItem
               index={index}
-              icon={<SVG width={117} height={120} />}
+              icon={item.icon}
               small_discount_banner={<SmallDiscountBanner />}
               discount_amount_percentage={item.discount_amount_percentage}
               title={item.name}

@@ -23,12 +23,21 @@ import Skin from '../../assets/svg/categories/skin.svg';
 import Face from '../../assets/svg/categories/face.svg';
 
 //POPULARPORUCT
-import Product1 from '../../assets/svg/products/product_1.svg';
-import Product2 from '../../assets/svg/products/product_2.svg';
-import Product3 from '../../assets/svg/products/product_3.svg';
-import Product4 from '../../assets/svg/products/product_4.svg';
-import Product5 from '../../assets/svg/products/product_5.svg';
+// import Product1 from '../../assets/svg/products/product_1.svg';
+// import Product2 from '../../assets/svg/products/product_2.svg';
+// import Product3 from '../../assets/svg/products/product_3.svg';
+// import Product4 from '../../assets/svg/products/product_4.svg';
+// import Product5 from '../../assets/svg/products/product_5.svg';
 import HeartnotLiked from '../../assets/svg/products/heart_notlike.svg';
+
+//POPULAR PRODUCTS in png
+import Product1 from '../../assets/temp/product_1.png';
+import Product2 from '../../assets/temp/product_2.png';
+import Product3 from '../../assets/temp/product_3.png';
+import Product4 from '../../assets/temp/product_4.png';
+import Product5 from '../../assets/temp/product_5.png';
+import Product6 from '../../assets/temp/product_6.png';
+import Product7 from '../../assets/temp/product_7.png';
 
 //top10product
 import Top1 from '../../assets/svg/products/top10products/top_1.svg';
