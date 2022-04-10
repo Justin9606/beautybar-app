@@ -19,9 +19,11 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 
 //Screens
 import HomeScreen from '../screens/home/Home';
-import Feedmainpage from '../screens/community/FeedMainScreen';
+
 import Productmainpage from '../screens/product/ProductMainSceen';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
+
+import CommunityMain from '../screens/community/CommunityMainScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -69,8 +71,8 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name={'Feedmainpage'}
-        component={Feedmainpage}
+        name={'CommunityMain'}
+        component={CommunityMain}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => {

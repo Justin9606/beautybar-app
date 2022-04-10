@@ -72,6 +72,19 @@ const HiUserName = styled.Text`
 
   opacity: 0.9;
 `;
+
+const CenterText = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #323234;
+`;
+
 export {
   DownArrow,
   LangText,
@@ -83,4 +96,5 @@ export {
   AppNameWrap,
   HiUserName,
   AppNameText,
+  CenterText,
 };

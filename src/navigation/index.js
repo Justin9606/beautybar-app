@@ -21,15 +21,15 @@ export default function MainRoutes() {
   return (
     <Stack.Navigator
       screenOptions={{header: () => null}}
-      initialRouteName="Onboarding">
-      <Stack.Screen name="Onboarding" component={Onboarding} />
+      initialRouteName="BottomTabs">
+      {/* <Stack.Screen name="BottomTabs" component={Onboarding} />
       <Stack.Screen name="WelComeScreen" component={WelComeScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Verification" component={Verification} />
       <Stack.Screen name="SkinProfile_1" component={SkinProfile_1} />
       <Stack.Screen name="SkinProfile_2" component={SkinProfile_2} />
       <Stack.Screen name="SkinProfile_3" component={SkinProfile_3} />
-      <Stack.Screen name="SkinProfile_4" component={SkinProfile_4} />
+      <Stack.Screen name="SkinProfile_4" component={SkinProfile_4} /> */}
       <Stack.Screen name="Home" component={BottomTabs} />
     </Stack.Navigator>
   );

@@ -12,6 +12,7 @@ import {
   AppNameWrap,
   HiUserName,
   AppNameText,
+  CenterText,
 } from './styled';
 
 //Containers
@@ -32,6 +33,7 @@ const Header = ({
   back_with_text,
   skip_right,
   center_title,
+  screen_title,
   search_right,
   search_left,
   wish_right,
@@ -82,6 +84,9 @@ const Header = ({
           </ButtonWrap>
         )}
       </LeftContainer>
+      {center_title === 'has_screen_title' && (
+        <CenterText>{screen_title}</CenterText>
+      )}
 
       <RightContainer>
         {skip_right === 'skip' && (
