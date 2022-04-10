@@ -1,5 +1,6 @@
 //react
 import React from 'react';
+import {Dimensions} from 'react-native';
 
 //styled components
 import styled from 'styled-components';
@@ -26,11 +27,8 @@ export default CreateDiscussionInput;
 
 const TextInputWrapper = styled.View`
   background-color: #f3f8fb;
-  padding-horizontal: 19.08px;
-  margin-left: 15.76px;
-  padding-vertical: 16.86px;
+
   justify-content: center;
-  width: 271.24px;
   border-radius: 12px;
 `;
 
@@ -41,4 +39,8 @@ const Input = styled.TextInput`
   font-size: 14px;
   line-height: 17px;
   color: black;
+  width: ${Dimensions.get('window').width / 1.4}px;
+  padding: 10px;
+
+  min-height: 110px;
 `;

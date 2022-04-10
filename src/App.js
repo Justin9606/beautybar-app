@@ -2,7 +2,7 @@ import React from 'react';
 import {StatusBar, Platform} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import KeyboardManager from 'react-native-keyboard-manager';
-import MainRoutes from './navigation';
+import MainRoutes from './navigation/routes';
 import './i18next/i18next';
 
 //react-i18next

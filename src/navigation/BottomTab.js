@@ -1,4 +1,5 @@
-import * as React from 'react';
+//react
+import React from 'react';
 //react native platform
 import {Platform} from 'react-native';
 
@@ -6,6 +7,9 @@ import {Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 //rect-native-device-info
 import Device from 'react-native-device-info';
+
+//func to hide tab bar
+import {getRouteName} from '../screens/community/CommunityStack';
 
 //Svg
 import HomeActive from '../assets/svg/tabBar/HomeActive.svg';
@@ -19,11 +23,9 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 
 //Screens
 import HomeScreen from '../screens/home/Home';
-
 import Productmainpage from '../screens/product/ProductMainSceen';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
-
-import CommunityMain from '../screens/community/CommunityMainScreen';
+import CommunityStack from '../screens/community/CommunityStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +55,6 @@ const BottomTabs = () => {
       },
       shadowOpacity: 0.06,
       shadowRadius: 19,
-
       elevation: 5,
     },
   };
@@ -71,14 +72,29 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name={'CommunityMain'}
-        component={CommunityMain}
-        options={{
+        name={'CommunityStack'}
+        component={CommunityStack}
+        options={route => ({
           headerShown: false,
           tabBarIcon: ({focused}) => {
             return <>{focused ? <FeedActive /> : <Feed />}</>;
           },
-        }}
+          tabBarStyle: {
+            display: getRouteName(route),
+            height: Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 85,
+            backgroundColor: '#fff',
+            position: 'absolute',
+            borderTopWidth: 0,
+            shadowColor: 'rgb(5, 7, 22)',
+            shadowOffset: {
+              width: 0,
+              height: -5,
+            },
+            shadowOpacity: 0.06,
+            shadowRadius: 19,
+            elevation: 5,
+          },
+        })}
       />
 
       <Tab.Screen

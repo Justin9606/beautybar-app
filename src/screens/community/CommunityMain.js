@@ -17,11 +17,6 @@ import Column from '../../containers/Column';
 //common components
 import Header from '../../components/common/Header/Header';
 
-//community components
-import CreateDiscussionInput from './components/CreateDiscussionInput';
-//divider
-import Divider from './components/Divider';
-
 //temp pic
 import UserProfilePic from '../../assets/icons/temp/user_profile_pic.png';
 
@@ -64,7 +59,7 @@ const postData = [
   },
 ];
 
-const CommunityMainScreen = ({}) => {
+const CommunityMain = ({}) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
 
@@ -93,6 +88,7 @@ const CommunityMainScreen = ({}) => {
         screen_title="Community"
         notif_right={'notification'}
         search_right={'search'}
+        create_post={'create_post'}
       />
       <TagsWrap>
         <FlatList
@@ -114,15 +110,6 @@ const CommunityMainScreen = ({}) => {
       <ScrollableView
         paddingHorizontal={24}
         showsVerticalScrollIndicator={false}>
-        <CreatePostWrap>
-          <UserProfile source={UserProfilePic} />
-          <CreateDiscussionInput
-            placeholder={"What's in your mind?"}
-            multiline={true}
-          />
-        </CreatePostWrap>
-        <Spacer height={24} />
-        <Divider marginLeft={-24} />
         <Spacer height={32} />
         <FlatList
           scrollEnabled={false}
@@ -155,7 +142,7 @@ const CommunityMainScreen = ({}) => {
   );
 };
 
-export default CommunityMainScreen;
+export default CommunityMain;
 
 const TagsWrap = styled.View`
   justify-content: center;

@@ -3,6 +3,9 @@ import React from 'react';
 //react-navigation-native
 import {useNavigation} from '@react-navigation/native';
 
+//styled
+import styled from 'styled-components';
+
 //styled components
 import {
   ButtonWrap,
@@ -41,6 +44,7 @@ const Header = ({
   marginBottom,
   appName,
   hiUserName,
+  create_post,
 }) => {
   const navigation = useNavigation();
 
@@ -102,6 +106,18 @@ const Header = ({
           </ButtonWrap>
         )}
         <Row>
+          {create_post === 'create_post' && (
+            <>
+              <Spacer width={16.98} />
+              <ButtonWrap
+                onPress={() => navigation.navigate('Creatediscussion')}
+                activeOpacity={0.7}>
+                <CreatePostImg
+                  source={require('../../../assets/icons/community/create_post.png')}
+                />
+              </ButtonWrap>
+            </>
+          )}
           {search_left === 'search_left' && (
             <>
               <Spacer width={16.98} />
@@ -140,3 +156,8 @@ const Header = ({
 };
 
 export default Header;
+
+const CreatePostImg = styled.Image`
+  width: 30px;
+  height: 30px;
+`;
