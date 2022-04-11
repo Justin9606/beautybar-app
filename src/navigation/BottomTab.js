@@ -23,7 +23,7 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 
 //Screens
 import HomeScreen from '../screens/home/Home';
-import Productmainpage from '../screens/product/ProductMainSceen';
+import ProductStack from '../screens/product/ProductStack';
 import Profilemainpage from '../screens/profile/ProfileMainPage';
 import CommunityStack from '../screens/community/CommunityStack';
 
@@ -72,7 +72,7 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name={'CommunityStack'}
+        name={'Community'}
         component={CommunityStack}
         options={route => ({
           headerShown: false,
@@ -98,8 +98,8 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name={'Productmainpage'}
-        component={Productmainpage}
+        name={'Product'}
+        component={ProductStack}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => {

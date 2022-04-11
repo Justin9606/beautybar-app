@@ -67,7 +67,7 @@ const brandsData = [
   },
 ];
 
-const Productmainpage = () => {
+const ProductMainScreen = () => {
   return (
     <SafeAreaContainer>
       <Header
@@ -139,7 +139,7 @@ const Productmainpage = () => {
   );
 };
 
-export default Productmainpage;
+export default ProductMainScreen;
 
 const PopularBrandsWrap = styled.View`
   flex-direction: row;
