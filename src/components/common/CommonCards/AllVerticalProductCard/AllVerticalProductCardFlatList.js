@@ -30,7 +30,7 @@ const AllVerticalProductCardFlatList = ({data, renderItem, horizontal}) => {
 export default AllVerticalProductCardFlatList;
 
 const Container = styled.View`
-  /* padding-horizontal: 23px; */
+  padding-horizontal: 23px;
 
-  padding-horizontal: ${moderateScale(23)}px;
+  /* padding-horizontal: ${moderateScale(23)}px; */
 `;

@@ -9,7 +9,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Device from 'react-native-device-info';
 
 //func to hide tab bar
-import {getRouteName} from '../screens/community/CommunityStack';
+import {getRouteName} from '../screens/logic/hidebottomtab';
 
 //Svg
 import HomeActive from '../assets/svg/tabBar/HomeActive.svg';

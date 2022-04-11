@@ -9,7 +9,6 @@ import Creatediscussion from './creatediscussion/CreateDiscussion';
 
 export const getRouteName = ({route}) => {
   const routeName = getFocusedRouteNameFromRoute(route);
-  console.log(routeName);
 
   const tabVisibleFalseArr = ['Creatediscussion'];
 

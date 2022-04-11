@@ -120,6 +120,7 @@ export const CATEGORY_ROUND_DATA = [
 export const POPULAR_PRODUCT_DEMO_DATA = [
   {
     icon: Product5,
+
     top_product_icon: Top1,
     name: 'NIVEA',
     description: 'Shooting Cleansing Oil',

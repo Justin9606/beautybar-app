@@ -1,6 +1,6 @@
 //react
 import React from 'react';
-
+import {Dimensions} from 'react-native';
 //styled components
 import styled from 'styled-components';
 //fast Image
@@ -86,7 +86,8 @@ export default _renderAllVerticalItem;
 const Wrapper = styled.TouchableOpacity`
   justify-content: center;
   background-color: white;
-  width: ${props => props.cardWidth || 160}px;
+  width: ${Dimensions.get('window').width / 2.4}px;
+  /* width: ${props => props.cardWidth || 160}px; */
   /* height: 235px; */
   border-radius: 12px;
   elevation: 5;

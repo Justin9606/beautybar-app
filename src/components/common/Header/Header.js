@@ -25,11 +25,15 @@ import Spacer from '../../../containers/Spacer';
 //Small text
 import Smalltext from '../Text/SmallText';
 
+//svg
 import BackButton from '../../../assets/svg/header/back_btn.svg';
 import BackButtonWithTail from '../../../assets/svg/header/back_btn_has_tail.svg';
 import Search from '../../../assets/svg/header/search_right.svg';
 import WishList from '../../../assets/svg/header/wishlist.svg';
 import Notification from '../../../assets/svg/header/notification_bell.svg';
+import Home from '../../../assets/svg/header/home.svg';
+import Cart from '../../../assets/svg/header/cart.svg';
+import SmallSearch from '../../../assets/svg/header/small_search.svg';
 
 const Header = ({
   back_with_rec_icon,
@@ -45,6 +49,9 @@ const Header = ({
   appName,
   hiUserName,
   create_post,
+  right_home,
+  right_cart,
+  small_right_search,
 }) => {
   const navigation = useNavigation();
 
@@ -80,7 +87,7 @@ const Header = ({
           </ButtonWrap>
         )}
 
-        {search_right === 'search' && (
+        {search_left === 'search_left' && (
           <ButtonWrap
             onPress={() => alert('Search Icon Clicked')}
             activeOpacity={0.7}>
@@ -118,7 +125,7 @@ const Header = ({
               </ButtonWrap>
             </>
           )}
-          {search_left === 'search_left' && (
+          {search_right === 'search_right' && (
             <>
               <Spacer width={16.98} />
               <ButtonWrap
@@ -128,6 +135,37 @@ const Header = ({
               </ButtonWrap>
             </>
           )}
+          {small_right_search === 'small_right_search' && (
+            <>
+              <Spacer width={16.98} />
+              <ButtonWrap
+                onPress={() => alert('Heart Icon Clicked')}
+                activeOpacity={0.7}>
+                <SmallSearch />
+              </ButtonWrap>
+            </>
+          )}
+          {right_home === 'right_home' && (
+            <>
+              <Spacer width={16.98} />
+              <ButtonWrap
+                onPress={() => alert('Heart Icon Clicked')}
+                activeOpacity={0.7}>
+                <Home />
+              </ButtonWrap>
+            </>
+          )}
+          {right_cart === 'right_cart' && (
+            <>
+              <Spacer width={16.98} />
+              <ButtonWrap
+                onPress={() => alert('Heart Icon Clicked')}
+                activeOpacity={0.7}>
+                <Cart />
+              </ButtonWrap>
+            </>
+          )}
+
           {wish_right === 'wishlist' && (
             <>
               <Spacer width={16.98} />

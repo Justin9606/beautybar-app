@@ -39,7 +39,7 @@ const Home = () => {
       <Header
         notif_right={'notification'}
         wish_right={'wishlist'}
-        search_right={'search'}
+        search_left={'search_left'}
         center_title={'hasCenterTitle'}
       />
       <ScrollableView>

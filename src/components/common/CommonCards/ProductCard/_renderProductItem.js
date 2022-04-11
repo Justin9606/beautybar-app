@@ -24,6 +24,7 @@ const _renderProductItem = ({
   index,
   top_product_icon,
   POPULAR_PRODUCT_DEMO_DATA,
+  onPress,
 }) => {
   return (
     <Wrapper
@@ -32,7 +33,7 @@ const _renderProductItem = ({
       POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
       index={index}
       activeOpacity={0.7}
-      onPress={() => alert('Product pressed')}>
+      onPress={onPress}>
       <TopProductIcom>{top_product_icon}</TopProductIcom>
 
       <FastImage

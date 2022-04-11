@@ -1,5 +1,8 @@
 import React from 'react';
 
+//
+import {Dimensions} from 'react-native';
+
 //styled components
 import styled from 'styled-components';
 
@@ -61,7 +64,7 @@ const TopReviewProductsWrap = styled.View`
   height: 385px;
 `;
 const TopReviewProductBcgBannerWrap = styled.Image`
-  width: 342px;
+  width: ${Dimensions.get('window').width / 1.1}px;
   height: 387px;
   position: absolute;
   align-self: center;

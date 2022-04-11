@@ -9,11 +9,11 @@ const ProductStacks = () => {
   const ProductStack = createNativeStackNavigator();
 
   return (
-    <ProductStack.Navigator>
-      <ProductStack.Screen name="ProductMain" component={ProductMainScreen} />
+    <ProductStack.Navigator screenOptions={{header: () => null}}>
+      <ProductStack.Screen component={ProductMainScreen} name="ProductMain" />
       <ProductStack.Screen
-        name="ProductDetail"
         component={ProductDetailscreen}
+        name="ProductDetail"
       />
     </ProductStack.Navigator>
   );

@@ -71,7 +71,7 @@ const ProductMainScreen = () => {
   return (
     <SafeAreaContainer>
       <Header
-        search_left={'search_left'}
+        search_right={'search_right'}
         wish_right={'wishlist'}
         appName={'appName'}
         hiUserName={'Hi, Justin'}

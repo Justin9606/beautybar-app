@@ -1,5 +1,8 @@
 import React from 'react';
 
+//react navigation native
+import {useNavigation} from '@react-navigation/native';
+
 //ProductCardFlatList
 import ProductCardFlatList from '../../components/common/CommonCards/ProductCard/ProductCardFlatList';
 
@@ -12,7 +15,8 @@ import {POPULAR_PRODUCT_DEMO_DATA} from '../../components/svg_data/skin_data';
 //_renderProductItem
 import _renderProductItem from '../../components/common/CommonCards/ProductCard/_renderProductItem';
 
-const Top10Products = () => {
+const Top10Products = ({}) => {
+  const navigation = useNavigation();
   return (
     <ProductCardFlatList
       data={POPULAR_PRODUCT_DEMO_DATA}
@@ -21,6 +25,9 @@ const Top10Products = () => {
         const HeartnotLikedSvg = item.heart_like;
         return (
           <_renderProductItem
+            onPress={() => {
+              navigation.navigate('ProductDetail', {data: item});
+            }}
             POPULAR_PRODUCT_DEMO_DATA={POPULAR_PRODUCT_DEMO_DATA}
             index={index}
             icon={item.icon}
