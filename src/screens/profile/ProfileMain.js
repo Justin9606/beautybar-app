@@ -1,9 +1,19 @@
 import React from 'react';
-import {View, StyleSheet, Text, StatusBar} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  StatusBar,
+  TouchableOpacity,
+} from 'react-native';
 import Header from '../../components/common/Header/Header';
+
+import {useDispatch} from 'react-redux';
+import {LogOutUser} from '../../store/reducer/reducer';
 
 const Profilemainpage = () => {
   console.log('HEIGHT ', StatusBar.currentHeight);
+  const dispatch = useDispatch();
   return (
     <View>
       <StatusBar />
@@ -13,6 +23,10 @@ const Profilemainpage = () => {
         search_right={'search'}
       />
       <Text>Profile main page</Text>
+
+      <TouchableOpacity onPress={() => dispatch(LogOutUser())}>
+        <Text>LOGOUT ME</Text>
+      </TouchableOpacity>
     </View>
   );
 };
