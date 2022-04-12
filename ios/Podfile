@@ -20,6 +20,8 @@ target 'beautyproducts' do
 
   pod 'ReactNativeLocalization', :path => '../node_modules/react-native-localization'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
   target 'beautyproductsTests' do
     inherit! :complete
     # Pods for testing
