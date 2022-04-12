@@ -24,8 +24,8 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 //Screens
 import HomeScreen from '../screens/home/Home';
 import Feedmainpage from '../screens/community/FeedMainScreen';
-import Productmainpage from '../screens/product/ProductMainSceen';
-import Profilemainpage from '../screens/profile/ProfileMainPage';
+import ProductMain from '../screens/product/ProductMain';
+import Profilemainpage from '../screens/profile/ProfileMain';
 
 const TabBar = () => {
   const _renderIcon = (routeName, selectedTab) => {
@@ -117,7 +117,7 @@ const TabBar = () => {
           />
           <CurvedBottomBar.Screen
             name="Product"
-            component={({navigate}) => <Productmainpage />}
+            component={({navigate}) => <ProductMain />}
             position="right"
           />
           <CurvedBottomBar.Screen

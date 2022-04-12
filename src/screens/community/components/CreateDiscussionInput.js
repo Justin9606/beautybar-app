@@ -10,10 +10,14 @@ const CreateDiscussionInput = ({
   onChangeText,
   backgroundColor,
   multiline,
+  width,
+  height,
 }) => {
   return (
     <TextInputWrapper>
       <Input
+        width={width}
+        height={height}
         placeholder={placeholder}
         onChangeText={onChangeText}
         backgroundColor={backgroundColor}
@@ -27,8 +31,9 @@ export default CreateDiscussionInput;
 
 const TextInputWrapper = styled.View`
   background-color: #f3f8fb;
-
   justify-content: center;
+  justify-self: center;
+  align-self: center;
   border-radius: 12px;
 `;
 
@@ -39,8 +44,7 @@ const Input = styled.TextInput`
   font-size: 14px;
   line-height: 17px;
   color: black;
-  width: ${Dimensions.get('window').width / 1.4}px;
+  width: ${props => props.width || Dimensions.get('window').width / 1.39}px;
   padding: 10px;
-
-  min-height: 110px;
+  min-height: ${props => props.width || Dimensions.get('window').width / 3}px;
 `;

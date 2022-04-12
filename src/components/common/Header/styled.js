@@ -1,24 +1,34 @@
 import styled from 'styled-components';
 //Platform check
 import {Platform} from 'react-native';
+import Device from 'react-native-device-info';
+
+const model = Device.getModel();
 
 const os = Platform.OS;
+
 const Container = styled.View`
   background-color: #fff;
-  height: ${os === 'android' ? 50 : 60}px;
+  height: ${os === 'android' ||
+  model === 'iPhone 8' ||
+  model === 'iPhone 8 Plus'
+    ? 82
+    : 100}px;
+  /* height: ${os === 'android' ? 50 : 60}px; */
   align-items: center;
   justify-content: center;
-  margin-bottom: ${props => props.marginBottom || 5}px;
 `;
 
 const LeftContainer = styled.View`
   position: absolute;
   left: 24px;
+  bottom: 15px;
 `;
 
 const RightContainer = styled.View`
   position: absolute;
   right: 24px;
+  bottom: 15px;
 `;
 
 const ButtonWrap = styled.TouchableOpacity`
@@ -74,14 +84,15 @@ const HiUserName = styled.Text`
 `;
 
 const CenterText = styled.Text`
+  position: absolute;
   font-family: Montserrat-Medium;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  display: flex;
-  align-items: center;
   text-align: center;
+  align-self: center;
+  bottom: 20px;
   color: #323234;
 `;
 

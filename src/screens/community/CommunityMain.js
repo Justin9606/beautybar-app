@@ -82,7 +82,7 @@ const CommunityMain = ({}) => {
     },
   ];
   return (
-    <SafeAreaContainer>
+    <>
       <Header
         center_title={'has_screen_title'}
         screen_title="Community"
@@ -138,7 +138,7 @@ const CommunityMain = ({}) => {
           }}
         />
       </ScrollableView>
-    </SafeAreaContainer>
+    </>
   );
 };
 
@@ -147,6 +147,7 @@ export default CommunityMain;
 const TagsWrap = styled.View`
   justify-content: center;
   padding: 5px 0px 10px 0px;
+  background-color: white;
 `;
 
 const TagsBtn = styled.TouchableOpacity`
@@ -155,6 +156,8 @@ const TagsBtn = styled.TouchableOpacity`
   margin-right: 10px;
   padding: 8px 14px;
   border-radius: 32px;
+  border-width: 1px;
+  border-color: #faebf1;
   justify-content: center;
   align-items: center;
 `;
@@ -166,11 +169,6 @@ const TagsText = styled.Text`
   font-size: 14px;
   line-height: 17px;
   color: ${props => (props.index === 0 ? '#fff' : '#323234')};
-`;
-
-const CreatePostWrap = styled.View`
-  padding-top: 24px;
-  flex-direction: row;
 `;
 
 const UserProfile = styled.Image`

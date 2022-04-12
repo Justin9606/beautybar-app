@@ -35,7 +35,7 @@ import AnalysisResultSVG from '../../assets/svg/etc/analysis_result.svg';
 
 const Home = () => {
   return (
-    <SafeAreaContainer>
+    <>
       <Header
         notif_right={'notification'}
         wish_right={'wishlist'}
@@ -95,7 +95,7 @@ const Home = () => {
         <Spacer height={50} />
         {/* WILL BE REMOVED HEIGHT */}
       </ScrollableView>
-    </SafeAreaContainer>
+    </>
   );
 };
 

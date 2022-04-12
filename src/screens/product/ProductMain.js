@@ -69,7 +69,7 @@ const brandsData = [
 
 const ProductMainScreen = () => {
   return (
-    <SafeAreaContainer>
+    <>
       <Header
         search_right={'search_right'}
         wish_right={'wishlist'}
@@ -135,7 +135,7 @@ const ProductMainScreen = () => {
         <AllVerticalProducts />
         <Spacer height={130} />
       </ScrollableView>
-    </SafeAreaContainer>
+    </>
   );
 };
 

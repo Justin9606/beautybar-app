@@ -24,7 +24,7 @@ import Profile from '../assets/svg/tabBar/Profile.svg';
 //Screens
 import HomeScreen from '../screens/home/Home';
 import ProductStack from '../screens/product/ProductStack';
-import Profilemainpage from '../screens/profile/ProfileMainPage';
+import ProfileMain from '../screens/profile/ProfileMain';
 import CommunityStack from '../screens/community/CommunityStack';
 
 const Tab = createBottomTabNavigator();
@@ -109,8 +109,8 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name={'Profilemainpage'}
-        component={Profilemainpage}
+        name={'ProfileMain'}
+        component={ProfileMain}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => {

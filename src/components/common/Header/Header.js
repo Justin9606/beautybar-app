@@ -64,7 +64,10 @@ const Header = ({
           </ButtonWrap>
         )}
         {back_with_rec_icon === 'back_with_tail_icon' && (
-          <ButtonWrap onPress={() => navigation.goBack()} activeOpacity={0.7}>
+          <ButtonWrap
+            onPress={() => navigation.goBack()}
+            activeOpacity={0.7}
+            style={{padding: 5}}>
             <BackButtonWithTail />
           </ButtonWrap>
         )}

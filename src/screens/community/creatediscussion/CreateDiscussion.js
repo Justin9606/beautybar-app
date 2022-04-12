@@ -1,6 +1,9 @@
 //react
 import React from 'react';
 
+//react native
+import {Dimensions} from 'react-native';
+
 //styled components
 import styled from 'styled-components';
 
@@ -23,11 +26,12 @@ import Button from '../../../components/common/Buttons/Button';
 
 //components
 import CreateDiscussionInput from '../components/CreateDiscussionInput';
+import Label from '../components/Label';
 
 const Creatediscussion = () => {
   return (
     <>
-      <SafeAreaContainer>
+      <>
         <Header
           center_title={'has_screen_title'}
           screen_title={'Discussion'}
@@ -53,8 +57,12 @@ const Creatediscussion = () => {
               <RightArrowSvg style={{position: 'absolute', right: 10}} />
             </Row>
           </TagProductWrap>
+
+          <Label label={'Insert Image'} />
+
+          <UploadImgBigWrap activeOpacity={0.7}></UploadImgBigWrap>
         </ScrollableView>
-      </SafeAreaContainer>
+      </>
       <BtnWrap>
         <Button title={'Create Discussion'} />
       </BtnWrap>
@@ -107,4 +115,15 @@ const CountTaggedProduct = styled.Text`
   align-items: center;
   text-align: center;
   color: #323234;
+`;
+
+const UploadImgBigWrap = styled.TouchableOpacity`
+  width: ${Dimensions.get('window').width / 1.14}px;
+  height: 232.86px;
+  background: rgba(231, 71, 121, 0.04);
+  border: 1px dashed #e74779;
+  box-sizing: border-box;
+  border-radius: 4px;
+  justify-self: center;
+  align-self: center;
 `;

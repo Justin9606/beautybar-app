@@ -1,13 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import {LoginUser} from '../../store/reducer/reducer'
-
+import {useDispatch} from 'react-redux';
+import {LoginUser} from '../../store/reducer/reducer';
 
 //react-navigation-native
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //react-i18next
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 //styled components
 import styled from 'styled-components';
@@ -32,19 +31,18 @@ import TextInput from '../../components/common/TextInputs/TextInput';
 //Login Components starts
 const Login = () => {
   const navigation = useNavigation();
-  const { t } = useTranslation();
-  const dispatch = useDispatch()
+  const {t} = useTranslation();
+  const dispatch = useDispatch();
 
   const Login = () => {
-    
-    dispatch(LoginUser(true))
-  }
+    dispatch(LoginUser(true));
+  };
   return (
     <>
       {/* <Header /> */}
 
       <ScrollableView
-        contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+        contentContainerStyle={{justifyContent: 'center', flex: 1}}>
         <Spacer height={26} />
         <Largetext title={t('welcomeback')} textAlign="center" />
         <ControlAlignCenter>
@@ -67,7 +65,7 @@ const Login = () => {
         <Button
           title={t('signIn')}
           // onPress={() => navigation.navigate('Verification')}
-          onPress={()=>Login()}
+          onPress={() => Login()}
         />
       </ScrollableView>
       <HavingTroubleWrap onPress={() => alert('Having trouble?')}>
