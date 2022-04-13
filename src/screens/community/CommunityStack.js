@@ -1,23 +1,12 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
-
 //screens
 import CommunityMain from './CommunityMain';
 import Creatediscussion from './creatediscussion/CreateDiscussion';
+import TagProducts from './tagproducts/TagProducts';
+import CreateProductLink from './createproductlink/CreateProductLink';
 
-export const getRouteName = ({route}) => {
-  const routeName = getFocusedRouteNameFromRoute(route);
-
-  const tabVisibleFalseArr = ['Creatediscussion'];
-
-  if (tabVisibleFalseArr?.includes(routeName)) {
-    return 'none';
-  } else {
-    return 'flex';
-  }
-};
 const CommunityScreens = ({}) => {
   const CommunityStack = createNativeStackNavigator();
 
@@ -29,6 +18,11 @@ const CommunityScreens = ({}) => {
       <CommunityStack.Screen
         component={Creatediscussion}
         name={'Creatediscussion'}
+      />
+      <CommunityStack.Screen component={TagProducts} name={'TagProducts'} />
+      <CommunityStack.Screen
+        component={CreateProductLink}
+        name={'ProductLink'}
       />
     </CommunityStack.Navigator>
   );

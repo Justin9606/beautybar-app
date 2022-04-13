@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 //normalizer
 import {normalize} from '../../constants/responsive';
 
-//
+//react-native-bouncy-checkbox
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 //

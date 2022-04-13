@@ -1,8 +1,9 @@
 //react
 import React from 'react';
-
 //react native
 import {Dimensions} from 'react-native';
+//useNavigation
+import {useNavigation} from '@react-navigation/native';
 
 //styled components
 import styled from 'styled-components';
@@ -13,9 +14,9 @@ import RightArrowSvg from '../../../assets/svg/community/right_arrow.svg';
 
 //temp png
 import UserProfilePic from '../../../assets/icons/temp/user_profile_pic.png';
+import UploadImg from '../../../assets/svg/community/upload_img.svg';
 
 //containers
-import SafeAreaContainer from '../../../containers/SafeAreaContainer';
 import ScrollableView from '../../../containers/ScrollableView';
 import Spacer from '../../../containers/Spacer';
 import Row from '../../../containers/Row';
@@ -23,12 +24,15 @@ import Row from '../../../containers/Row';
 //common components
 import Header from '../../../components/common/Header/Header';
 import Button from '../../../components/common/Buttons/Button';
+//common text components
+import Smalltext from '../../../components/common/Text/SmallText';
 
 //components
 import CreateDiscussionInput from '../components/CreateDiscussionInput';
 import Label from '../components/Label';
 
 const Creatediscussion = () => {
+  const navigation = useNavigation();
   return (
     <>
       <>
@@ -49,7 +53,9 @@ const Creatediscussion = () => {
             />
           </Row>
           <Spacer height={24} />
-          <TagProductWrap activeOpacity={0.7}>
+          <TagProductWrap
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('TagProducts')}>
             <Row justifyContent={'flex-start'}>
               <TagProductSvg />
               <TagProductText>Tag Product</TagProductText>
@@ -57,10 +63,16 @@ const Creatediscussion = () => {
               <RightArrowSvg style={{position: 'absolute', right: 10}} />
             </Row>
           </TagProductWrap>
-
           <Label label={'Insert Image'} />
-
-          <UploadImgBigWrap activeOpacity={0.7}></UploadImgBigWrap>
+          <UploadImgBigWrap activeOpacity={0.7}>
+            <UploadImg />
+            <Spacer height={9.18} />
+            <Smalltext
+              title={'Insert Image max 2mb'}
+              textAlign={'center'}
+              fontSize={12}
+            />
+          </UploadImgBigWrap>
         </ScrollableView>
       </>
       <BtnWrap>
@@ -126,4 +138,6 @@ const UploadImgBigWrap = styled.TouchableOpacity`
   border-radius: 4px;
   justify-self: center;
   align-self: center;
+  justify-content: center;
+  align-items: center;
 `;

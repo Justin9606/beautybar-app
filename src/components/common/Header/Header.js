@@ -67,7 +67,7 @@ const Header = ({
           <ButtonWrap
             onPress={() => navigation.goBack()}
             activeOpacity={0.7}
-            style={{padding: 5}}>
+            style={{paddingBottom: 7}}>
             <BackButtonWithTail />
           </ButtonWrap>
         )}

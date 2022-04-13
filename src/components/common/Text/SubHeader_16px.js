@@ -2,8 +2,6 @@ import React from 'react';
 
 //styled components
 import styled from 'styled-components';
-//react-native-size-matters
-import {moderateScale} from 'react-native-size-matters';
 
 const SubHeader_16px = ({
   label,
@@ -51,7 +49,7 @@ const Label = styled.Text`
 
 const SeeAllButtonWrap = styled.TouchableOpacity`
   position: absolute;
-  right: ${moderateScale(28)}px;
+  right: 28px;
   top: 2px;
 `;
 const SeeAllText = styled.Text`
