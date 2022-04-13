@@ -134,7 +134,7 @@ const TagProducts = () => {
             />
 
             <QuesionMarkWrap>
-              <QuesionMark />
+              <QuesionMark width={20} height={20} top={2} />
             </QuesionMarkWrap>
             <PlusWrap>
               <Plus />
@@ -220,7 +220,7 @@ const SearchWrap = styled.View`
   background: #fff;
 `;
 
-const SearchSvgWrap = styled.TouchableOpacity`
+const SearchSvgWrap = styled.View`
   position: absolute;
   left: 16px;
 `;
