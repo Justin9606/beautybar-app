@@ -196,11 +196,11 @@ const TagProducts = () => {
             })}
           </>
         ) : null}
+        {/* WILL BE REMOVED */}
+        <Spacer height={32} />
+        {/* WILL BE REMOVED */}
       </ScrollableView>
 
-      {/* WILL BE REMOVED */}
-      <Spacer height={32} />
-      {/* WILL BE REMOVED */}
       <BtnWrap>
         <Button title={'Ok'} />
       </BtnWrap>

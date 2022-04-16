@@ -1,13 +1,14 @@
 //react
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 //flatlist
-import {Dimensions} from 'react-native';
+import {Dimensions, Text, Image} from 'react-native';
 //@flyerhq/react-native-link-preview
 import {LinkPreview} from '@flyerhq/react-native-link-preview';
 //styled
 import styled from 'styled-components';
 
-// import {getLinkPreview, getPreviewFromContent} from 'link-preview-js';
+import axios from 'axios';
+import {getLinkPreview} from 'link-preview-js';
 
 //community components
 import Label from '../components/Label';
@@ -24,11 +25,25 @@ import Row from '../../../containers/Row';
 
 const CreateProductLink = () => {
   const [addingLink, setAddingLink] = useState('');
-  // // https://www.instagram.com/reel/CcKjhyTj0mq/?igshid=NDA1YzNhOGU=
+  const [data, setData] = useState({
+    title: addingLink.title,
+    description: addingLink.description,
+    image: addingLink.images,
+  });
+  // https://www.instagram.com/reel/CcKjhyTj0mq/?igshid=NDA1YzNhOGU=
 
-  // getLinkPreview(`${addingLink}`).then(data => {
-  //   console.log(data);
-  // });
+  const linkFetch = async () => {
+    try {
+      const response = await getLinkPreview(`${addingLink}`);
+      console.log(response);
+      setAddingLink(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    linkFetch();
+  }, [addingLink]);
 
   return (
     <Viewcontainer>
@@ -54,6 +69,7 @@ const CreateProductLink = () => {
           placeholder={'Input product title here'}
           numberOfLines={1}
           multiline={false}
+          defaultValue={addingLink.title}
         />
         <Label label={'Description'} marginTop={31} />
         <Input
@@ -61,6 +77,9 @@ const CreateProductLink = () => {
           paddingTop={22}
           paddingBottom={22}
           placeholder={'Input product desctiption'}
+          defaultValue={
+            addingLink.description !== '' ? addingLink.description : ''
+          }
           multiline={true}
         />
         <Label label={'Preview'} marginTop={32} />
@@ -72,7 +91,10 @@ const CreateProductLink = () => {
             flexDirection: 'row',
           }}
         /> */}
-
+        <Image
+          source={{uri: `${addingLink.images}`}}
+          style={{width: 60, height: 60}}
+        />
         {/* WILL BE REMOVED */}
         <Spacer height={32} />
         {/* WILL BE REMOVED */}

@@ -9,7 +9,6 @@ import styled from 'styled-components';
 
 //containers
 import ScrollableView from '../../containers/ScrollableView';
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import Row from '../../containers/Row';
 import Column from '../../containers/Column';
@@ -17,22 +16,24 @@ import Column from '../../containers/Column';
 //common components
 import Header from '../../components/common/Header/Header';
 
-//temp pic
-import UserProfilePic from '../../assets/icons/temp/user_profile_pic.png';
+//community components
+import PostBottomBtns from './components/PostBottomBtns';
 
 const postData = [
   {
+    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
     name: 'Beauty Bar',
     time: '2 min ago',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
 
-    postImg: require('../../assets/icons/temp/postmainimg.png'),
+    postImg: '',
     like: 12,
     comment: 5,
   },
   {
-    name: 'Love Bar',
+    user_pic: '',
+    name: 'Justin',
     time: '2 min ago',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
@@ -41,6 +42,7 @@ const postData = [
     comment: 8,
   },
   {
+    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
     name: 'Soap Bar',
     time: '20 min ago',
     descr:
@@ -50,6 +52,7 @@ const postData = [
     comment: 89,
   },
   {
+    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
     name: 'Lux Bar',
     time: '2 min ago',
     descr: 'Amet minim mollit non deserunt',
@@ -118,7 +121,16 @@ const CommunityMain = ({}) => {
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
-                  <UserProfile source={UserProfilePic} />
+                  {item?.user_pic !== '' ? (
+                    <UserProfile source={item?.user_pic} />
+                  ) : (
+                    <DefaultUserPicWrap>
+                      <DefaultUserPicText>
+                        {item.name.charAt(0) +
+                          item.name.charAt(item.name.length - 1).toUpperCase()}
+                      </DefaultUserPicText>
+                    </DefaultUserPicWrap>
+                  )}
                   <Spacer width={16} />
                   <Column alignItems={'flex-start'}>
                     <PostUserName>{item.name}</PostUserName>
@@ -129,20 +141,50 @@ const CommunityMain = ({}) => {
                   </FollowBtnWrap>
                 </Row>
                 <PostDescript>{item.descr}</PostDescript>
-                <PostMainImg
-                  source={item.postImg}
-                  style={{height: height / 4.2}}
+                {item?.postImg !== '' ? (
+                  <PostMainImg
+                    source={item?.postImg}
+                    style={{height: height / 4.2}}
+                  />
+                ) : (
+                  <Spacer height={10.25} />
+                )}
+
+                <Wrapper>
+                  <PostBottomBtns
+                    itsLike={'itsLike'}
+                    count={item.like}
+                    onPress={() => alert('Like Pressed')}
+                  />
+                  <Spacer width={24.83} />
+                  <PostBottomBtns
+                    itsComment={'itsComment'}
+                    count={item.comment}
+                    onPress={() => alert('Comment Pressed')}
+                  />
+                </Wrapper>
+                <PostBottomBtns
+                  itsthreeDots={'itsthreeDots'}
+                  onPress={() => alert('3 DOTS Pressed')}
                 />
+                <Spacer height={25.5} />
               </>
             );
           }}
         />
+        {/* WILL BE REMOVED */}
+        <Spacer height={100} />
+        {/* WILL BE REMOVED */}
       </ScrollableView>
     </>
   );
 };
 
 export default CommunityMain;
+
+const Wrapper = styled.View`
+  flex-direction: row;
+`;
 
 const TagsWrap = styled.View`
   justify-content: center;
@@ -175,6 +217,27 @@ const UserProfile = styled.Image`
   width: 40px;
   height: 40px;
   border-radius: 20px;
+`;
+
+const DefaultUserPicWrap = styled.View`
+  background-color: #e74779;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+`;
+
+const DefaultUserPicText = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+
+  opacity: 0.9;
 `;
 
 const PostUserName = styled.Text`

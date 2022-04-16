@@ -91,9 +91,9 @@ const Home = () => {
           onPressSeeAllBtn={() => alert('Popular Product See all Pressed')}
         />
         <PopularProducts />
-        {/* WILL BE REMOVED HEIGHT */}
-        <Spacer height={50} />
-        {/* WILL BE REMOVED HEIGHT */}
+        {/* WILL BE REMOVED */}
+        <Spacer height={100} />
+        {/* WILL BE REMOVED */}
       </ScrollableView>
     </>
   );
