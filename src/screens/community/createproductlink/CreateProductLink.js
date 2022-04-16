@@ -1,13 +1,11 @@
 //react
 import React, {useState, useEffect} from 'react';
 //flatlist
-import {Dimensions, Text, Image} from 'react-native';
-//@flyerhq/react-native-link-preview
-import {LinkPreview} from '@flyerhq/react-native-link-preview';
+import {Dimensions} from 'react-native';
+
 //styled
 import styled from 'styled-components';
 
-import axios from 'axios';
 import {getLinkPreview} from 'link-preview-js';
 
 //community components
@@ -16,12 +14,15 @@ import Input from '../components/ProductLinkInputs';
 //common components
 import Header from '../../../components/common/Header/Header';
 import Button from '../../../components/common/Buttons/Button';
+import Smalltext from '../../../components/common/Text/SmallText';
 //containers
 import Viewcontainer from '../../../containers/ViewContainer';
 import ScrollableView from '../../../containers/ScrollableView';
 import Spacer from '../../../containers/Spacer';
 import Column from '../../../containers/Column';
 import Row from '../../../containers/Row';
+
+const width = Dimensions.get('window').width;
 
 const CreateProductLink = () => {
   const [addingLink, setAddingLink] = useState('');
@@ -91,10 +92,37 @@ const CreateProductLink = () => {
             flexDirection: 'row',
           }}
         /> */}
-        <Image
+        {/* <Image
           source={{uri: `${addingLink.images}`}}
           style={{width: 60, height: 60}}
-        />
+        /> */}
+
+        <LinkedProductWrap>
+          <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
+            <SearchedItemImg source={addingLink.images} />
+
+            <Column alignItems={'flex-start'}>
+              <SearchItemTitle>{addingLink.title}</SearchItemTitle>
+              <LinkedItemLink numberOfLines={1} ellipsizeMode={'tail'}>
+                {addingLink.url}
+              </LinkedItemLink>
+              <Spacer height={8.35} />
+              <Smalltext
+                title="Description"
+                fontSize={11}
+                textAlign={'left'}
+                fontWeight={600}
+              />
+              <SearchedItemDesc ellipsizeMode={'tail'} numberOfLines={2}>
+                {addingLink.description}
+              </SearchedItemDesc>
+            </Column>
+          </Row>
+          <Spacer height={12} />
+
+          <Spacer height={12} />
+        </LinkedProductWrap>
+
         {/* WILL BE REMOVED */}
         <Spacer height={32} />
         {/* WILL BE REMOVED */}
@@ -113,4 +141,49 @@ const BtnWrap = styled.View`
   background-color: #fff;
   box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
   padding-vertical: 22.25px;
+`;
+const LinkedProductWrap = styled.View`
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  max-height: ${width / 1.9}px;
+  padding-vertical: 16.7px;
+  padding-left: 12px;
+  border-radius: 4px;
+  margin-bottom: 14.37px;
+`;
+
+const LinkedItemLink = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #323234;
+  margin-top: 8px;
+`;
+const SearchedItemImg = styled.Image`
+  width: ${width / 5.21}px;
+  height: ${width / 5.2}px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 13.5px;
+`;
+const SearchItemTitle = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #323234;
+`;
+
+const SearchedItemDesc = styled.Text`
+  max-width: 176.75px;
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #323234;
+  margin-top: 4px;
 `;

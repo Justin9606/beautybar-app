@@ -156,7 +156,7 @@ const CommunityMain = ({}) => {
                     count={item.like}
                     onPress={() => alert('Like Pressed')}
                   />
-                  <Spacer width={24.83} />
+                  <Spacer width={20.83} />
                   <PostBottomBtns
                     itsComment={'itsComment'}
                     count={item.comment}

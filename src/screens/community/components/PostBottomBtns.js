@@ -39,6 +39,14 @@ const TouchableBtn = styled.Pressable`
 
 const LikeAndCommentCount = styled.Text`
   margin-left: 9.27px;
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #323234;
 `;
 
 const ThreeDotsWrap = styled.View`
