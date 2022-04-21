@@ -13,6 +13,7 @@ const VerificationCells = ({
 }) => {
   return (
     <CodeField
+      autoFocus={true}
       ref={ref}
       value={value}
       onChangeText={onChangeText}

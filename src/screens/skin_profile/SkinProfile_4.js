@@ -8,10 +8,9 @@ import styled from 'styled-components';
 import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Viewcontainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
-import Absolutebutton from '../../containers/AbsoluteButton';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common
@@ -29,8 +28,9 @@ import Largetext from '../../components/common/Text/LargeText';
 
 const SkinProfile_4 = () => {
   const navigation = useNavigation();
+  console.log(navigation);
   return (
-    <SafeAreaContainer>
+    <Viewcontainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -54,10 +54,10 @@ const SkinProfile_4 = () => {
         </ControlAlignCenter>
         <Spacer height={normalize(120)} />
       </ScrollableView>
-      <Absolutebutton>
+      <BtnWrap>
         <Button title={'Next'} onPress={() => navigation.navigate('Home')} />
-      </Absolutebutton>
-    </SafeAreaContainer>
+      </BtnWrap>
+    </Viewcontainer>
   );
 };
 
@@ -97,4 +97,10 @@ const TakeSelfieText = styled.Text`
   font-size: 14px;
   font-weight: 500;
   font-family: Montserrat-Medium;
+`;
+
+const BtnWrap = styled.View`
+  background-color: #fff;
+  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
+  padding-vertical: 22.25px;
 `;

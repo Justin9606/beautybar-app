@@ -85,7 +85,7 @@ const TagProducts = () => {
           <Search />
         </SearchSvgWrap>
         <SearchInput
-          autoFocus={true}
+          // autoFocus={true}
           returnKeyType={'search'}
           placeholderTextColor={'#b1b1b1'}
           placeholder={'Search Product or brand here'}
@@ -96,15 +96,15 @@ const TagProducts = () => {
         paddingHorizontal={24}
         showsVerticalScrollIndicator={false}>
         <SearchedDataWrap>
-          {POPULAR_PRODUCT_DEMO_DATA.map((item, index) => {
+          {POPULAR_PRODUCT_DEMO_DATA?.map((item, index) => {
             return (
               <RenderItemWrap
                 key={index}
                 activeOpacity={0.7}
                 onPress={() => alert('CLICKED')}>
-                <SearchedItemImg source={item.icon} />
+                <SearchedItemImg source={item?.icon} />
                 <Column alignItems={'flex-start'}>
-                  <SearchItemTitle>{item.name}</SearchItemTitle>
+                  <SearchItemTitle>{item?.name}</SearchItemTitle>
                   <SearchedItemDesc>{item?.description}</SearchedItemDesc>
                   <SearchedItemBrand>{item?.brandType}</SearchedItemBrand>
                 </Column>

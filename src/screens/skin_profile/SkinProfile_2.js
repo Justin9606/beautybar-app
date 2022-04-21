@@ -9,10 +9,10 @@ import {useNavigation} from '@react-navigation/native';
 import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Viewcontainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
-import Absolutebutton from '../../containers/AbsoluteButton';
+
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
@@ -53,7 +53,7 @@ const SkinProfile_2 = () => {
 
   const navigation = useNavigation();
   return (
-    <SafeAreaContainer>
+    <Viewcontainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -63,7 +63,6 @@ const SkinProfile_2 = () => {
         <ControlAlignCenter>
           <Spacer height={normalize(40)} />
           <Step_2_Profile />
-
           <Largetext textAlign={'center'} title="Skin Profile" marginTop={24} />
           <Spacer height={normalize(16)} />
           <Smalltext
@@ -71,8 +70,7 @@ const SkinProfile_2 = () => {
               'Choose one option for Skin Type, Skin Tone and Skin Under Tone'
             }
             textAlign={'center'}
-            width={295}
-            height={35}
+            style={{width: 295, height: 35}}
             color={'#7F7E83'}
           />
         </ControlAlignCenter>
@@ -142,13 +140,13 @@ const SkinProfile_2 = () => {
         <Spacer height={100} />
       </ScrollableView>
 
-      <Absolutebutton>
+      <BtnWrap>
         <Button
           title={'Next'}
           onPress={() => navigation.navigate('SkinProfile_3')}
         />
-      </Absolutebutton>
-    </SafeAreaContainer>
+      </BtnWrap>
+    </Viewcontainer>
   );
 };
 export default SkinProfile_2;
@@ -171,4 +169,10 @@ const SkinTypeText = styled.Text`
   text-align: center;
   justify-content: center;
   align-items: center;
+`;
+
+const BtnWrap = styled.View`
+  background-color: #fff;
+  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
+  padding-vertical: 22.25px;
 `;

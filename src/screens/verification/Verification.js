@@ -2,6 +2,12 @@ import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
+//react redux
+import {useSelector, useDispatch} from 'react-redux';
+
+//function
+import {UserPhone} from '../../store/reducer/reducer';
+
 //validator
 import {
   Cursor,
@@ -18,7 +24,7 @@ import VerificationCells from './VerificationCells';
 import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Viewcontainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
@@ -45,8 +51,17 @@ const Verification = () => {
 
   const navigation = useNavigation();
 
+  const dispatch = useDispatch();
+  const Phone = props?.route?.params?.Phone;
+
+  console.log(Phone);
+
+  const MoveToRegisteration = () => {
+    navigation.navigate('SkinProfile_1');
+    dispatch(UserPhone(Phone));
+  };
   return (
-    <SafeAreaContainer>
+    <Viewcontainer>
       <Header back_with_rec_icon={'back_with_rec_icon'} />
       <ScrollableView>
         <Spacer height={normalize(30)} />
@@ -59,13 +74,12 @@ const Verification = () => {
           <Smalltext
             title={'We have just sent you 4 digit code via your phone number'}
             textAlign={'center'}
-            width={250}
-            height={40}
+            style={{width: 250, height: 40}}
             color={'#7F7E83'}
           />
         </ControlAlignCenter>
         <Spacer height={12} />
-        <PhoneNumber>+628393***4738</PhoneNumber>
+        <PhoneNumber>{Phone}</PhoneNumber>
         <Spacer height={32} />
         <VerificationCells
           // ref={ref}
@@ -88,24 +102,18 @@ const Verification = () => {
           )}
         />
         <Spacer height={32} />
-        <Button
-          title="Verify"
-          onPress={() => {
-            navigation.navigate('SkinProfile_1');
-          }}
-        />
+        <Button title="Verify" onPress={() => MoveToRegisteration()} />
         <Spacer height={normalize(32)} />
         <ControlAlignCenter>
           <Smalltext
             title="Didn’t receive code? Resend"
             color={'#7F7E83'}
-            width={200}
-            height={17}
+            style={{width: 200, height: 17}}
             textAlign={'center'}
           />
         </ControlAlignCenter>
       </ScrollableView>
-    </SafeAreaContainer>
+    </Viewcontainer>
   );
 };
 

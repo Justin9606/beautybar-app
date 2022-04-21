@@ -10,12 +10,9 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 //
 import styled from 'styled-components';
 
-//containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
-import Absolutebutton from '../../containers/AbsoluteButton';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';
@@ -28,13 +25,14 @@ import Step_1_Profile from '../../assets/svg/skin_profiling/step_1_profile.svg';
 
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
+import Viewcontainer from '../../containers/ViewContainer';
 
 const SkinProfile_1 = () => {
   const navigation = useNavigation();
   const [isChecked, setIschecked] = useState(false);
 
   return (
-    <SafeAreaContainer>
+    <Viewcontainer>
       <Header back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -84,13 +82,14 @@ const SkinProfile_1 = () => {
           </BounyCheckBoxContainer>
         </GenderSelectionWrap>
       </ScrollableView>
-      <Absolutebutton>
+
+      <BtnWrap>
         <Button
           title="Next"
           onPress={() => navigation.navigate('SkinProfile_2')}
         />
-      </Absolutebutton>
-    </SafeAreaContainer>
+      </BtnWrap>
+    </Viewcontainer>
   );
 };
 export default SkinProfile_1;
@@ -109,4 +108,10 @@ const LabelWrap = styled.Text`
   font-weight: 500;
   color: #323234;
   line-height: 17px;
+`;
+
+const BtnWrap = styled.View`
+  background-color: #fff;
+  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
+  padding-vertical: 22.25px;
 `;

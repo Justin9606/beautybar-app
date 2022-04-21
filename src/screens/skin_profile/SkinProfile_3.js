@@ -10,10 +10,9 @@ import styled from 'styled-components';
 import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import Viewcontainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
-import Absolutebutton from '../../containers/AbsoluteButton';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
@@ -49,7 +48,7 @@ const ToggleableButton = ({onPress, title, isActive}) => {
 const SkinProfile_3 = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaContainer>
+    <Viewcontainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -65,8 +64,6 @@ const SkinProfile_3 = () => {
           <Smalltext
             title={'You can select more than option'}
             textAlign={'center'}
-            width={295}
-            height={24}
             color={'#7F7E83'}
           />
         </ControlAlignCenter>
@@ -77,13 +74,13 @@ const SkinProfile_3 = () => {
           })}
         </Container>
       </ScrollableView>
-      <Absolutebutton>
+      <BtnWrap>
         <Button
           title={'Next'}
           onPress={() => navigation.navigate('SkinProfile_4')}
         />
-      </Absolutebutton>
-    </SafeAreaContainer>
+      </BtnWrap>
+    </Viewcontainer>
   );
 };
 
@@ -112,4 +109,10 @@ const Title = styled.Text`
   font-size: 14px;
   text-align: center;
   color: ${props => (props.isActive ? '#FFFFFF' : '#e74779')};
+`;
+
+const BtnWrap = styled.View`
+  background-color: #fff;
+  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
+  padding-vertical: 22.25px;
 `;

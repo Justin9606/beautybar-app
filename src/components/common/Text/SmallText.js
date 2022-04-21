@@ -1,23 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Smalltext = ({
-  title,
-  color,
-  textAlign,
-  width,
-  height,
-  fontWeight,
-  fontSize,
-}) => {
+const Smalltext = ({title, color, textAlign, fontWeight, fontSize, style}) => {
   return (
     <Title
       color={color}
       textAlign={textAlign}
-      width={width}
-      height={height}
       fontWeight={fontWeight}
-      fontSize={fontSize}>
+      fontSize={fontSize}
+      style={style}>
       {title}
     </Title>
   );
@@ -32,6 +23,4 @@ const Title = styled.Text`
   font-style: normal;
   text-align: ${props => props.textAlign};
   color: ${props => props.color || '#323234'};
-  /* width: ${props => props.width}pt;
-  height: ${props => props.height}pt; */
 `;

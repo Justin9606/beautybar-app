@@ -59,7 +59,10 @@ const Header = ({
     <Container marginBottom={marginBottom}>
       <LeftContainer>
         {back_with_rec_icon === 'back_with_rec_icon' && (
-          <ButtonWrap onPress={() => navigation.goBack()} activeOpacity={0.7}>
+          <ButtonWrap
+            onPress={() => navigation.goBack()}
+            activeOpacity={0.7}
+            style={{top: 10}}>
             <BackButton />
           </ButtonWrap>
         )}

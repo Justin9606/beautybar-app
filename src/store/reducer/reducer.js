@@ -2,10 +2,12 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   LoginUser: false,
-  User: [],
+  IsUserRegister: false,
+  UserPhone: '',
+  UserDetail: [],
 };
 
-export const MainReducer = createSlice({
+export const AuthReducer = createSlice({
   name: 'Beauty',
   initialState,
   reducers: {
@@ -15,8 +17,19 @@ export const MainReducer = createSlice({
     LogOutUser: (state, action) => {
       state.LoginUser = action.payload;
     },
+    UserPhone: (state, action) => {
+      console.log('Action', action);
+      state.UserPhone = action.payload;
+    },
+    IsUserRegister: (state, action) => {
+      state.IsUserRegister = true;
+    },
+    UserDetail: (state, action) => {
+      state.UserDetail = action.payload;
+    },
   },
 });
 
-export const {LoginUser, LogOutUser} = MainReducer.actions;
-export default MainReducer.reducer;
+export const {LoginUser, LogOutUser, UserPhone, IsUserRegister, UserDetail} =
+  AuthReducer.actions;
+export default AuthReducer.reducer;
