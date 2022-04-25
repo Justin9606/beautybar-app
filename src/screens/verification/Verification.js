@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-
-//react redux
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 //function
-import {UserPhone} from '../../store/reducer/reducer';
+import {UserPhone} from '../../store/reducer/reducer'
+
 
 //validator
 import {
@@ -21,10 +20,10 @@ import styled from 'styled-components';
 import VerificationCells from './VerificationCells';
 
 //normalize from constants
-import {normalize} from '../../constants/responsive';
+import { normalize } from '../../constants/responsive';
 
 //containers
-import Viewcontainer from '../../containers/ViewContainer';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
@@ -41,27 +40,27 @@ import Smalltext from '../../components/common/Text/SmallText';
 import VerifySvg from '../../assets/svg/login/verification.svg';
 
 const CELL_COUNT = 4;
-const Verification = () => {
-  const [value, setValue] = useState('');
-  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
-  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+const Verification = (props) => {
+
+  const [value, setValue] = useState('2222');
+  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+  const [propss, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
 
   const navigation = useNavigation();
-
-  const dispatch = useDispatch();
-  const Phone = props?.route?.params?.Phone;
-
-  console.log(Phone);
+  const dispatch = useDispatch()
+  const Phone = props?.route?.params?.Phone
 
   const MoveToRegisteration = () => {
-    navigation.navigate('SkinProfile_1');
-    dispatch(UserPhone(Phone));
-  };
+    navigation.navigate('SkinProfile_1')
+    dispatch(UserPhone(Phone))
+  }
+
+
   return (
-    <Viewcontainer>
+    <SafeAreaContainer>
       <Header back_with_rec_icon={'back_with_rec_icon'} />
       <ScrollableView>
         <Spacer height={normalize(30)} />
@@ -74,7 +73,8 @@ const Verification = () => {
           <Smalltext
             title={'We have just sent you 4 digit code via your phone number'}
             textAlign={'center'}
-            style={{width: 250, height: 40}}
+            width={250}
+            height={40}
             color={'#7F7E83'}
           />
         </ControlAlignCenter>
@@ -85,9 +85,9 @@ const Verification = () => {
           // ref={ref}
           onChangeText={text => setValue(text)}
           value={value}
-          {...props}
+          {...propss}
           codeFieldRoot={styles.root}
-          renderCells={({index, symbol, isFocused}) => (
+          renderCells={({ index, symbol, isFocused }) => (
             <View
               onLayout={getCellOnLayoutHandler(index)}
               key={index}
@@ -102,18 +102,25 @@ const Verification = () => {
           )}
         />
         <Spacer height={32} />
-        <Button title="Verify" onPress={() => MoveToRegisteration()} />
+        <Button
+          title="Verify"
+          onPress={() => {
+            MoveToRegisteration();
+          }}
+        />
         <Spacer height={normalize(32)} />
         <ControlAlignCenter>
           <Smalltext
             title="Didn’t receive code? Resend"
             color={'#7F7E83'}
-            style={{width: 200, height: 17}}
+            width={200}
+            height={17}
             textAlign={'center'}
+
           />
         </ControlAlignCenter>
       </ScrollableView>
-    </Viewcontainer>
+    </SafeAreaContainer>
   );
 };
 

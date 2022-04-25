@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import {FlatList} from 'react-native';
+import React, { useState } from 'react';
+import { FlatList } from 'react-native';
 import styled from 'styled-components';
 
 //react-navigation/native
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //normalizer
-import {normalize} from '../../constants/responsive';
+import { normalize } from '../../constants/responsive';
 
 //containers
-import Viewcontainer from '../../containers/ViewContainer';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
-
+import Absolutebutton from '../../containers/AbsoluteButton';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
@@ -35,25 +35,79 @@ import {
   SKIN_UNDER_TONE_DATA,
 } from '../../components/svg_data/skin_data';
 
-const _renderItem = ({text, skin_type_svg, onPress, index}) => {
-  return (
-    <Container onPress={onPress} index={index}>
-      <SvgWrap>{skin_type_svg}</SvgWrap>
-      <SkinTypeText>{text}</SkinTypeText>
-    </Container>
-  );
-};
 
-const SkinProfile_2 = () => {
-  const [skinType, setSkinType] = useState({
-    skin_type: '',
-    skin_tone: '',
-    skin_under_tone: '',
-  });
+const SkinProfile_2 = (props) => {
+  ;
 
+  const [SkinType, setSkinTypes] = useState();
+  const [SkinTone, setSkinTone] = useState();
+  const [SkinUnderTone, setSkinUnderTone] = useState();
+
+  const data1 = props?.route?.params?.data1;
   const navigation = useNavigation();
+
+  const NextStep = () => {
+
+    const data2 = {...data1,SkinType,SkinTone,SkinUnderTone }
+
+
+    if (SkinType != undefined && SkinTone != undefined && SkinUnderTone != undefined) {
+      navigation.navigate('SkinProfile_3',{data2})
+    }
+    else {
+      alert('Please fill all filed')
+    }
+
+  }
+
+
+  const _renderItem = ({ text, skin_type_svg, onPress, index }) => {
+
+    return (
+      <Container onPress={onPress} index={index}>
+        <SvgWrap
+          style={[
+            { borderWidth: SkinType == text ? 3 : 0, borderColor: SkinType == text ? 'red' : null, borderRadius: 30 },
+
+
+          ]}
+        >{skin_type_svg}</SvgWrap>
+        <SkinTypeText>{text}</SkinTypeText>
+      </Container>
+    );
+  };
+  const _renderItem2 = ({ text, skin_type_svg, onPress, index }) => {
+    return (
+      <Container onPress={onPress} index={index}>
+        <SvgWrap
+          style={[
+            { borderWidth: SkinTone == text ? 3 : 0, borderColor: SkinTone == text ? 'red' : null, borderRadius: 30 }
+
+          ]}
+        >{skin_type_svg}</SvgWrap>
+        <SkinTypeText>{text}</SkinTypeText>
+      </Container>
+    );
+  };
+
+  const _renderItem3 = ({ text, skin_type_svg, onPress, index }) => {
+    return (
+      <Container onPress={onPress} index={index}>
+        <SvgWrap
+          style={[
+            { borderWidth: SkinUnderTone == text ? 3 : 0, borderColor: SkinUnderTone == text ? 'red' : null, borderRadius: 30 }
+
+          ]}
+        >{skin_type_svg}</SvgWrap>
+        <SkinTypeText>{text}</SkinTypeText>
+      </Container>
+    );
+  };
+
+
+
   return (
-    <Viewcontainer>
+    <SafeAreaContainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -63,6 +117,7 @@ const SkinProfile_2 = () => {
         <ControlAlignCenter>
           <Spacer height={normalize(40)} />
           <Step_2_Profile />
+
           <Largetext textAlign={'center'} title="Skin Profile" marginTop={24} />
           <Spacer height={normalize(16)} />
           <Smalltext
@@ -70,7 +125,8 @@ const SkinProfile_2 = () => {
               'Choose one option for Skin Type, Skin Tone and Skin Under Tone'
             }
             textAlign={'center'}
-            style={{width: 295, height: 35}}
+            width={295}
+            height={35}
             color={'#7F7E83'}
           />
         </ControlAlignCenter>
@@ -79,14 +135,14 @@ const SkinProfile_2 = () => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={SKIN_TYPE_DATA}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             const SKIN_TYPE_SVG = item.skin_type_svg;
 
             return (
               <_renderItem
                 onPress={() => {
-                  setSkinType({setSkinType: item.text});
-                  alert(`Skin Type: ${item.text}`);
+                  setSkinTypes(item.text);
+                  // alert(`Skin Type: ${item.text}`);
                 }}
                 text={item.text}
                 index={index}
@@ -100,14 +156,14 @@ const SkinProfile_2 = () => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={SKIN_TONE_DATA}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             const SKIN_TYPE_SVG = item.skin_tone_svg;
 
             return (
-              <_renderItem
+              <_renderItem2
                 onPress={() => {
-                  setSkinType({skin_tone: item.text});
-                  alert(`Skin Type: ${item.text}`);
+                  setSkinTone(item.text);
+                  // alert(`Skin Type: ${item.text}`);
                 }}
                 text={item.text}
                 index={index}
@@ -121,14 +177,14 @@ const SkinProfile_2 = () => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={SKIN_UNDER_TONE_DATA}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             const SKIN_TYPE_SVG = item.skin_under_tone_svg;
             return (
-              <_renderItem
+              <_renderItem3
                 key={index}
                 onPress={() => {
-                  setSkinType({skin_under_tone: item.text});
-                  alert(`Skin Type: ${item.text}`);
+                  setSkinUnderTone(item.text);
+                  // alert(`Skin Type: ${item.text}`);
                 }}
                 text={item.text}
                 index={index}
@@ -140,13 +196,13 @@ const SkinProfile_2 = () => {
         <Spacer height={100} />
       </ScrollableView>
 
-      <BtnWrap>
+      <Absolutebutton>
         <Button
           title={'Next'}
-          onPress={() => navigation.navigate('SkinProfile_3')}
+          onPress={() => NextStep()}
         />
-      </BtnWrap>
-    </Viewcontainer>
+      </Absolutebutton>
+    </SafeAreaContainer>
   );
 };
 export default SkinProfile_2;
@@ -169,10 +225,4 @@ const SkinTypeText = styled.Text`
   text-align: center;
   justify-content: center;
   align-items: center;
-`;
-
-const BtnWrap = styled.View`
-  background-color: #fff;
-  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
-  padding-vertical: 22.25px;
 `;

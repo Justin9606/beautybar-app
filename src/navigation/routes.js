@@ -1,6 +1,6 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useSelector} from 'react-redux';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
 
 //Screens
 import Onboarding from '../screens/onboarding/Onboarding';
@@ -22,11 +22,9 @@ export default function MainRoutes() {
 
   return (
     <Stack.Navigator
-      screenOptions={{header: () => null}}
-      initialRouteName={LoginUser === true ? 'Home' : 'Login'}
-      // initialRouteName="Home"
-    >
-      {LoginUser !== true ? (
+      screenOptions={{ header: () => null }}
+      initialRouteName={LoginUser == true ? 'Home' : "Onboarding"}>
+      {LoginUser !== true ?
         <>
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="WelComeScreen" component={WelComeScreen} />
@@ -36,12 +34,13 @@ export default function MainRoutes() {
           <Stack.Screen name="SkinProfile_2" component={SkinProfile_2} />
           <Stack.Screen name="SkinProfile_3" component={SkinProfile_3} />
           <Stack.Screen name="SkinProfile_4" component={SkinProfile_4} />
-          <Stack.Screen name="Home" component={BottomTabs} />
         </>
-      ) : (
+        :
+
         <Stack.Screen name="Home" component={BottomTabs} />
-      )}
-      {/* <Stack.Screen name="Home" component={BottomTabs} /> */}
+
+      }
+
     </Stack.Navigator>
   );
 }

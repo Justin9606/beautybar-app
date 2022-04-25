@@ -1,18 +1,19 @@
 import React from 'react';
 
 //react-navigation/native
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //styled components
 import styled from 'styled-components';
 
 //normalizer
-import {normalize} from '../../constants/responsive';
+import { normalize } from '../../constants/responsive';
 
 //containers
-import Viewcontainer from '../../containers/ViewContainer';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
+import Absolutebutton from '../../containers/AbsoluteButton';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
@@ -26,18 +27,19 @@ import Step_2_Profile from '../../assets/svg/skin_profiling/step_2_skin_profile.
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
 import Smalltext from '../../components/common/Text/SmallText';
+import { useState } from 'react';
 
 const data = [
-  {text: 'Acne'},
-  {text: 'Seburn'},
-  {text: 'Sensitivity'},
-  {text: 'Acne Scars'},
-  {text: 'Big Pores'},
-  {text: 'Eczerna'},
-  {text: 'Blushing'},
+  { text: 'Acne', isselect: false },
+  { text: 'Seburn', isselect: false },
+  { text: 'Sensitivity', isselect: false },
+  { text: 'Acne Scars', isselect: false },
+  { text: 'Big Pores', isselect: false },
+  { text: 'Eczerna', isselect: false },
+  { text: 'Blushing', isselect: false },
 ];
 
-const ToggleableButton = ({onPress, title, isActive}) => {
+const ToggleableButton = ({ onPress, title, isActive }) => {
   return (
     <PressableWrap onPress={onPress} isActive={isActive}>
       <Title>{title}</Title>
@@ -45,10 +47,51 @@ const ToggleableButton = ({onPress, title, isActive}) => {
   );
 };
 
-const SkinProfile_3 = () => {
+const SkinProfile_3 = (props) => {
+
+
+  const data2 = props?.route?.params?.data2;
   const navigation = useNavigation();
+  const [SkinIssues, setSkinIssues] = useState();
+  let IssuesOfSkin = []
+
+  const SELECTITEM = (index) => {
+
+    let arr = data.map((v, i) => {
+
+      if (index == i) { v.isselect = !v.isselect }
+      return { ...v }
+    })
+
+    setSkinIssues(arr)
+
+  }
+
+  const NextStep = () => {
+
+    const data3 = { ...data2, IssuesOfSkin }
+    for (var i = 0; i < SkinIssues.length; i++) {
+
+      if (SkinIssues[i]?.isselect == true) {
+        IssuesOfSkin.push(SkinIssues[i]?.text)
+      }
+    }
+
+    console.log('data3', IssuesOfSkin.length)
+
+
+    if (IssuesOfSkin.length > 1) {
+      navigation.navigate('SkinProfile_4', {data3})
+    }
+    else {
+      alert('Please select at least on tag')
+    }
+
+  }
+
+
   return (
-    <Viewcontainer>
+    <SafeAreaContainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -64,23 +107,26 @@ const SkinProfile_3 = () => {
           <Smalltext
             title={'You can select more than option'}
             textAlign={'center'}
+            width={295}
+            height={24}
             color={'#7F7E83'}
           />
         </ControlAlignCenter>
         <Spacer height={normalize(32)} />
         <Container>
           {data.map((item, index) => {
-            return <ToggleableButton title={item.text} key={index} />;
+            let text = item.text
+            return <ToggleableButton title={text} key={index} isActive={item?.isselect} onPress={() => SELECTITEM(index)} />;
           })}
         </Container>
       </ScrollableView>
-      <BtnWrap>
+      <Absolutebutton>
         <Button
           title={'Next'}
-          onPress={() => navigation.navigate('SkinProfile_4')}
+          onPress={() => NextStep()}
         />
-      </BtnWrap>
-    </Viewcontainer>
+      </Absolutebutton>
+    </SafeAreaContainer>
   );
 };
 
@@ -94,8 +140,10 @@ const Container = styled.View`
 
 const PressableWrap = styled.Pressable`
   border-radius: 24px;
-  background-color: ${props => (props.isActive ? '#E74779' : '#faebf1')};
+  background-color:#faebf1;
   justify-content: center;
+  border-color: ${props => (props.isActive ? '#E74779' : '#faebf1')};
+  border-width:2px;
   align-items: center;
   margin-left: 16px;
   margin-bottom: 16px;
@@ -108,11 +156,5 @@ const Title = styled.Text`
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  color: ${props => (props.isActive ? '#FFFFFF' : '#e74779')};
-`;
-
-const BtnWrap = styled.View`
-  background-color: #fff;
-  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
-  padding-vertical: 22.25px;
+  color:#e74779;
 `;

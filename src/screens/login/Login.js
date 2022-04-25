@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {LoginUser} from '../../store/reducer/reducer';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoginUser } from '../../store/reducer/reducer'
+
 
 //react-navigation-native
 import {useNavigation} from '@react-navigation/native';
@@ -12,7 +13,7 @@ import {useTranslation} from 'react-i18next';
 import styled from 'styled-components';
 
 //Containers
-
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 import Spacer from '../../containers/Spacer';
@@ -23,6 +24,7 @@ import Largetext from '../../components/common/Text/LargeText';
 
 //Common ui
 import Button from '../../components/common/Buttons/Button';
+import Header from '../../components/common/Header/Header';
 import TextInput from '../../components/common/TextInputs/TextInput';
 
 //
@@ -33,26 +35,36 @@ const Login = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
-  const [phone, setphone] = useState(null);
+  const [phone, setphone] = useState(null)
 
-  const PhoneCheck = useSelector(state => {
-    return state.persistedReducer.UserDetail;
-  });
+
+  const PhoneCheck = useSelector((state) => { return state.persistedReducer.UserDetail })
+
+
 
   const signIn = () => {
-    if (PhoneCheck.phone === phone) {
-      dispatch(LoginUser(true));
+
+    if (PhoneCheck.phone == phone) {
+      dispatch(LoginUser(true))
     } else {
-      if (phone !== null && phone !== ' ') {
-        navigation.navigate('Verification', {Phone: phone});
+      if (phone != null && phone != ' ') {
+        navigation.navigate('Verification', { Phone: phone })
       } else {
-        alert('Please Enter Phone Number');
+        alert('Please Enter Phone Number')
       }
     }
-  };
+
+
+
+
+
+  }
+
 
   return (
     <>
+      {/* <Header /> */}
+
       <ScrollableView
         contentContainerStyle={{justifyContent: 'center', flex: 1}}>
         <Spacer height={26} />
@@ -61,7 +73,8 @@ const Login = () => {
           <Smalltext
             textAlign="center"
             title="Enter your registered Phone Number to Sign in"
-            style={{width: 200, height: 35}}
+            width={200}
+            height={35}
           />
         </ControlAlignCenter>
         <Spacer height={36} />
@@ -71,13 +84,13 @@ const Login = () => {
           inputeLabel={t('phoneNumber')}
           placeholder="01083960506"
           keyboardType={'phone-pad'}
-          onChangeText={e => setphone(e)}
+          onChangeText={(e) => setphone(e)}
         />
         <Spacer height={35} />
         <Button
           title={t('signIn')}
-          // onPress={() => navigation.navigate('Verification')}
           onPress={() => signIn()}
+        // onPress={()=>Login()}
         />
       </ScrollableView>
       <HavingTroubleWrap onPress={() => alert('Having trouble?')}>

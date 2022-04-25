@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+
 
 //normalizer
-import {normalize} from '../../constants/responsive';
+import { normalize } from '../../constants/responsive';
 
 //react-native-bouncy-checkbox
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -10,9 +12,12 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 //
 import styled from 'styled-components';
 
+//containers
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
+import Absolutebutton from '../../containers/AbsoluteButton';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';
@@ -25,14 +30,32 @@ import Step_1_Profile from '../../assets/svg/skin_profiling/step_1_profile.svg';
 
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
-import Viewcontainer from '../../containers/ViewContainer';
 
 const SkinProfile_1 = () => {
   const navigation = useNavigation();
-  const [isChecked, setIschecked] = useState(false);
+  const [gender, setgender] = useState(false);
+  const [name, setname] = useState();
+  const [age, setage] = useState();
+
+  const phone = useSelector((state) => { return state.persistedReducer.UserPhone })
+
+
+  const NextStep = () => {
+
+    const data1 = { name, gender, age, phone }
+
+    if (name != null && name != undefined && gender != undefined && age != null && age != undefined) {
+      navigation.navigate('SkinProfile_2', { data1 })
+    }
+    else {
+      alert('Please fill all filed')
+    }
+
+  }
+
 
   return (
-    <Viewcontainer>
+    <SafeAreaContainer>
       <Header back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -53,12 +76,14 @@ const SkinProfile_1 = () => {
           inputeLabel={'Name'}
           placeholder={'Enter your name'}
           marginTop={normalize(40)}
+          onChangeText={(e) => setname(e)}
         />
         <Textinput
           inputeLabel={'Age'}
           placeholder={'Enter your age'}
           marginTop={normalize(23)}
           keyboardType={'phone-pad'}
+          onChangeText={(e) => setage(e)}
         />
         <GenderSelectionWrap>
           <LabelWrap>Gender</LabelWrap>
@@ -69,27 +94,32 @@ const SkinProfile_1 = () => {
               }}
               fillColor={'#E74779'}
               text="Female"
+              onPress={() => setgender('Female')}
+              isChecked={gender == 'Female' ? true : false}
+              disableBuiltInState
             />
             <Spacer width={40} />
             <BouncyCheckbox
-              onPress={() => {}}
+              isChecked={gender == 'Male' ? true : false}
               fillColor={'#E74779'}
+              onPress={() => setgender('Male')}
               text="Male"
+              disableBuiltInState
               textStyle={{
                 textDecorationLine: 'none',
               }}
+
             />
           </BounyCheckBoxContainer>
         </GenderSelectionWrap>
       </ScrollableView>
-
-      <BtnWrap>
+      <Absolutebutton>
         <Button
           title="Next"
-          onPress={() => navigation.navigate('SkinProfile_2')}
+          onPress={() => NextStep()}
         />
-      </BtnWrap>
-    </Viewcontainer>
+      </Absolutebutton>
+    </SafeAreaContainer>
   );
 };
 export default SkinProfile_1;
@@ -108,10 +138,4 @@ const LabelWrap = styled.Text`
   font-weight: 500;
   color: #323234;
   line-height: 17px;
-`;
-
-const BtnWrap = styled.View`
-  background-color: #fff;
-  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
-  padding-vertical: 22.25px;
 `;

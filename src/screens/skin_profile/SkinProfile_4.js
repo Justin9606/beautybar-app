@@ -1,16 +1,19 @@
 import React from 'react';
-
-import {useNavigation} from '@react-navigation/native';
-
+import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { UserDetail, LoginUser } from '../../store/reducer/reducer';
+
 
 //normalizer
-import {normalize} from '../../constants/responsive';
+import { normalize } from '../../constants/responsive';
 
 //containers
-import Viewcontainer from '../../containers/ViewContainer';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
+import Absolutebutton from '../../containers/AbsoluteButton';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common
@@ -26,11 +29,23 @@ import TakeSelfieExample from '../../assets/svg/skin_profiling/take_selfie_examp
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
 
-const SkinProfile_4 = () => {
+const SkinProfile_4 = (props) => {
+
+
+  const data3 = props?.route?.params?.data3;
   const navigation = useNavigation();
-  console.log(navigation);
+  const dispatch = useDispatch()
+
+
+  const NextStep = () => {
+    dispatch(UserDetail(data3))
+    dispatch(LoginUser(true))
+
+  }
+
+
   return (
-    <Viewcontainer>
+    <SafeAreaContainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -54,10 +69,10 @@ const SkinProfile_4 = () => {
         </ControlAlignCenter>
         <Spacer height={normalize(120)} />
       </ScrollableView>
-      <BtnWrap>
-        <Button title={'Next'} onPress={() => navigation.navigate('Home')} />
-      </BtnWrap>
-    </Viewcontainer>
+      <Absolutebutton>
+        <Button title={'Next'} onPress={() => NextStep()} />
+      </Absolutebutton>
+    </SafeAreaContainer>
   );
 };
 
@@ -97,10 +112,4 @@ const TakeSelfieText = styled.Text`
   font-size: 14px;
   font-weight: 500;
   font-family: Montserrat-Medium;
-`;
-
-const BtnWrap = styled.View`
-  background-color: #fff;
-  box-shadow: 0px -5px 19px rgba(5, 7, 22, 0.06);
-  padding-vertical: 22.25px;
 `;
