@@ -20,6 +20,8 @@ export default function MainRoutes() {
     return state?.persistedReducer?.LoginUser;
   });
 
+
+
   return (
     <Stack.Navigator
       screenOptions={{ header: () => null }}
