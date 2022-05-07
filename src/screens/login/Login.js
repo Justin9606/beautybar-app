@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoginUser } from '../../store/reducer/reducer'
+import { LoginUser } from '../../store/reducer/auth_reducer/Auth_Reducer'
 
 
 //react-navigation-native
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //react-i18next
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 //styled components
 import styled from 'styled-components';
@@ -32,19 +32,22 @@ import TextInput from '../../components/common/TextInputs/TextInput';
 //Login Components starts
 const Login = () => {
   const navigation = useNavigation();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const [phone, setphone] = useState(null)
 
 
-  const PhoneCheck = useSelector((state) => { return state.persistedReducer.UserDetail })
+  const PhoneCheck = useSelector((state) => { return state.persistedReducer.AuthReducer })
+
+
+
 
 
 
   const signIn = () => {
 
-    if (PhoneCheck.phone == phone) {
+    if (PhoneCheck.UserPhone == phone) {
       dispatch(LoginUser(true))
     } else {
       if (phone != null && phone != ' ') {
@@ -55,9 +58,6 @@ const Login = () => {
     }
 
 
-
-
-
   }
 
 
@@ -66,7 +66,7 @@ const Login = () => {
       {/* <Header /> */}
 
       <ScrollableView
-        contentContainerStyle={{justifyContent: 'center', flex: 1}}>
+        contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
         <Spacer height={26} />
         <Largetext title={t('welcomeback')} textAlign="center" />
         <ControlAlignCenter>

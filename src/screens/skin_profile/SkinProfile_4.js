@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { UserDetail, LoginUser } from '../../store/reducer/reducer';
+import { UserDetail, LoginUser } from '../../store/reducer/auth_reducer/Auth_Reducer';
 
 
 //normalizer

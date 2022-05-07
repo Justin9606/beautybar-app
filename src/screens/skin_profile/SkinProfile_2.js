@@ -46,6 +46,8 @@ const SkinProfile_2 = (props) => {
   const data1 = props?.route?.params?.data1;
   const navigation = useNavigation();
 
+  console.log('SkinType',SkinType)
+
   const NextStep = () => {
 
     const data2 = {...data1,SkinType,SkinTone,SkinUnderTone }

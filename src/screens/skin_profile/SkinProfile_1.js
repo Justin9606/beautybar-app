@@ -37,7 +37,7 @@ const SkinProfile_1 = () => {
   const [name, setname] = useState();
   const [age, setage] = useState();
 
-  const phone = useSelector((state) => { return state.persistedReducer.UserPhone })
+  const phone = useSelector((state) => { return  state.persistedReducer.AuthReducer.UserPhone })
 
 
   const NextStep = () => {

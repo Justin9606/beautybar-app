@@ -52,7 +52,7 @@ const SkinProfile_3 = (props) => {
 
   const data2 = props?.route?.params?.data2;
   const navigation = useNavigation();
-  const [SkinIssues, setSkinIssues] = useState();
+  const [SkinIssues, setSkinIssues] = useState([]);
   let IssuesOfSkin = []
 
   const SELECTITEM = (index) => {
@@ -67,6 +67,8 @@ const SkinProfile_3 = (props) => {
 
   }
 
+  console.log('IssuesOfSkin',IssuesOfSkin)
+
   const NextStep = () => {
 
     const data3 = { ...data2, IssuesOfSkin }
@@ -77,7 +79,7 @@ const SkinProfile_3 = (props) => {
       }
     }
 
-    console.log('data3', IssuesOfSkin.length)
+
 
 
     if (IssuesOfSkin.length > 1) {

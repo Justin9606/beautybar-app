@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 
 //function
-import {UserPhone} from '../../store/reducer/reducer'
+import {UserPhone} from '../../store/reducer/auth_reducer/Auth_Reducer'
 
 
 //validator
@@ -52,6 +52,8 @@ const Verification = (props) => {
   const navigation = useNavigation();
   const dispatch = useDispatch()
   const Phone = props?.route?.params?.Phone
+
+
 
   const MoveToRegisteration = () => {
     navigation.navigate('SkinProfile_1')

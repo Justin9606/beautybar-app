@@ -17,7 +17,7 @@ export default function MainRoutes() {
   const Stack = createNativeStackNavigator();
 
   const LoginUser = useSelector(state => {
-    return state?.persistedReducer?.LoginUser;
+    return  state.persistedReducer.AuthReducer.LoginUser;
   });
 
 
