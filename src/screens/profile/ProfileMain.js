@@ -27,8 +27,8 @@ const Profilemainpage = () => {
         search_right={'search'}
       />
       <Text>Profile main page</Text>
-      <Text>NAME : {User.name}</Text>
-      <Text>AGE : {User.age}</Text>
+      <Text>NAME : {User?.name}</Text>
+      <Text>AGE : {User?.age}</Text>
 
 
       <TouchableOpacity onPress={() => dispatch(LogOutUser(false))}>

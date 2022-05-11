@@ -1,9 +1,13 @@
 //react
-import React from 'react';
+import React, { useState } from 'react';
 //react native
-import {Dimensions} from 'react-native';
+import { Dimensions, Image, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 //useNavigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+
+//image picker
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 //styled components
 import styled from 'styled-components';
@@ -32,7 +36,42 @@ import CreateDiscussionInput from '../components/CreateDiscussionInput';
 import Label from '../components/Label';
 
 const Creatediscussion = () => {
+
+
   const navigation = useNavigation();
+
+  const [Images, setImages] = useState([]);
+  const [discussion,setdiscussion] = useState()
+  const [refresh, setrefresh] = useState(false);
+  const [loading, setloading] = useState(false);
+
+  const imagepicker = () => {
+    setloading(true)
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400, multiple: true
+    }).then(image => {
+      setImages(image);
+      setloading(false)
+    }).catch(() => {
+      setloading(false)
+    })
+  }
+
+  const removeitem = (item) => {
+    const indexOfObject = Images.findIndex(object => {
+      return object.path === item.path;
+    });
+    Images.splice(indexOfObject, 1);
+    setImages(Images);
+    setrefresh(!refresh)
+  }
+
+
+  console.log('discussion',discussion)
+
+
+
   return (
     <>
       <>
@@ -50,6 +89,7 @@ const Creatediscussion = () => {
             <CreateDiscussionInput
               placeholder={'What is on your mind?'}
               multiline={true}
+              onChangeText={(e)=>{setdiscussion(e)}}
             />
           </Row>
           <Spacer height={24} />
@@ -60,19 +100,67 @@ const Creatediscussion = () => {
               <TagProductSvg />
               <TagProductText>Tag Product</TagProductText>
               <CountTaggedProduct> 1 Product </CountTaggedProduct>
-              <RightArrowSvg style={{position: 'absolute', right: 10}} />
+              <RightArrowSvg style={{ position: 'absolute', right: 10 }} />
             </Row>
           </TagProductWrap>
           <Label label={'Insert Image'} />
-          <UploadImgBigWrap activeOpacity={0.7}>
-            <UploadImg />
-            <Spacer height={9.18} />
-            <Smalltext
-              title={'Insert Image max 2mb'}
-              textAlign={'center'}
-              fontSize={12}
-            />
-          </UploadImgBigWrap>
+
+
+          {Images.length === 0 ?
+            <>
+              {loading === false ?
+                <UploadImgBigWrap activeOpacity={0.7} onPress={() => imagepicker()}>
+                  <UploadImg />
+                  <Spacer height={9.18} />
+                  <Smalltext
+                    title={'Insert Image max 2mb'}
+                    textAlign={'center'}
+                    fontSize={12}
+                  />
+                </UploadImgBigWrap>
+                :
+                <View>
+                  <ActivityIndicator size="large" color="#e74779" />
+                </View>
+              }
+            </>
+            : Images.length === 1 ?
+              <View>
+                <Image source={{ uri: Images[0].path }} style={{ height: 250, width: '100%', alignSelf: 'center', borderRadius: 10 }} />
+                <TouchableOpacity onPress={() => setImages([])} style={{
+                  position: 'absolute',
+                  right: -5,
+                  top: -10,
+                  backgroundColor: 'black',
+                  height: 30, width: 30, borderRadius: 20
+                }} />
+              </View>
+              : <FlatList
+                extraData={refresh}
+                showsHorizontalScrollIndicator={false}
+                numColumns={2}
+                columnWrapperStyle={{
+                  justifyContent: 'space-between',
+                  padding: 10,
+                  marginBottom: 20,
+                }}
+                data={Images}
+                renderItem={({ item, index }) => {
+                  return (
+                    <View key={index}>
+                      <Image source={{ uri: item.path }} style={{ height: 150, width: 150, alignSelf: 'center', borderRadius: 10 }} />
+                      <TouchableOpacity onPress={() => removeitem(item)} style={{
+                        position: 'absolute',
+                        right: -5,
+                        top: -10,
+                        backgroundColor: 'black',
+                        height: 30, width: 30, borderRadius: 20
+                      }} />
+                    </View>
+                  );
+                }}
+              />
+          }
         </ScrollableView>
       </>
       <BtnWrap>

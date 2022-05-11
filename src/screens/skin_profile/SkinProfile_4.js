@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { RNCamera } from 'react-native-camera';
+import { StyleSheet, View, Image, Dimensions, TouchableOpacity, Text } from 'react-native'
+
 
 import { UserDetail, LoginUser } from '../../store/reducer/auth_reducer/Auth_Reducer';
 
@@ -31,17 +34,29 @@ import Largetext from '../../components/common/Text/LargeText';
 
 const SkinProfile_4 = (props) => {
 
-
+  const [imageuri, setimageuri] = useState()
   const data3 = props?.route?.params?.data3;
   const navigation = useNavigation();
   const dispatch = useDispatch()
+  const { width, height } = Dimensions.get('window');
+
 
 
   const NextStep = () => {
     dispatch(UserDetail(data3))
     dispatch(LoginUser(true))
-
   }
+
+
+  const takePicture = async () => {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options);
+      console.log(data.uri);
+      setimageuri(data.uri)
+    }
+  };
+
 
 
   return (
@@ -64,14 +79,48 @@ const SkinProfile_4 = (props) => {
           <WarnText>Make sure you don’t wear makeup and glasses</WarnText>
         </WarningWrap>
         <ControlAlignCenter>
-          <TakeSelfieText>Take a Selfie</TakeSelfieText>
-          <TakeSelfieExample />
+          {/* <TakeSelfieText>Take a Selfie</TakeSelfieText> */}
+          {/* <TakeSelfieExample /> */}
+
+
+          {imageuri != undefined ?
+            <Image source={{ uri: imageuri }} style={[styles.preview,[{ scaleX: -1 }]]} />
+            :
+            <View style={styles.preview}>
+              <RNCamera
+                ref={ref => { this.camera = ref }}
+                style={styles.camera}
+                mirrorImage={false}
+                fixOrientation={true}
+                type={RNCamera.Constants.Type.front}
+                flashMode={RNCamera.Constants.FlashMode.off}
+                androidCameraPermissionOptions={{
+                  title: 'Permission to use camera',
+                  message: 'We need your permission to use your camera',
+                  buttonPositive: 'Ok',
+                  buttonNegative: 'Cancel',
+                }}
+              />
+            </View>
+          }
+
+
         </ControlAlignCenter>
         <Spacer height={normalize(120)} />
       </ScrollableView>
-      <Absolutebutton>
-        <Button title={'Next'} onPress={() => NextStep()} />
-      </Absolutebutton>
+      {imageuri != undefined ?
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20 }}>
+          <Buttone onPress={() => NextStep()}><Text>Next</Text></Buttone>
+          <Buttone onPress={() => setimageuri()}><Text>Re-Take</Text></Buttone>
+        </View>
+        :
+        <Absolutebutton>
+          {/* <Button title={'Capture'} onPress={() => takePicture()} /> */}
+             <Button title={'Next'} onPress={() => NextStep()} />
+         
+        </Absolutebutton>
+      }
+
     </SafeAreaContainer>
   );
 };
@@ -89,6 +138,18 @@ const WarningWrap = styled.View`
   margin-top: 24px;
   margin-bottom: 34px;
   height: 36px;
+  justify-content: center;
+  align-items: center;
+`;
+const Buttone = styled.TouchableOpacity`
+  background-color: #eb5757;
+  border-radius: 8px;
+  padding-vertical: 6px;
+  padding-horizontal: 15px;
+  margin-top: 24px;
+  margin-bottom: 34px;
+  height: 36px;
+  width:40%;
   justify-content: center;
   align-items: center;
 `;
@@ -113,3 +174,21 @@ const TakeSelfieText = styled.Text`
   font-weight: 500;
   font-family: Montserrat-Medium;
 `;
+
+
+const styles = StyleSheet.create({
+
+  preview: {
+    height: 280,
+    width: 280,
+    borderRadius: 150,
+    overflow: 'hidden',
+    backgroundColor: 'black',
+
+  },
+  camera: {
+    height: 280,
+    width: 280
+  }
+
+});
