@@ -41,7 +41,9 @@ const Creatediscussion = () => {
   const navigation = useNavigation();
 
   const [Images, setImages] = useState([]);
-  const [discussion,setdiscussion] = useState()
+  const [tagitem, settagitem] = useState([]);
+  const [tagextaitem, settagextaitem] = useState([])
+  const [discussion, setdiscussion] = useState()
   const [refresh, setrefresh] = useState(false);
   const [loading, setloading] = useState(false);
 
@@ -68,9 +70,9 @@ const Creatediscussion = () => {
   }
 
 
-  console.log('discussion',discussion)
-
-
+  const Tag1 = tagitem.filter(tagitem => tagitem.isselect === true);
+  const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
+  const TagProduct =  [...Tag1, ...Tag2];
 
   return (
     <>
@@ -89,17 +91,17 @@ const Creatediscussion = () => {
             <CreateDiscussionInput
               placeholder={'What is on your mind?'}
               multiline={true}
-              onChangeText={(e)=>{setdiscussion(e)}}
+              onChangeText={(e) => { setdiscussion(e) }}
             />
           </Row>
           <Spacer height={24} />
           <TagProductWrap
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('TagProducts')}>
+            onPress={() => navigation.navigate('TagProducts', { setTagProduct1: settagitem, setTagProduct2: settagextaitem })}>
             <Row justifyContent={'flex-start'}>
               <TagProductSvg />
               <TagProductText>Tag Product</TagProductText>
-              <CountTaggedProduct> 1 Product </CountTaggedProduct>
+              <CountTaggedProduct> {TagProduct.length} Product </CountTaggedProduct>
               <RightArrowSvg style={{ position: 'absolute', right: 10 }} />
             </Row>
           </TagProductWrap>

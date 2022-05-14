@@ -1,11 +1,11 @@
 //react
-import React from 'react';
+import React, { useState } from 'react';
 
 //flatlist
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
 //@react-navigation/native
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //react-native-bouncy-checkbox
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -39,39 +39,46 @@ import Edit from '../../../assets/svg/community/edit.svg';
 import Delete from '../../../assets/svg/community/delete.svg';
 
 //temp
-import LinkedProductImg from '../../../assets/temp/product_10.png';
 
 //demo data
-import {POPULAR_PRODUCT_DEMO_DATA} from '../../../components/svg_data/skin_data';
+import { POPULAR_PRODUCT_DEMO_DATA, linkedProductData } from '../../../components/svg_data/skin_data';
 
 const width = Dimensions.get('window').width;
 
-const TagProducts = () => {
+const TagProducts = (props) => {
+
+  const [Refresh, setRefresh] = useState(false);
+  const { setTagProduct1, setTagProduct2 } = props?.route?.params;
   const navigation = useNavigation();
 
-  const linkedProductData = [
-    {
-      img: LinkedProductImg,
-      title: 'MAYBELLINE - Volum Expres',
-      link: 'www.maybeline.com',
-      description:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-    },
-    {
-      img: LinkedProductImg,
-      title: 'MAYBELLINE - Volum Expres',
-      link: 'www.maybeline.com',
-      description:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-    },
-    {
-      img: LinkedProductImg,
-      title: 'MAYBELLINE - Volum Expres',
-      link: 'www.maybeline.com',
-      description:
-        'Amet minim mollit non deserunt ullamco est sjhjkhjkhjkhjkhkjkhkjhjkhjkhjkjjkljjlkjkljklghfghfghfghfghfghfghjkllkjkljkljlkjklgffghfghkljkjkljkhjkhkjhkjkljlkjlkit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-    },
-  ];
+
+  const onTagItem = (index) => {
+    const newData = [...POPULAR_PRODUCT_DEMO_DATA];
+    newData[index].isselect = !newData[index].isselect;
+    setRefresh(!Refresh);
+    setTagProduct1(newData)
+  }
+
+  const onTagItem2 = (index) => {
+    const newData = [...linkedProductData];
+    newData[index].isselect = !newData[index].isselect;
+    setRefresh(!Refresh);
+    setTagProduct2(newData)
+  }
+
+  const removeitem = (item) => {
+    const indexOfObject = linkedProductData.findIndex(object => {
+      return object.link === item.link;
+    });
+    linkedProductData.splice(indexOfObject, 1);
+    setRefresh(!Refresh);
+   let exm =  linkedProductData.filter(tagextaitem => tagextaitem.isselect === true);
+   setTagProduct2(exm)
+
+  }
+
+
+
 
   return (
     <Viewcontainer>
@@ -101,7 +108,7 @@ const TagProducts = () => {
               <RenderItemWrap
                 key={index}
                 activeOpacity={0.7}
-                onPress={() => alert('CLICKED')}>
+                onPress={() => onTagItem(index)}>
                 <SearchedItemImg source={item?.icon} />
                 <Column alignItems={'flex-start'}>
                   <SearchItemTitle>{item?.name}</SearchItemTitle>
@@ -110,8 +117,10 @@ const TagProducts = () => {
                 </Column>
                 <BouncyCheckBoxWrap>
                   <BouncyCheckbox
-                    iconStyle={{borderRadius: 5}}
-                    onPress={() => {}}
+                    iconStyle={{ borderRadius: 5 }}
+                    disableBuiltInState
+                    isChecked={item?.isselect}
+                    onPress={() => onTagItem(index)}
                     fillColor={'#E74779'}
                     textStyle={{
                       textDecorationLine: 'none',
@@ -145,12 +154,13 @@ const TagProducts = () => {
           <>
             <Spacer height={14.37} />
             {linkedProductData.map((item, index) => {
+
               return (
                 <LinkedProductWrap key={index}>
                   <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
                     <SearchedItemImg source={item.img} />
 
-                    <Column alignItems={'flex-start'}>
+                    <Column alignItems={'flex-start'} onPress={() => onTagItem(index)}>
                       <SearchItemTitle>{item.title}</SearchItemTitle>
                       <LinkedItemLink>{item.link}</LinkedItemLink>
                       <Spacer height={8.35} />
@@ -169,8 +179,10 @@ const TagProducts = () => {
 
                     <BouncyCheckBoxWrap>
                       <BouncyCheckbox
-                        iconStyle={{borderRadius: 5}}
-                        onPress={() => {}}
+                        iconStyle={{ borderRadius: 5 }}
+                        disableBuiltInState
+                        isChecked={item?.isselect}
+                        onPress={() => onTagItem2(index)}
                         fillColor={'#E74779'}
                         textStyle={{
                           textDecorationLine: 'none',
@@ -187,7 +199,7 @@ const TagProducts = () => {
                       <Edit />
                     </LinkedItemBottomIconsBtn>
                     <Spacer width={10} />
-                    <LinkedItemBottomIconsBtn>
+                    <LinkedItemBottomIconsBtn onPress={() => removeitem(item)}>
                       <Delete />
                     </LinkedItemBottomIconsBtn>
                   </Row>
@@ -201,8 +213,8 @@ const TagProducts = () => {
         {/* WILL BE REMOVED */}
       </ScrollableView>
 
-      <BtnWrap>
-        <Button title={'Ok'} />
+      <BtnWrap >
+        <Button title={'Ok'} onPress={() => navigation.goBack()} />
       </BtnWrap>
     </Viewcontainer>
   );

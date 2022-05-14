@@ -51,6 +51,9 @@ import Top10 from '../../assets/svg/products/top10products/top_10.svg';
 //small discount Banner
 import SmallDiscountBanner from '../../assets/svg/promo/small_discount_banner.svg';
 
+import LinkedProductImg from '../../assets/temp/product_10.png';
+
+
 export const SKIN_TYPE_DATA = [
   {
     skin_type_svg: Normal,
@@ -108,10 +111,10 @@ export const SKIN_UNDER_TONE_DATA = [
 ];
 
 export const CATEGORY_ROUND_DATA = [
-  {id: 0, svg: Face, name: 'Face'},
-  {id: 1, svg: Eyes, name: 'Eyes'},
-  {id: 2, svg: Lips, name: 'Lips'},
-  {id: 3, svg: Skin, name: 'Skin'},
+  { id: 0, svg: Face, name: 'Face' },
+  { id: 1, svg: Eyes, name: 'Eyes' },
+  { id: 2, svg: Lips, name: 'Lips' },
+  { id: 3, svg: Skin, name: 'Skin' },
 ];
 
 export const POPULAR_PRODUCT_DEMO_DATA = [
@@ -127,6 +130,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product2,
@@ -140,6 +144,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product3,
@@ -153,6 +158,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product4,
@@ -166,6 +172,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product5,
@@ -179,6 +186,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product6,
@@ -192,6 +200,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product7,
@@ -205,6 +214,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product8,
@@ -218,6 +228,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product9,
@@ -231,6 +242,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
   },
   {
     icon: Product10,
@@ -244,5 +256,34 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
+    isselect: false
+  },
+];
+
+export const linkedProductData = [
+  {
+    img: LinkedProductImg,
+    isselect: false,
+    title: 'MAYBELLINE - Volum Expres',
+    link: 'www.maybeline.com',
+    description:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+  },
+
+  {
+    img: LinkedProductImg,
+    isselect: false,
+    title: 'MAYBELLINE - Volum Expres',
+    link: 'www.maybeline.com',
+    description:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+  },
+  {
+    img: LinkedProductImg,
+    isselect: false,
+    title: 'MAYBELLINE - Volum Expres',
+    link: 'www.maybeline.com',
+    description:
+      'Amet minim mollit non deserunt ullamco est sjhjkhjkhjkhjkhkjkhkjhjkhjkhjkjjkljjlkjkljklghfghfghfghfghfghfghjkllkjkljkljlkjklgffghfghkljkjkljkhjkhkjhkjkljlkjlkit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
   },
 ];

@@ -22,6 +22,9 @@ import Spacer from '../../../containers/Spacer';
 import Column from '../../../containers/Column';
 import Row from '../../../containers/Row';
 
+import { linkedProductData } from '../../../components/svg_data/skin_data';
+
+
 const width = Dimensions.get('window').width;
 
 const CreateProductLink = () => {
@@ -30,8 +33,11 @@ const CreateProductLink = () => {
     title: addingLink.title,
     description: addingLink.description,
     image: addingLink.images,
+    isselect:true,
   });
   // https://www.instagram.com/reel/CcKjhyTj0mq/?igshid=NDA1YzNhOGU=
+
+  console.log('data',data)
 
   const linkFetch = async () => {
     try {
