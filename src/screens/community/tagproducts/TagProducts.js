@@ -50,6 +50,7 @@ const TagProducts = (props) => {
   const [Refresh, setRefresh] = useState(false);
   const { setTagProduct1, setTagProduct2 } = props?.route?.params;
   const navigation = useNavigation();
+  const [LinkProduct, setLinkProduct] = useState(linkedProductData)
 
 
   const onTagItem = (index) => {
@@ -60,20 +61,20 @@ const TagProducts = (props) => {
   }
 
   const onTagItem2 = (index) => {
-    const newData = [...linkedProductData];
+    const newData = [...LinkProduct];
     newData[index].isselect = !newData[index].isselect;
     setRefresh(!Refresh);
     setTagProduct2(newData)
   }
 
   const removeitem = (item) => {
-    const indexOfObject = linkedProductData.findIndex(object => {
+    const indexOfObject = LinkProduct.findIndex(object => {
       return object.link === item.link;
     });
-    linkedProductData.splice(indexOfObject, 1);
+    LinkProduct.splice(indexOfObject, 1);
     setRefresh(!Refresh);
-   let exm =  linkedProductData.filter(tagextaitem => tagextaitem.isselect === true);
-   setTagProduct2(exm)
+    let exm = LinkProduct.filter(tagextaitem => tagextaitem.isselect === true);
+    setTagProduct2(exm)
 
   }
 
@@ -132,7 +133,7 @@ const TagProducts = (props) => {
           })}
         </SearchedDataWrap>
 
-        <ProductLinkWrap onPress={() => navigation.navigate('ProductLink')}>
+        <ProductLinkWrap onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh })}>
           <Row justifyContent={'flex-start'} alignItems={'center'}>
             <TagProductLink />
             <Spacer width={8} />
@@ -150,15 +151,21 @@ const TagProducts = (props) => {
             </PlusWrap>
           </Row>
         </ProductLinkWrap>
-        {linkedProductData.length > 0 ? (
+        {LinkProduct.length > 0 ? (
           <>
             <Spacer height={14.37} />
-            {linkedProductData.map((item, index) => {
+            {LinkProduct.map((item, index) => {
 
+              console.log('item===>', item.img)
               return (
                 <LinkedProductWrap key={index}>
                   <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
-                    <SearchedItemImg source={item.img} />
+
+                    {item.uri === true ?
+                      <SearchedItemImg source={{ uri: item.img }} /> :
+
+                      <SearchedItemImg source={item.img} />
+                    }
 
                     <Column alignItems={'flex-start'} onPress={() => onTagItem(index)}>
                       <SearchItemTitle>{item.title}</SearchItemTitle>

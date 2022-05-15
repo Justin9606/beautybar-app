@@ -1,12 +1,13 @@
 //react
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 //flatlist
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
 //styled
 import styled from 'styled-components';
 
-import {getLinkPreview} from 'link-preview-js';
+import { getLinkPreview } from 'link-preview-js';
+import { useNavigation } from '@react-navigation/native';
 
 //community components
 import Label from '../components/Label';
@@ -27,23 +28,33 @@ import { linkedProductData } from '../../../components/svg_data/skin_data';
 
 const width = Dimensions.get('window').width;
 
-const CreateProductLink = () => {
+const CreateProductLink = (props) => {
   const [addingLink, setAddingLink] = useState('');
   const [data, setData] = useState({
     title: addingLink.title,
     description: addingLink.description,
     image: addingLink.images,
-    isselect:true,
+    isselect: true,
   });
   // https://www.instagram.com/reel/CcKjhyTj0mq/?igshid=NDA1YzNhOGU=
 
-  console.log('data',data)
+
+  const { setLinkProduct, LinkProduct ,setRefresh, Refresh} = props?.route?.params;
+  const navigation = useNavigation()
 
   const linkFetch = async () => {
     try {
       const response = await getLinkPreview(`${addingLink}`);
       console.log(response);
       setAddingLink(response);
+      setData({
+        title: response.title,
+        description: response.description,
+        img: response.images[0],
+        isselect: false,
+        uri:true
+
+      })
     } catch (err) {
       console.log(err);
     }
@@ -51,6 +62,15 @@ const CreateProductLink = () => {
   useEffect(() => {
     linkFetch();
   }, [addingLink]);
+
+
+  const AddItme = () => {
+    // setLinkProduct([...LinkProduct, data]);
+    linkedProductData.push(data)
+    navigation.goBack()
+    setRefresh(!Refresh)
+
+  }
 
   return (
     <Viewcontainer>
@@ -135,7 +155,7 @@ const CreateProductLink = () => {
       </ScrollableView>
 
       <BtnWrap>
-        <Button title={'Add'} />
+        <Button title={'Add'} onPress={() => { AddItme() }} />
       </BtnWrap>
     </Viewcontainer>
   );

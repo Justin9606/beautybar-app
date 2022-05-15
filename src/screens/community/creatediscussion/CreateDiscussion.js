@@ -60,6 +60,19 @@ const Creatediscussion = () => {
     })
   }
 
+  const imagepicker2 = () => {
+    setloading(true)
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400, multiple: true
+    }).then(image => {
+      setImages([...Images,...image]);
+      setloading(false)
+    }).catch(() => {
+      setloading(false)
+    })
+  }
+
   const removeitem = (item) => {
     const indexOfObject = Images.findIndex(object => {
       return object.path === item.path;
@@ -72,7 +85,7 @@ const Creatediscussion = () => {
 
   const Tag1 = tagitem.filter(tagitem => tagitem.isselect === true);
   const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
-  const TagProduct =  [...Tag1, ...Tag2];
+  const TagProduct = [...Tag1, ...Tag2];
 
   return (
     <>
@@ -163,6 +176,7 @@ const Creatediscussion = () => {
                 }}
               />
           }
+          <Button title={'Add More Images'} onPress={()=>imagepicker2()} />
         </ScrollableView>
       </>
       <BtnWrap>

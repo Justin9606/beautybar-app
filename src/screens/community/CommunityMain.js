@@ -1,8 +1,8 @@
 //react
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 //react native
-import {FlatList, useWindowDimensions} from 'react-native';
+import { FlatList, useWindowDimensions } from 'react-native';
 
 //styled
 import styled from 'styled-components';
@@ -18,6 +18,10 @@ import Header from '../../components/common/Header/Header';
 
 //community components
 import PostBottomBtns from './components/PostBottomBtns';
+
+//Slider
+import ImageSlider from '../../components/ImageSlider/ImageSlider';
+
 
 const postData = [
   {
@@ -37,7 +41,7 @@ const postData = [
     time: '2 min ago',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: require('../../assets/icons/temp/postmainimg.png'),
+    postImg: [require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png'),],
     like: 7,
     comment: 8,
   },
@@ -47,7 +51,7 @@ const postData = [
     time: '20 min ago',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: require('../../assets/icons/temp/postmainimg.png'),
+    postImg: [require('../../assets/icons/temp/postmainimg.png'),],
     like: 13,
     comment: 89,
   },
@@ -56,13 +60,13 @@ const postData = [
     name: 'Lux Bar',
     time: '2 min ago',
     descr: 'Amet minim mollit non deserunt',
-    postImg: require('../../assets/icons/temp/postmainimg.png'),
+    postImg: [require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png')],
     like: 500,
     comment: 300,
   },
 ];
 
-const CommunityMain = ({}) => {
+const CommunityMain = ({ }) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
 
@@ -98,7 +102,7 @@ const CommunityMain = ({}) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={tagsData}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return (
               <TagsBtn
                 index={index}
@@ -117,7 +121,8 @@ const CommunityMain = ({}) => {
         <FlatList
           scrollEnabled={false}
           data={postData}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
+            console.log('item?.postImg',item?.postImg)
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
@@ -142,10 +147,12 @@ const CommunityMain = ({}) => {
                 </Row>
                 <PostDescript>{item.descr}</PostDescript>
                 {item?.postImg !== '' ? (
-                  <PostMainImg
-                    source={item?.postImg}
-                    style={{height: height / 4.2}}
-                  />
+                  // <PostMainImg
+                  //   source={item?.postImg}
+                  //   style={{height: height / 4.2}}
+                  // />
+                  <ImageSlider images={item?.postImg} />
+
                 ) : (
                   <Spacer height={10.25} />
                 )}
