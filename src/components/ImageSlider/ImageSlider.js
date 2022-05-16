@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, StyleSheet, SafeAreaView, ScrollView, Dimensions, Text} from 'react-native';
+import { View, Image, StyleSheet, FlatList, ScrollView, Dimensions, Text } from 'react-native';
 
 const ImageSlider = ({ images }) => {
 
@@ -17,12 +17,33 @@ const ImageSlider = ({ images }) => {
         }
     };
 
+    const renderItem = ({ item }) => {
+
+        return (
+            <Image
+                source={item}
+                style={{ width, height, resizeMode: 'cover' }}
+            />
+        );
+    };
+
+
 
     return (
         <View>
 
+            <FlatList
+                pagingEnabled
+                horizontal
+                onScroll={onScrollChange}
+                showsHorizontalScrollIndicator={false}
+                style={{ width, height }}
+                data={images}
+                renderItem={renderItem}
+                keyExtractor={(item,index) => index}
+            />
 
-            <ScrollView
+            {/* <ScrollView
                 pagingEnabled
                 horizontal
                 onScroll={onScrollChange}
@@ -40,8 +61,8 @@ const ImageSlider = ({ images }) => {
                         />
                     )
                 })}
+            </ScrollView> */}
 
-            </ScrollView>
             <View style={styles.pagination}>
                 {images.map((i, k) => (
                     <Text key={k} style={k == active ? styles.activeDot : styles.dot}>
