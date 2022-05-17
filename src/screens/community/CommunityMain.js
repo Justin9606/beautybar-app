@@ -41,7 +41,10 @@ const postData = [
     time: '2 min ago',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png'),],
+    postImg: [
+      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
+      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
+    ],
     like: 7,
     comment: 8,
   },
@@ -51,7 +54,7 @@ const postData = [
     time: '20 min ago',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [require('../../assets/icons/temp/postmainimg.png'),],
+    postImg: [ { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }],
     like: 13,
     comment: 89,
   },
@@ -60,8 +63,10 @@ const postData = [
     name: 'Lux Bar',
     time: '2 min ago',
     descr: 'Amet minim mollit non deserunt',
-    postImg: [require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png')],
-    like: 500,
+    postImg: [
+      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
+      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
+    ],    like: 500,
     comment: 300,
   },
 ];
@@ -122,7 +127,7 @@ const CommunityMain = ({ }) => {
           scrollEnabled={false}
           data={postData}
           renderItem={({ item, index }) => {
-            console.log('item?.postImg',item?.postImg)
+            console.log('item?.postImg', item?.postImg)
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
