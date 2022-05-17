@@ -23,57 +23,12 @@ import PostBottomBtns from './components/PostBottomBtns';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
 
-const postData = [
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Beauty Bar',
-    time: '2 min ago',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-
-    postImg: '',
-    like: 12,
-    comment: 5,
-  },
-  {
-    user_pic: '',
-    name: 'Justin',
-    time: '2 min ago',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
-    ],
-    like: 7,
-    comment: 8,
-  },
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Soap Bar',
-    time: '20 min ago',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [ { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }],
-    like: 13,
-    comment: 89,
-  },
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Lux Bar',
-    time: '2 min ago',
-    descr: 'Amet minim mollit non deserunt',
-    postImg: [
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
-    ],    like: 500,
-    comment: 300,
-  },
-];
+import {postData} from '../../components/svg_data/skin_data'
 
 const CommunityMain = ({ }) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
+  const [update,setUpdate] = useState(false)
 
   const tagsData = [
     {
@@ -101,6 +56,7 @@ const CommunityMain = ({ }) => {
         notif_right={'notification'}
         search_right={'search'}
         create_post={'create_post'}
+        setUpdate={setUpdate}
       />
       <TagsWrap>
         <FlatList
@@ -126,6 +82,7 @@ const CommunityMain = ({ }) => {
         <FlatList
           scrollEnabled={false}
           data={postData}
+          extraData={update}
           renderItem={({ item, index }) => {
             console.log('item?.postImg', item?.postImg)
             return (
