@@ -23,52 +23,12 @@ import PostBottomBtns from './components/PostBottomBtns';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
 
-const postData = [
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Beauty Bar',
-    time: '2 min ago',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-
-    postImg: '',
-    like: 12,
-    comment: 5,
-  },
-  {
-    user_pic: '',
-    name: 'Justin',
-    time: '2 min ago',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png'),],
-    like: 7,
-    comment: 8,
-  },
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Soap Bar',
-    time: '20 min ago',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [require('../../assets/icons/temp/postmainimg.png'),],
-    like: 13,
-    comment: 89,
-  },
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Lux Bar',
-    time: '2 min ago',
-    descr: 'Amet minim mollit non deserunt',
-    postImg: [require('../../assets/icons/temp/postmainimg.png'),require('../../assets/icons/temp/postmainimg.png')],
-    like: 500,
-    comment: 300,
-  },
-];
+import {postData} from '../../components/svg_data/skin_data'
 
 const CommunityMain = ({ }) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
+  const [update,setUpdate] = useState(false)
 
   const tagsData = [
     {
@@ -96,6 +56,7 @@ const CommunityMain = ({ }) => {
         notif_right={'notification'}
         search_right={'search'}
         create_post={'create_post'}
+        setUpdate={setUpdate}
       />
       <TagsWrap>
         <FlatList
@@ -121,8 +82,9 @@ const CommunityMain = ({ }) => {
         <FlatList
           scrollEnabled={false}
           data={postData}
+          extraData={update}
           renderItem={({ item, index }) => {
-            console.log('item?.postImg',item?.postImg)
+            console.log('item?.postImg', item?.postImg)
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>

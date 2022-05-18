@@ -35,7 +35,10 @@ import Smalltext from '../../../components/common/Text/SmallText';
 import CreateDiscussionInput from '../components/CreateDiscussionInput';
 import Label from '../components/Label';
 
-const Creatediscussion = () => {
+import { postData } from '../../../components/svg_data/skin_data'
+
+
+const Creatediscussion = (props) => {
 
 
   const navigation = useNavigation();
@@ -46,6 +49,9 @@ const Creatediscussion = () => {
   const [discussion, setdiscussion] = useState()
   const [refresh, setrefresh] = useState(false);
   const [loading, setloading] = useState(false);
+  const setUpdate = props?.route?.params;
+
+
 
   const imagepicker = () => {
     setloading(true)
@@ -66,7 +72,7 @@ const Creatediscussion = () => {
       width: 300,
       height: 400, multiple: true
     }).then(image => {
-      setImages([...Images,...image]);
+      setImages([...Images, ...image]);
       setloading(false)
     }).catch(() => {
       setloading(false)
@@ -79,7 +85,26 @@ const Creatediscussion = () => {
     });
     Images.splice(indexOfObject, 1);
     setImages(Images);
+    setrefresh(!refresh);
+  }
+
+  const AddDiscussion = () => {
+    let data = {
+      user_pic: require('../../../assets/icons/temp/user_profile_pic.png'),
+      name: 'Mukthayar Auto New',
+      time: '20 y ago',
+      descr:discussion,
+      postImg:[{url:Images[0].path}],
+      like: 20,
+      comment: 20,
+    }
+
+    postData.push(data);
     setrefresh(!refresh)
+    setUpdate.setUpdate(data)
+    navigation.goBack()
+
+    console.log('url:Images[0]',Images[0].path)
   }
 
 
@@ -176,11 +201,11 @@ const Creatediscussion = () => {
                 }}
               />
           }
-          <Button title={'Add More Images'} onPress={()=>imagepicker2()} />
+          <Button title={'Add More Images'} onPress={() => imagepicker2()} />
         </ScrollableView>
       </>
       <BtnWrap>
-        <Button title={'Create Discussion'} />
+        <Button title={'Create Discussion'} onPress={() => AddDiscussion()} />
       </BtnWrap>
     </>
   );
