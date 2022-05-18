@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { FlatList } from 'react-native';
+import React, {useState} from 'react';
+import {FlatList} from 'react-native';
 import styled from 'styled-components';
 
 //react-navigation/native
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //normalizer
-import { normalize } from '../../constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import ViewContainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import Absolutebutton from '../../containers/AbsoluteButton';
@@ -35,10 +35,7 @@ import {
   SKIN_UNDER_TONE_DATA,
 } from '../../components/svg_data/skin_data';
 
-
-const SkinProfile_2 = (props) => {
-  ;
-
+const SkinProfile_2 = props => {
   const [SkinType, setSkinTypes] = useState();
   const [SkinTone, setSkinTone] = useState();
   const [SkinUnderTone, setSkinUnderTone] = useState();
@@ -46,70 +43,77 @@ const SkinProfile_2 = (props) => {
   const data1 = props?.route?.params?.data1;
   const navigation = useNavigation();
 
-  console.log('SkinType',SkinType)
+  console.log('SkinType', SkinType);
 
   const NextStep = () => {
+    const data2 = {...data1, SkinType, SkinTone, SkinUnderTone};
 
-    const data2 = {...data1,SkinType,SkinTone,SkinUnderTone }
-
-
-    if (SkinType != undefined && SkinTone != undefined && SkinUnderTone != undefined) {
-      navigation.navigate('SkinProfile_3',{data2})
+    if (
+      SkinType != undefined &&
+      SkinTone != undefined &&
+      SkinUnderTone != undefined
+    ) {
+      navigation.navigate('SkinProfile_3', {data2});
+    } else {
+      alert('Please fill all filed');
     }
-    else {
-      alert('Please fill all filed')
-    }
+  };
 
-  }
-
-
-  const _renderItem = ({ text, skin_type_svg, onPress, index }) => {
-
+  const _renderItem = ({text, skin_type_svg, onPress, index}) => {
     return (
       <Container onPress={onPress} index={index}>
         <SvgWrap
           style={[
-            { borderWidth: SkinType == text ? 3 : 0, borderColor: SkinType == text ? 'red' : null, borderRadius: 30 },
-
-
-          ]}
-        >{skin_type_svg}</SvgWrap>
+            {
+              borderWidth: SkinType == text ? 3 : 0,
+              borderColor: SkinType == text ? 'red' : null,
+              borderRadius: 30,
+            },
+          ]}>
+          {skin_type_svg}
+        </SvgWrap>
         <SkinTypeText>{text}</SkinTypeText>
       </Container>
     );
   };
-  const _renderItem2 = ({ text, skin_type_svg, onPress, index }) => {
+  const _renderItem2 = ({text, skin_type_svg, onPress, index}) => {
     return (
       <Container onPress={onPress} index={index}>
         <SvgWrap
           style={[
-            { borderWidth: SkinTone == text ? 3 : 0, borderColor: SkinTone == text ? 'red' : null, borderRadius: 30 }
-
-          ]}
-        >{skin_type_svg}</SvgWrap>
-        <SkinTypeText>{text}</SkinTypeText>
-      </Container>
-    );
-  };
-
-  const _renderItem3 = ({ text, skin_type_svg, onPress, index }) => {
-    return (
-      <Container onPress={onPress} index={index}>
-        <SvgWrap
-          style={[
-            { borderWidth: SkinUnderTone == text ? 3 : 0, borderColor: SkinUnderTone == text ? 'red' : null, borderRadius: 30 }
-
-          ]}
-        >{skin_type_svg}</SvgWrap>
+            {
+              borderWidth: SkinTone == text ? 3 : 0,
+              borderColor: SkinTone == text ? 'red' : null,
+              borderRadius: 30,
+            },
+          ]}>
+          {skin_type_svg}
+        </SvgWrap>
         <SkinTypeText>{text}</SkinTypeText>
       </Container>
     );
   };
 
-
+  const _renderItem3 = ({text, skin_type_svg, onPress, index}) => {
+    return (
+      <Container onPress={onPress} index={index}>
+        <SvgWrap
+          style={[
+            {
+              borderWidth: SkinUnderTone == text ? 3 : 0,
+              borderColor: SkinUnderTone == text ? 'red' : null,
+              borderRadius: 30,
+            },
+          ]}>
+          {skin_type_svg}
+        </SvgWrap>
+        <SkinTypeText>{text}</SkinTypeText>
+      </Container>
+    );
+  };
 
   return (
-    <SafeAreaContainer>
+    <ViewContainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -137,7 +141,7 @@ const SkinProfile_2 = (props) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={SKIN_TYPE_DATA}
-          renderItem={({ item, index }) => {
+          renderItem={({item, index}) => {
             const SKIN_TYPE_SVG = item.skin_type_svg;
 
             return (
@@ -158,7 +162,7 @@ const SkinProfile_2 = (props) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={SKIN_TONE_DATA}
-          renderItem={({ item, index }) => {
+          renderItem={({item, index}) => {
             const SKIN_TYPE_SVG = item.skin_tone_svg;
 
             return (
@@ -179,7 +183,7 @@ const SkinProfile_2 = (props) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={SKIN_UNDER_TONE_DATA}
-          renderItem={({ item, index }) => {
+          renderItem={({item, index}) => {
             const SKIN_TYPE_SVG = item.skin_under_tone_svg;
             return (
               <_renderItem3
@@ -199,12 +203,9 @@ const SkinProfile_2 = (props) => {
       </ScrollableView>
 
       <Absolutebutton>
-        <Button
-          title={'Next'}
-          onPress={() => NextStep()}
-        />
+        <Button title={'Next'} onPress={() => NextStep()} />
       </Absolutebutton>
-    </SafeAreaContainer>
+    </ViewContainer>
   );
 };
 export default SkinProfile_2;

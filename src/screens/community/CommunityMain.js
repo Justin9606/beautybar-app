@@ -1,8 +1,8 @@
 //react
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 //react native
-import { FlatList, useWindowDimensions } from 'react-native';
+import {FlatList, useWindowDimensions} from 'react-native';
 
 //styled
 import styled from 'styled-components';
@@ -22,13 +22,12 @@ import PostBottomBtns from './components/PostBottomBtns';
 //Slider
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
+import {postData} from '../../components/svg_data/skin_data';
 
-import {postData} from '../../components/svg_data/skin_data'
-
-const CommunityMain = ({ }) => {
+const CommunityMain = ({}) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
-  const [update,setUpdate] = useState(false)
+  const [update, setUpdate] = useState(false);
 
   const tagsData = [
     {
@@ -63,7 +62,7 @@ const CommunityMain = ({ }) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={tagsData}
-          renderItem={({ item, index }) => {
+          renderItem={({item, index}) => {
             return (
               <TagsBtn
                 index={index}
@@ -83,8 +82,8 @@ const CommunityMain = ({ }) => {
           scrollEnabled={false}
           data={postData}
           extraData={update}
-          renderItem={({ item, index }) => {
-            console.log('item?.postImg', item?.postImg)
+          renderItem={({item, index}) => {
+            console.log('item?.postImg', item?.postImg);
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
@@ -107,14 +106,13 @@ const CommunityMain = ({ }) => {
                     <FollowText>Follow</FollowText>
                   </FollowBtnWrap>
                 </Row>
-                <PostDescript>{item.descr}</PostDescript>
+                <PostDescription>{item.descr}</PostDescription>
                 {item?.postImg !== '' ? (
                   // <PostMainImg
                   //   source={item?.postImg}
                   //   style={{height: height / 4.2}}
                   // />
                   <ImageSlider images={item?.postImg} />
-
                 ) : (
                   <Spacer height={10.25} />
                 )}
@@ -227,7 +225,7 @@ const PostTime = styled.Text`
   line-height: 12px;
   color: #7f7e83;
 `;
-const PostDescript = styled.Text`
+const PostDescription = styled.Text`
   margin-top: 24px;
   font-family: Montserrat-Medium;
   font-style: normal;

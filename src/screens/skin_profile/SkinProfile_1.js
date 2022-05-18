@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
-
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 //normalizer
-import { normalize } from '../../constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //react-native-bouncy-checkbox
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -13,16 +12,16 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import ViewContainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
-import Absolutebutton from '../../containers/AbsoluteButton';
+import AbsoluteButton from '../../containers/AbsoluteButton';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';
 import Header from '../../components/common/Header/Header';
-import Textinput from '../../components/common/TextInputs/TextInput';
+import TextInput from '../../components/common/TextInputs/TextInput';
 
 //skin profile svg step_1
 import Step_1 from '../../assets/svg/skin_profiling/step_1.svg';
@@ -37,31 +36,33 @@ const SkinProfile_1 = () => {
   const [name, setname] = useState();
   const [age, setage] = useState();
 
-  const phone = useSelector((state) => { return  state.persistedReducer.AuthReducer.UserPhone })
-
+  const phone = useSelector(state => {
+    return state.persistedReducer.AuthReducer.UserPhone;
+  });
 
   const NextStep = () => {
+    const data1 = {name, gender, age, phone};
 
-    const data1 = { name, gender, age, phone }
-
-    if (name != null && name != undefined && gender != undefined && age != null && age != undefined) {
-      navigation.navigate('SkinProfile_2', { data1 })
+    if (
+      name !== null &&
+      name !== undefined &&
+      gender !== undefined &&
+      age !== null &&
+      age !== undefined
+    ) {
+      navigation.navigate('SkinProfile_2', {data1});
+    } else {
+      alert('Please fill all filed');
     }
-    else {
-      alert('Please fill all filed')
-    }
-
-  }
-
+  };
 
   return (
-    <SafeAreaContainer>
+    <ViewContainer>
       <Header back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
         <Step_1 />
       </ControlAlignCenter>
-
       <ScrollableView>
         <ControlAlignCenter>
           <Spacer height={normalize(40)} />
@@ -72,18 +73,18 @@ const SkinProfile_1 = () => {
             marginTop={24}
           />
         </ControlAlignCenter>
-        <Textinput
+        <TextInput
           inputeLabel={'Name'}
           placeholder={'Enter your name'}
           marginTop={normalize(40)}
-          onChangeText={(e) => setname(e)}
+          onChangeText={e => setname(e)}
         />
-        <Textinput
+        <TextInput
           inputeLabel={'Age'}
           placeholder={'Enter your age'}
           marginTop={normalize(23)}
           keyboardType={'phone-pad'}
-          onChangeText={(e) => setage(e)}
+          onChangeText={e => setage(e)}
         />
         <GenderSelectionWrap>
           <LabelWrap>Gender</LabelWrap>
@@ -108,18 +109,14 @@ const SkinProfile_1 = () => {
               textStyle={{
                 textDecorationLine: 'none',
               }}
-
             />
           </BounyCheckBoxContainer>
         </GenderSelectionWrap>
       </ScrollableView>
-      <Absolutebutton>
-        <Button
-          title="Next"
-          onPress={() => NextStep()}
-        />
-      </Absolutebutton>
-    </SafeAreaContainer>
+      <AbsoluteButton>
+        <Button title="Next" onPress={() => NextStep()} />
+      </AbsoluteButton>
+    </ViewContainer>
   );
 };
 export default SkinProfile_1;

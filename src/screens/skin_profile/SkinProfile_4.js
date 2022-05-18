@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { RNCamera } from 'react-native-camera';
-import { StyleSheet, View, Image, Dimensions, TouchableOpacity, Text } from 'react-native'
+import {useDispatch, useSelector} from 'react-redux';
+import {RNCamera} from 'react-native-camera';
+import {
+  StyleSheet,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 
-
-import { UserDetail, LoginUser } from '../../store/reducer/auth_reducer/Auth_Reducer';
-
+import {
+  UserDetail,
+  LoginUser,
+} from '../../store/reducer/auth_reducer/Auth_Reducer';
 
 //normalizer
-import { normalize } from '../../constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import ViewContainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import Absolutebutton from '../../containers/AbsoluteButton';
@@ -32,35 +40,29 @@ import TakeSelfieExample from '../../assets/svg/skin_profiling/take_selfie_examp
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
 
-const SkinProfile_4 = (props) => {
-
-  const [imageuri, setimageuri] = useState()
+const SkinProfile_4 = props => {
+  const [imageuri, setimageuri] = useState();
   const data3 = props?.route?.params?.data3;
   const navigation = useNavigation();
-  const dispatch = useDispatch()
-  const { width, height } = Dimensions.get('window');
-
-
+  const dispatch = useDispatch();
+  const {width, height} = Dimensions.get('window');
 
   const NextStep = () => {
-    dispatch(UserDetail(data3))
-    dispatch(LoginUser(true))
-  }
-
+    dispatch(UserDetail(data3));
+    dispatch(LoginUser(true));
+  };
 
   const takePicture = async () => {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = {quality: 0.5, base64: true};
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
-      setimageuri(data.uri)
+      setimageuri(data.uri);
     }
   };
 
-
-
   return (
-    <SafeAreaContainer>
+    <ViewContainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -82,13 +84,17 @@ const SkinProfile_4 = (props) => {
           {/* <TakeSelfieText>Take a Selfie</TakeSelfieText> */}
           {/* <TakeSelfieExample /> */}
 
-
-          {imageuri != undefined ?
-            <Image source={{ uri: imageuri }} style={[styles.preview,[{ scaleX: -1 }]]} />
-            :
+          {imageuri != undefined ? (
+            <Image
+              source={{uri: imageuri}}
+              style={[styles.preview, [{scaleX: -1}]]}
+            />
+          ) : (
             <View style={styles.preview}>
               <RNCamera
-                ref={ref => { this.camera = ref }}
+                ref={ref => {
+                  this.camera = ref;
+                }}
                 style={styles.camera}
                 mirrorImage={false}
                 fixOrientation={true}
@@ -102,26 +108,32 @@ const SkinProfile_4 = (props) => {
                 }}
               />
             </View>
-          }
-
-
+          )}
         </ControlAlignCenter>
         <Spacer height={normalize(120)} />
       </ScrollableView>
-      {imageuri != undefined ?
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20 }}>
-          <Buttone onPress={() => NextStep()}><Text>Next</Text></Buttone>
-          <Buttone onPress={() => setimageuri()}><Text>Re-Take</Text></Buttone>
+      {imageuri !== undefined ? (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginLeft: 20,
+            marginRight: 20,
+          }}>
+          <Buttone onPress={() => NextStep()}>
+            <Text>Next</Text>
+          </Buttone>
+          <Buttone onPress={() => setimageuri()}>
+            <Text>Re-Take</Text>
+          </Buttone>
         </View>
-        :
+      ) : (
         <Absolutebutton>
           {/* <Button title={'Capture'} onPress={() => takePicture()} /> */}
-             <Button title={'Next'} onPress={() => NextStep()} />
-         
+          <Button title={'Next'} onPress={() => NextStep()} />
         </Absolutebutton>
-      }
-
-    </SafeAreaContainer>
+      )}
+    </ViewContainer>
   );
 };
 
@@ -149,7 +161,7 @@ const Buttone = styled.TouchableOpacity`
   margin-top: 24px;
   margin-bottom: 34px;
   height: 36px;
-  width:40%;
+  width: 40%;
   justify-content: center;
   align-items: center;
 `;
@@ -175,20 +187,16 @@ const TakeSelfieText = styled.Text`
   font-family: Montserrat-Medium;
 `;
 
-
 const styles = StyleSheet.create({
-
   preview: {
     height: 280,
     width: 280,
     borderRadius: 150,
     overflow: 'hidden',
     backgroundColor: 'black',
-
   },
   camera: {
     height: 280,
-    width: 280
-  }
-
+    width: 280,
+  },
 });

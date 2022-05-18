@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch,useSelector } from 'react-redux';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 
 //function
-import {UserPhone} from '../../store/reducer/auth_reducer/Auth_Reducer'
-
+import {UserPhone} from '../../store/reducer/auth_reducer/Auth_Reducer';
 
 //validator
 import {
@@ -20,10 +19,10 @@ import styled from 'styled-components';
 import VerificationCells from './VerificationCells';
 
 //normalize from constants
-import { normalize } from '../../constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import ViewContainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
@@ -40,29 +39,25 @@ import Smalltext from '../../components/common/Text/SmallText';
 import VerifySvg from '../../assets/svg/login/verification.svg';
 
 const CELL_COUNT = 4;
-const Verification = (props) => {
-
+const Verification = props => {
   const [value, setValue] = useState('2222');
-  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [propss, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
 
   const navigation = useNavigation();
-  const dispatch = useDispatch()
-  const Phone = props?.route?.params?.Phone
-
-
+  const dispatch = useDispatch();
+  const Phone = props?.route?.params?.Phone;
 
   const MoveToRegisteration = () => {
-    navigation.navigate('SkinProfile_1')
-    dispatch(UserPhone(Phone))
-  }
-
+    navigation.navigate('SkinProfile_1');
+    dispatch(UserPhone(Phone));
+  };
 
   return (
-    <SafeAreaContainer>
+    <ViewContainer>
       <Header back_with_rec_icon={'back_with_rec_icon'} />
       <ScrollableView>
         <Spacer height={normalize(30)} />
@@ -89,7 +84,7 @@ const Verification = (props) => {
           value={value}
           {...propss}
           codeFieldRoot={styles.root}
-          renderCells={({ index, symbol, isFocused }) => (
+          renderCells={({index, symbol, isFocused}) => (
             <View
               onLayout={getCellOnLayoutHandler(index)}
               key={index}
@@ -118,11 +113,10 @@ const Verification = (props) => {
             width={200}
             height={17}
             textAlign={'center'}
-
           />
         </ControlAlignCenter>
       </ScrollableView>
-    </SafeAreaContainer>
+    </ViewContainer>
   );
 };
 

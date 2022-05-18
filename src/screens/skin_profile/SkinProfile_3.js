@@ -1,16 +1,16 @@
 import React from 'react';
 
 //react-navigation/native
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //styled components
 import styled from 'styled-components';
 
 //normalizer
-import { normalize } from '../../constants/responsive';
+import {normalize} from '../../constants/responsive';
 
 //containers
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
+import ViewContainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
 import Absolutebutton from '../../containers/AbsoluteButton';
@@ -27,19 +27,19 @@ import Step_2_Profile from '../../assets/svg/skin_profiling/step_2_skin_profile.
 //Texts
 import Largetext from '../../components/common/Text/LargeText';
 import Smalltext from '../../components/common/Text/SmallText';
-import { useState } from 'react';
+import {useState} from 'react';
 
 const data = [
-  { text: 'Acne', isselect: false },
-  { text: 'Seburn', isselect: false },
-  { text: 'Sensitivity', isselect: false },
-  { text: 'Acne Scars', isselect: false },
-  { text: 'Big Pores', isselect: false },
-  { text: 'Eczerna', isselect: false },
-  { text: 'Blushing', isselect: false },
+  {text: 'Acne', isselect: false},
+  {text: 'Seburn', isselect: false},
+  {text: 'Sensitivity', isselect: false},
+  {text: 'Acne Scars', isselect: false},
+  {text: 'Big Pores', isselect: false},
+  {text: 'Eczerna', isselect: false},
+  {text: 'Blushing', isselect: false},
 ];
 
-const ToggleableButton = ({ onPress, title, isActive }) => {
+const ToggleableButton = ({onPress, title, isActive}) => {
   return (
     <PressableWrap onPress={onPress} isActive={isActive}>
       <Title>{title}</Title>
@@ -47,53 +47,42 @@ const ToggleableButton = ({ onPress, title, isActive }) => {
   );
 };
 
-const SkinProfile_3 = (props) => {
-
-
+const SkinProfile_3 = props => {
   const data2 = props?.route?.params?.data2;
   const navigation = useNavigation();
   const [SkinIssues, setSkinIssues] = useState([]);
-  let IssuesOfSkin = []
+  let IssuesOfSkin = [];
 
-  const SELECTITEM = (index) => {
-
+  const SELECTITEM = index => {
     let arr = data.map((v, i) => {
+      if (index == i) {
+        v.isselect = !v.isselect;
+      }
+      return {...v};
+    });
 
-      if (index == i) { v.isselect = !v.isselect }
-      return { ...v }
-    })
+    setSkinIssues(arr);
+  };
 
-    setSkinIssues(arr)
-
-  }
-
-  console.log('IssuesOfSkin',IssuesOfSkin)
+  console.log('IssuesOfSkin', IssuesOfSkin);
 
   const NextStep = () => {
-
-    const data3 = { ...data2, IssuesOfSkin }
+    const data3 = {...data2, IssuesOfSkin};
     for (var i = 0; i < SkinIssues.length; i++) {
-
       if (SkinIssues[i]?.isselect == true) {
-        IssuesOfSkin.push(SkinIssues[i]?.text)
+        IssuesOfSkin.push(SkinIssues[i]?.text);
       }
     }
 
-
-
-
     if (IssuesOfSkin.length > 1) {
-      navigation.navigate('SkinProfile_4', {data3})
+      navigation.navigate('SkinProfile_4', {data3});
+    } else {
+      alert('Please select at least on tag');
     }
-    else {
-      alert('Please select at least on tag')
-    }
-
-  }
-
+  };
 
   return (
-    <SafeAreaContainer>
+    <ViewContainer>
       <Header skip_right={'skip'} back_with_text={'back_with_text'} />
       <Spacer height={normalize(18)} />
       <ControlAlignCenter>
@@ -117,18 +106,22 @@ const SkinProfile_3 = (props) => {
         <Spacer height={normalize(32)} />
         <Container>
           {data.map((item, index) => {
-            let text = item.text
-            return <ToggleableButton title={text} key={index} isActive={item?.isselect} onPress={() => SELECTITEM(index)} />;
+            let text = item.text;
+            return (
+              <ToggleableButton
+                title={text}
+                key={index}
+                isActive={item?.isselect}
+                onPress={() => SELECTITEM(index)}
+              />
+            );
           })}
         </Container>
       </ScrollableView>
       <Absolutebutton>
-        <Button
-          title={'Next'}
-          onPress={() => NextStep()}
-        />
+        <Button title={'Next'} onPress={() => NextStep()} />
       </Absolutebutton>
-    </SafeAreaContainer>
+    </ViewContainer>
   );
 };
 
@@ -142,10 +135,10 @@ const Container = styled.View`
 
 const PressableWrap = styled.Pressable`
   border-radius: 24px;
-  background-color:#faebf1;
+  background-color: #faebf1;
   justify-content: center;
   border-color: ${props => (props.isActive ? '#E74779' : '#faebf1')};
-  border-width:2px;
+  border-width: 2px;
   align-items: center;
   margin-left: 16px;
   margin-bottom: 16px;
@@ -158,5 +151,5 @@ const Title = styled.Text`
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  color:#e74779;
+  color: #e74779;
 `;
