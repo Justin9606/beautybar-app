@@ -64,7 +64,7 @@ const TagProducts = (props) => {
     const newData = [...LinkProduct];
     newData[index].isselect = !newData[index].isselect;
     setRefresh(!Refresh);
-    setTagProduct2(newData)
+    setTagProduct2(newData);
   }
 
   const removeitem = (item) => {
@@ -74,9 +74,9 @@ const TagProducts = (props) => {
     LinkProduct.splice(indexOfObject, 1);
     setRefresh(!Refresh);
     let exm = LinkProduct.filter(tagextaitem => tagextaitem.isselect === true);
-    setTagProduct2(exm)
-
+    setTagProduct2(exm);
   }
+
 
 
 

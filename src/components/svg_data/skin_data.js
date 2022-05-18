@@ -293,6 +293,7 @@ export const postData = [
     user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
     name: 'Beauty Bar',
     time: '2 min ago',
+    createrdatetime: '2022-05-15T08:18:01.639Z',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
 
@@ -304,6 +305,7 @@ export const postData = [
     user_pic: '',
     name: 'Justin',
     time: '2 min ago',
+    createrdatetime: '2022-05-16T08:18:01.639Z',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
     postImg: [
@@ -317,9 +319,10 @@ export const postData = [
     user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
     name: 'Soap Bar',
     time: '20 min ago',
+    createrdatetime: '2022-05-17T08:18:01.639Z',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [ { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }],
+    postImg: [{ url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }],
     like: 13,
     comment: 89,
   },
@@ -327,11 +330,12 @@ export const postData = [
     user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
     name: 'Lux Bar',
     time: '2 min ago',
+    createrdatetime: '2022-05-18T08:18:01.639Z',
     descr: 'Amet minim mollit non deserunt',
     postImg: [
       { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
       { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
-    ],    like: 500,
+    ], like: 500,
     comment: 300,
   },
 ];

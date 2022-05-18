@@ -89,14 +89,21 @@ const Creatediscussion = (props) => {
   }
 
   const AddDiscussion = () => {
+
+    let ImagesArray = []
+    Images.map((v, index) => {
+      ImagesArray.push({ url: v.path })
+    })
+
     let data = {
       user_pic: require('../../../assets/icons/temp/user_profile_pic.png'),
       name: 'Mukthayar Auto New',
       time: '20 y ago',
-      descr:discussion,
-      postImg:[{url:Images[0].path}],
+      descr: discussion,
+      postImg: ImagesArray,
       like: 20,
       comment: 20,
+      createrdatetime: new Date()
     }
 
     postData.push(data);
@@ -104,7 +111,6 @@ const Creatediscussion = (props) => {
     setUpdate.setUpdate(data)
     navigation.goBack()
 
-    console.log('url:Images[0]',Images[0].path)
   }
 
 

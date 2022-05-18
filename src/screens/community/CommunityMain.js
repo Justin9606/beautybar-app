@@ -1,8 +1,8 @@
 //react
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 //react native
-import {FlatList, useWindowDimensions} from 'react-native';
+import { FlatList, useWindowDimensions } from 'react-native';
 
 //styled
 import styled from 'styled-components';
@@ -22,12 +22,15 @@ import PostBottomBtns from './components/PostBottomBtns';
 //Slider
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
-import {postData} from '../../components/svg_data/skin_data';
+import { postData } from '../../components/svg_data/skin_data';
 
-const CommunityMain = ({}) => {
+const CommunityMain = ({ }) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
   const [update, setUpdate] = useState(false);
+
+  const SortedData = postData?.sort((a, b) => new Date(b.createrdatetime) - new Date(a.createrdatetime))
+
 
   const tagsData = [
     {
@@ -62,7 +65,7 @@ const CommunityMain = ({}) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={tagsData}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return (
               <TagsBtn
                 index={index}
@@ -80,10 +83,9 @@ const CommunityMain = ({}) => {
         <Spacer height={32} />
         <FlatList
           scrollEnabled={false}
-          data={postData}
+          data={SortedData}
           extraData={update}
-          renderItem={({item, index}) => {
-            console.log('item?.postImg', item?.postImg);
+          renderItem={({ item, index }) => {
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
