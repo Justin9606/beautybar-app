@@ -59,6 +59,7 @@ const ImageSlider = ({images}) => {
         imageIndex={0}
         visible={isVisible}
         onRequestClose={() => setIsVisible(false)}
+        animationType="fade"
       />
 
       <View style={styles.pagination}>

@@ -1,8 +1,8 @@
 //react
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 //react native
-import { FlatList, useWindowDimensions } from 'react-native';
+import {FlatList, useWindowDimensions} from 'react-native';
 
 //styled
 import styled from 'styled-components';
@@ -15,6 +15,10 @@ import Column from '../../containers/Column';
 
 //common components
 import Header from '../../components/common/Header/Header';
+import ProductTitle from '../../components/common/Text/ProductTitle';
+import ProductBrand from '../../components/common/Text/ProductBrand';
+import ProductLink from '../../components/common/Text/ProductLink';
+import ProductDescription from '../../components/common/Text/ProductDescription';
 
 //community components
 import PostBottomBtns from './components/PostBottomBtns';
@@ -22,15 +26,18 @@ import PostBottomBtns from './components/PostBottomBtns';
 //Slider
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
-import { postData } from '../../components/svg_data/skin_data';
+import {postData} from '../../components/svg_data/skin_data';
 
-const CommunityMain = ({ }) => {
+import LinkedProductImg from '../../assets/temp/product_10.png';
+
+const CommunityMain = ({}) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
   const [update, setUpdate] = useState(false);
 
-  const SortedData = postData?.sort((a, b) => new Date(b.createrdatetime) - new Date(a.createrdatetime))
-
+  const SortedData = postData?.sort(
+    (a, b) => new Date(b.createrdatetime) - new Date(a.createrdatetime),
+  );
 
   const tagsData = [
     {
@@ -50,6 +57,33 @@ const CommunityMain = ({ }) => {
       tag: 'Oily-Skin',
     },
   ];
+  const linkedProductData = [
+    {
+      id: 1,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+    },
+    {
+      id: 2,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+    },
+    {
+      id: 3,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+    },
+  ];
   return (
     <>
       <Header
@@ -65,7 +99,7 @@ const CommunityMain = ({ }) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={tagsData}
-          renderItem={({ item, index }) => {
+          renderItem={({item, index}) => {
             return (
               <TagsBtn
                 index={index}
@@ -85,7 +119,7 @@ const CommunityMain = ({ }) => {
           scrollEnabled={false}
           data={SortedData}
           extraData={update}
-          renderItem={({ item, index }) => {
+          renderItem={({item, index}) => {
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
@@ -136,6 +170,50 @@ const CommunityMain = ({ }) => {
                   itsthreeDots={'itsthreeDots'}
                   onPress={() => alert('3 DOTS Pressed')}
                 />
+                <TaggedProductsWrapper>
+                  <FlatList
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    data={linkedProductData}
+                    keyExtractor={index => index.id}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TaggedProductsRenderWrap activeOpacity={0.7}>
+                          <TaggedProductsImg
+                            source={item?.img}
+                            resizeMode="contain"
+                          />
+                          <Spacer width={10} />
+                          <Column alignItems={'flex-start'}>
+                            <Spacer height={5} />
+                            <ProductTitle
+                              title={item?.title}
+                              ellipsizeMode={'tail'}
+                              numberOfLines={1}
+                            />
+                            <ProductBrand
+                              brand={item?.brandType}
+                              ellipsizeMode={'tail'}
+                              numberOfLines={1}
+                            />
+                            <ProductLink
+                              link={item?.link}
+                              ellipsizeMode={'tail'}
+                              numberOfLines={1}
+                            />
+                            <ProductDescription
+                              description={item?.description}
+                              ellipsizeMode={'tail'}
+                              numberOfLines={1}
+                            />
+                          </Column>
+                          <Spacer width={10} />
+                        </TaggedProductsRenderWrap>
+                      );
+                    }}
+                  />
+                </TaggedProductsWrapper>
+
                 <Spacer height={25.5} />
               </>
             );
@@ -154,7 +232,19 @@ export default CommunityMain;
 const Wrapper = styled.View`
   flex-direction: row;
 `;
+const TaggedProductsWrapper = styled.View`
+  padding-vertical: 10px;
+  justify-content: center;
+`;
+const TaggedProductsRenderWrap = styled.TouchableOpacity`
+  flex-direction: row;
+  margin-right: 20px;
+`;
 
+const TaggedProductsImg = styled.Image`
+  width: 74px;
+  height: 74px;
+`;
 const TagsWrap = styled.View`
   justify-content: center;
   padding: 5px 0px 10px 0px;
