@@ -6895,17 +6895,10 @@
   "resolved" "https://registry.npmjs.org/react-native-image-crop-picker/-/react-native-image-crop-picker-0.37.3.tgz"
   "version" "0.37.3"
 
-"react-native-image-pan-zoom@^2.1.12":
-  "integrity" "sha512-BF66XeP6dzuANsPmmFsJshM2Jyh/Mo1t8FsGc1L9Q9/sVP8MJULDabB1hms+eAoqgtyhMr5BuXV3E1hJ5U5H6Q=="
-  "resolved" "https://registry.npmjs.org/react-native-image-pan-zoom/-/react-native-image-pan-zoom-2.1.12.tgz"
-  "version" "2.1.12"
-
-"react-native-image-zoom-viewer@^3.0.1":
-  "integrity" "sha512-la6s5DNSuq4GCRLsi5CZ29FPjgTpdCuGIRdO5T9rUrAtxrlpBPhhSnHrbmPVxsdtOUvxHacTh2Gfa9+RraMZQA=="
-  "resolved" "https://registry.npmjs.org/react-native-image-zoom-viewer/-/react-native-image-zoom-viewer-3.0.1.tgz"
-  "version" "3.0.1"
-  dependencies:
-    "react-native-image-pan-zoom" "^2.1.12"
+"react-native-image-viewing@^0.2.2":
+  "integrity" "sha512-osWieG+p/d2NPbAyonOMubttajtYEYiRGQaJA54slFxZ69j1V4/dCmcrVQry47ktVKy8/qpFwCpW1eT6MH5T2Q=="
+  "resolved" "https://registry.npmjs.org/react-native-image-viewing/-/react-native-image-viewing-0.2.2.tgz"
+  "version" "0.2.2"
 
 "react-native-keyboard-manager@^6.5.4-4":
   "integrity" "sha512-wQlBnl2HWINGHzH48yvrvBHCJo6lWfrRPtD3JV3KEli6aEwHoW/28jjS7u6551uIaprlLY10b78ufGTtvtKJkw=="
@@ -7020,7 +7013,7 @@
     "prop-types" "^15.6.0"
     "react-timer-mixin" "^0.13.4"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@>= 0.55.x", "react-native@>=0.40.0", "react-native@>=0.50.0", "react-native@>=0.59.0", "react-native@>=0.60.0", "react-native@>=0.64.0", "react-native@>0.64", "react-native@0.67.3":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@>= 0.55.x", "react-native@>=0.40.0", "react-native@>=0.50.0", "react-native@>=0.59.0", "react-native@>=0.60.0", "react-native@>=0.61.3", "react-native@>=0.64.0", "react-native@>0.64", "react-native@0.67.3":
   "integrity" "sha512-epMVRMRH7dLCis97+YwiV4dmTVZO6qKmQgwcTNcxVt/kEMxAa+OYK7h81+99/n7XCeMFk/U2zYOBuQqc7c5Amg=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.67.3.tgz"
   "version" "0.67.3"
@@ -7096,7 +7089,7 @@
   "resolved" "https://registry.npmjs.org/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz"
   "version" "0.13.4"
 
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.3.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17 || ^18", "react@^16.8.6 || ^17.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0", "react@^17.0.0 || ^16.0.0 || ^15.6.0", "react@>= 16.8.0", "react@>= 16.x.x", "react@>=15.0.0", "react@>=16.0.0", "react@>=16.4.0", "react@>=16.5.1", "react@>=16.8", "react@>=16.8.6", "react@>15.6.0", "react@16.x.x", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.3.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17 || ^18", "react@^16.8.6 || ^17.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0", "react@^17.0.0 || ^16.0.0 || ^15.6.0", "react@>= 16.8.0", "react@>= 16.x.x", "react@>=15.0.0", "react@>=16.0.0", "react@>=16.11.0", "react@>=16.4.0", "react@>=16.5.1", "react@>=16.8", "react@>=16.8.6", "react@>15.6.0", "react@16.x.x", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

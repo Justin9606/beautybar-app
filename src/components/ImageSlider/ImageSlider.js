@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import ImageViewer from 'react-native-image-zoom-viewer';
+import ImageView from 'react-native-image-viewing';
 
 const ImageSlider = ({images}) => {
   const {width} = Dimensions.get('window');
@@ -19,6 +19,8 @@ const ImageSlider = ({images}) => {
   const [active, setActive] = useState(0);
   const [modal, setmodal] = useState(false);
   const [ModalImages, SetModalImages] = useState([]);
+
+  const [isVisible, setIsVisible] = useState(false);
 
   const onScrollChange = ({nativeEvent}) => {
     const slide = Math.ceil(
@@ -33,28 +35,14 @@ const ImageSlider = ({images}) => {
     return (
       <TouchableOpacity
         onPress={() => {
-          setmodal(true);
-          SetModalImages([images[index]]);
+          setIsVisible(true);
+          SetModalImages(images);
+          console.log(images);
         }}>
         <Image source={item} style={{width, height, resizeMode: 'cover'}} />
       </TouchableOpacity>
     );
   };
-
-  const imagess = [
-    {
-      // Simplest usage.
-      url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
-    },
-    {
-      // Simplest usage.
-      url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
-    },
-    {
-      // Simplest usage.
-      url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
-    },
-  ];
 
   return (
     <View>
@@ -70,16 +58,14 @@ const ImageSlider = ({images}) => {
         scrollEnabled={images.length > 1 ? true : false}
       />
 
-      <Modal
-        visible={modal}
-        transparent={true}
-        onCancel={() => setmodal(false)}>
-        <ImageViewer
-          imageUrls={imagess}
-          onSwipeDown={() => setmodal(false)}
-          enableSwipeDown={true}
-        />
-      </Modal>
+      <ImageView
+        images={images.map(el => ({
+          uri: el.url,
+        }))}
+        imageIndex={0}
+        visible={isVisible}
+        onRequestClose={() => setIsVisible(false)}
+      />
 
       <View style={styles.pagination}>
         {images.length > 1
