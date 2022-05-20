@@ -15,11 +15,7 @@ import ImageView from 'react-native-image-viewing';
 const ImageSlider = ({images}) => {
   const {width} = Dimensions.get('window');
   const height = width * 0.7;
-
   const [active, setActive] = useState(0);
-  const [modal, setmodal] = useState(false);
-  const [ModalImages, SetModalImages] = useState([]);
-
   const [isVisible, setIsVisible] = useState(false);
 
   const onScrollChange = ({nativeEvent}) => {
@@ -36,8 +32,6 @@ const ImageSlider = ({images}) => {
       <TouchableOpacity
         onPress={() => {
           setIsVisible(true);
-          SetModalImages(images);
-          console.log(images);
         }}>
         <Image source={item} style={{width, height, resizeMode: 'cover'}} />
       </TouchableOpacity>
