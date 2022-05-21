@@ -264,8 +264,8 @@ export const linkedProductData = [
   {
     img: LinkedProductImg,
     isselect: false,
-    title: 'MAYBELLINE - Volum Expres',
-    link: 'www.maybeline.com',
+    title: 'MAYBELLINE - Volum Expres 1',
+    link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
     description:
       'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
   },
@@ -273,16 +273,16 @@ export const linkedProductData = [
   {
     img: LinkedProductImg,
     isselect: false,
-    title: 'MAYBELLINE - Volum Expres',
-    link: 'www.maybeline.com',
+    title: 'MAYBELLINE - Volum Expres 2',
+    link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
     description:
       'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
   },
   {
     img: LinkedProductImg,
     isselect: false,
-    title: 'MAYBELLINE - Volum Expres',
-    link: 'www.maybeline.com',
+    title: 'MAYBELLINE - Volum Expres 3',
+    link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
     description:
       'Amet minim mollit non deserunt ullamco est sjhjkhjkhjkhjkhkjkhkjhjkhjkhjkjjkljjlkjkljklghfghfghfghfghfghfghjkllkjkljkljlkjklgffghfghkljkjkljkhjkhkjhkjkljlkjlkit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
   },

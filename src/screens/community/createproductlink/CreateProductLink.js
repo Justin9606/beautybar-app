@@ -7,7 +7,7 @@ import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 
 import { getLinkPreview } from 'link-preview-js';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 
 //community components
 import Label from '../components/Label';
@@ -30,43 +30,68 @@ const width = Dimensions.get('window').width;
 
 const CreateProductLink = (props) => {
   const [addingLink, setAddingLink] = useState('');
+  const [linkData, SetlinkData] = useState('')
   const [data, setData] = useState({
-    title: addingLink.title,
-    description: addingLink.description,
-    image: addingLink.images,
+    title: linkData.title,
+    description: linkData.description,
+    image: linkData.images,
+    link: linkData.link,
     isselect: true,
   });
   // https://www.instagram.com/reel/CcKjhyTj0mq/?igshid=NDA1YzNhOGU=
 
 
-  const { setLinkProduct, LinkProduct ,setRefresh, Refresh} = props?.route?.params;
-  const navigation = useNavigation()
+  const { setLinkProduct, LinkProduct, setRefresh, Refresh, edit, Editdata, UpdateId } = props?.route?.params;
+  const navigation = useNavigation();
+  const focus = useIsFocused()
+
 
   const linkFetch = async () => {
     try {
       const response = await getLinkPreview(`${addingLink}`);
-      console.log(response);
-      setAddingLink(response);
+      setAddingLink(linkData);
       setData({
         title: response.title,
         description: response.description,
         img: response.images[0],
         isselect: false,
-        uri:true
+        uri: true,
+        link: addingLink
 
       })
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (edit === true) {
+      setAddingLink(Editdata?.link)
+      linkFetch();
+    }
+  }, [focus])
+
   useEffect(() => {
     linkFetch();
   }, [addingLink]);
 
 
   const AddItme = () => {
-    // setLinkProduct([...LinkProduct, data]);
-    linkedProductData.push(data)
+    LinkProduct.push(data)
+    navigation.goBack()
+    setRefresh(!Refresh)
+
+  }
+
+
+
+  const UpdateItem = () => {
+
+    const updatedOSArray = LinkProduct.map((ArrayValues, ArrayIndex) =>
+      ArrayIndex === UpdateId ? { ...data }
+        : ArrayValues
+    );
+    setLinkProduct(updatedOSArray);
     navigation.goBack()
     setRefresh(!Refresh)
 
@@ -90,13 +115,16 @@ const CreateProductLink = (props) => {
           paddingLeft={45}
           numberOfLines={1}
           multiline={false}
+          defaultValue={data.link}
+
+
         />
         <Label label={'Title'} marginTop={31} />
         <Input
           placeholder={'Input product title here'}
           numberOfLines={1}
           multiline={false}
-          defaultValue={addingLink.title}
+          defaultValue={data.title}
         />
         <Label label={'Description'} marginTop={31} />
         <Input
@@ -105,13 +133,13 @@ const CreateProductLink = (props) => {
           paddingBottom={22}
           placeholder={'Input product desctiption'}
           defaultValue={
-            addingLink.description !== '' ? addingLink.description : ''
+            data.description !== '' ? data.description : ''
           }
           multiline={true}
         />
         <Label label={'Preview'} marginTop={32} />
         {/* <LinkPreview
-          text={addingLink}
+          text={data}
           enableAnimation={true}
           metadataTextContainerStyle={{
             backgroundColor: 'red',
@@ -119,18 +147,18 @@ const CreateProductLink = (props) => {
           }}
         /> */}
         {/* <Image
-          source={{uri: `${addingLink.images}`}}
+          source={{uri: `${data.images}`}}
           style={{width: 60, height: 60}}
         /> */}
 
         <LinkedProductWrap>
           <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
-            <SearchedItemImg source={addingLink.images} />
+            <SearchedItemImg source={data.images} />
 
             <Column alignItems={'flex-start'}>
-              <SearchItemTitle>{addingLink.title}</SearchItemTitle>
+              <SearchItemTitle>{data.title}</SearchItemTitle>
               <LinkedItemLink numberOfLines={1} ellipsizeMode={'tail'}>
-                {addingLink.url}
+                {data.url}
               </LinkedItemLink>
               <Spacer height={8.35} />
               <Smalltext
@@ -140,7 +168,7 @@ const CreateProductLink = (props) => {
                 fontWeight={600}
               />
               <SearchedItemDesc ellipsizeMode={'tail'} numberOfLines={2}>
-                {addingLink.description}
+                {data.description}
               </SearchedItemDesc>
             </Column>
           </Row>
@@ -155,7 +183,12 @@ const CreateProductLink = (props) => {
       </ScrollableView>
 
       <BtnWrap>
-        <Button title={'Add'} onPress={() => { AddItme() }} />
+        {edit === true ?
+          <Button title={'Update'} onPress={() => { UpdateItem() }} />
+          :
+          <Button title={'Add'} onPress={() => { AddItme() }} />
+
+        }
       </BtnWrap>
     </Viewcontainer>
   );

@@ -96,6 +96,7 @@ const Creatediscussion = props => {
       like: 20,
       comment: 20,
       createrdatetime: new Date(),
+      TagProduct:TagProduct
     };
 
     postData.push(data);
@@ -107,6 +108,8 @@ const Creatediscussion = props => {
   const Tag1 = tagitem.filter(tagitem => tagitem.isselect === true);
   const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
   const TagProduct = [...Tag1, ...Tag2];
+
+  console.log('TagProduct',TagProduct)
 
   return (
     <>

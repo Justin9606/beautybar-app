@@ -1,8 +1,8 @@
 //react
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 //react native
-import {FlatList, useWindowDimensions} from 'react-native';
+import { FlatList, useWindowDimensions } from 'react-native';
 
 //styled
 import styled from 'styled-components';
@@ -26,11 +26,11 @@ import PostBottomBtns from './components/PostBottomBtns';
 //Slider
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
-import {postData} from '../../components/svg_data/skin_data';
+import { postData } from '../../components/svg_data/skin_data';
 
 import LinkedProductImg from '../../assets/temp/product_10.png';
 
-const CommunityMain = ({}) => {
+const CommunityMain = ({ }) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
   const [update, setUpdate] = useState(false);
@@ -84,6 +84,8 @@ const CommunityMain = ({}) => {
         'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
     },
   ];
+
+
   return (
     <>
       <Header
@@ -99,7 +101,7 @@ const CommunityMain = ({}) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={tagsData}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return (
               <TagsBtn
                 index={index}
@@ -119,7 +121,12 @@ const CommunityMain = ({}) => {
           scrollEnabled={false}
           data={SortedData}
           extraData={update}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
+
+            item?.TagProduct?.map((v,i)=>{
+              console.log('DATA===>',v.description)
+            })
+
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
@@ -171,47 +178,51 @@ const CommunityMain = ({}) => {
                   onPress={() => alert('3 DOTS Pressed')}
                 />
                 <TaggedProductsWrapper>
-                  <FlatList
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                    data={linkedProductData}
-                    keyExtractor={index => index.id}
-                    renderItem={({item, index}) => {
-                      return (
-                        <TaggedProductsRenderWrap activeOpacity={0.7}>
-                          <TaggedProductsImg
-                            source={item?.img}
-                            resizeMode="contain"
-                          />
-                          <Spacer width={10} />
-                          <Column alignItems={'flex-start'}>
-                            <Spacer height={5} />
-                            <ProductTitle
-                              title={item?.title}
-                              ellipsizeMode={'tail'}
-                              numberOfLines={1}
+                  {item?.TagProduct !== undefined ?
+                    <FlatList
+                      horizontal={true}
+                      showsHorizontalScrollIndicator={false}
+                      data={item?.TagProduct}
+                      keyExtractor={index => index.id}
+                      renderItem={({ TagItem, index }) => {
+                        console.log('item?.SortedData',TagItem)
+                        return (
+                          <TaggedProductsRenderWrap activeOpacity={0.7}>
+                            <TaggedProductsImg
+                              source={TagItem?.img}
+                              resizeMode="contain"
                             />
-                            <ProductBrand
-                              brand={item?.brandType}
-                              ellipsizeMode={'tail'}
-                              numberOfLines={1}
-                            />
-                            <ProductLink
-                              link={item?.link}
-                              ellipsizeMode={'tail'}
-                              numberOfLines={1}
-                            />
-                            <ProductDescription
-                              description={item?.description}
-                              ellipsizeMode={'tail'}
-                              numberOfLines={1}
-                            />
-                          </Column>
-                          <Spacer width={10} />
-                        </TaggedProductsRenderWrap>
-                      );
-                    }}
-                  />
+                            <Spacer width={10} />
+                            <Column alignItems={'flex-start'}>
+                              <Spacer height={5} />
+                              <ProductTitle
+                                title={TagItem?.title}
+                                ellipsizeMode={'tail'}
+                                numberOfLines={1}
+                              />
+                              {/* <ProductBrand
+                                brand={item?.brandType}
+                                ellipsizeMode={'tail'}
+                                numberOfLines={1}
+                              />
+                              <ProductLink
+                                link={item?.link}
+                                ellipsizeMode={'tail'}
+                                numberOfLines={1}
+                              />
+                              <ProductDescription
+                                description={item?.description}
+                                ellipsizeMode={'tail'}
+                                numberOfLines={1}
+                              /> */}
+                            </Column>
+                            <Spacer width={10} />
+                          </TaggedProductsRenderWrap>
+                        );
+                      }}
+                    />
+                    :
+                    null}
                 </TaggedProductsWrapper>
 
                 <Spacer height={25.5} />

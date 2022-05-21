@@ -67,9 +67,9 @@ const TagProducts = (props) => {
     setTagProduct2(newData);
   }
 
-  const removeitem = (item) => {
-    const indexOfObject = LinkProduct.findIndex(object => {
-      return object.link === item.link;
+  const removeitem = (item,index) => {
+    const indexOfObject = LinkProduct.findIndex((object,i) => {
+      return i === index;
     });
     LinkProduct.splice(indexOfObject, 1);
     setRefresh(!Refresh);
@@ -133,7 +133,7 @@ const TagProducts = (props) => {
           })}
         </SearchedDataWrap>
 
-        <ProductLinkWrap onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh })}>
+        <ProductLinkWrap onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh, edit: false })}>
           <Row justifyContent={'flex-start'} alignItems={'center'}>
             <TagProductLink />
             <Spacer width={8} />
@@ -156,7 +156,7 @@ const TagProducts = (props) => {
             <Spacer height={14.37} />
             {LinkProduct.map((item, index) => {
 
-              console.log('item===>', item.img)
+              console.log('item===>', index)
               return (
                 <LinkedProductWrap key={index}>
                   <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
@@ -202,11 +202,11 @@ const TagProducts = (props) => {
                   <Spacer height={12} />
 
                   <Row justifyContent={'flex-start'} alignItems={'center'}>
-                    <LinkedItemBottomIconsBtn>
+                    <LinkedItemBottomIconsBtn onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh, edit: true, Editdata: item ,UpdateId:index})}>
                       <Edit />
                     </LinkedItemBottomIconsBtn>
                     <Spacer width={10} />
-                    <LinkedItemBottomIconsBtn onPress={() => removeitem(item)}>
+                    <LinkedItemBottomIconsBtn onPress={() => removeitem(item,index)}>
                       <Delete />
                     </LinkedItemBottomIconsBtn>
                   </Row>
