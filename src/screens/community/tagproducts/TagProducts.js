@@ -47,10 +47,23 @@ const width = Dimensions.get('window').width;
 
 const TagProducts = (props) => {
 
-  const [Refresh, setRefresh] = useState(false);
   const { setTagProduct1, setTagProduct2 } = props?.route?.params;
+
+  const [Refresh, setRefresh] = useState(false);
   const navigation = useNavigation();
   const [LinkProduct, setLinkProduct] = useState(linkedProductData)
+  const [searchTerm, setSearchTerm] = useState('');
+
+
+  let FilterLinkProducts = POPULAR_PRODUCT_DEMO_DATA.filter((val) => {
+    if (searchTerm == "") {
+      return val
+    }
+    else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return val;
+    }
+  })
+
 
 
   const onTagItem = (index) => {
@@ -67,8 +80,8 @@ const TagProducts = (props) => {
     setTagProduct2(newData);
   }
 
-  const removeitem = (item,index) => {
-    const indexOfObject = LinkProduct.findIndex((object,i) => {
+  const removeitem = (item, index) => {
+    const indexOfObject = LinkProduct.findIndex((object, i) => {
       return i === index;
     });
     LinkProduct.splice(indexOfObject, 1);
@@ -96,6 +109,7 @@ const TagProducts = (props) => {
           // autoFocus={true}
           returnKeyType={'search'}
           placeholderTextColor={'#b1b1b1'}
+          onChangeText={(e) => setSearchTerm(e)}
           placeholder={'Search Product or brand here'}
         />
       </SearchWrap>
@@ -104,7 +118,7 @@ const TagProducts = (props) => {
         paddingHorizontal={24}
         showsVerticalScrollIndicator={false}>
         <SearchedDataWrap>
-          {POPULAR_PRODUCT_DEMO_DATA?.map((item, index) => {
+          {FilterLinkProducts?.map((item, index) => {
             return (
               <RenderItemWrap
                 key={index}
@@ -202,11 +216,11 @@ const TagProducts = (props) => {
                   <Spacer height={12} />
 
                   <Row justifyContent={'flex-start'} alignItems={'center'}>
-                    <LinkedItemBottomIconsBtn onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh, edit: true, Editdata: item ,UpdateId:index})}>
+                    <LinkedItemBottomIconsBtn onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh, edit: true, Editdata: item, UpdateId: index })}>
                       <Edit />
                     </LinkedItemBottomIconsBtn>
                     <Spacer width={10} />
-                    <LinkedItemBottomIconsBtn onPress={() => removeitem(item,index)}>
+                    <LinkedItemBottomIconsBtn onPress={() => removeitem(item, index)}>
                       <Delete />
                     </LinkedItemBottomIconsBtn>
                   </Row>

@@ -1,5 +1,5 @@
 //react
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 //react native
 import {
   Dimensions,
@@ -10,13 +10,17 @@ import {
   ActivityIndicator,
 } from 'react-native';
 //useNavigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //image picker
 import ImagePicker from 'react-native-image-crop-picker';
 
 //styled components
 import styled from 'styled-components';
+
+//Redux Store Data
+
+import { useSelector } from 'react-redux'
 
 //tag svg
 import TagProductSvg from '../../../assets/svg/community/tag_product.svg';
@@ -41,10 +45,16 @@ import Smalltext from '../../../components/common/Text/SmallText';
 import CreateDiscussionInput from '../components/CreateDiscussionInput';
 import Label from '../components/Label';
 
-import {postData} from '../../../components/svg_data/skin_data';
+import { postData } from '../../../components/svg_data/skin_data';
 
 const Creatediscussion = props => {
+
+
   const navigation = useNavigation();
+  const User = useSelector((state) => { return state?.persistedReducer?.AuthReducer?.UserDetail })
+
+  console.log('images', new Date().toLocaleTimeString());
+
 
   const [Images, setImages] = useState([]);
   const [tagitem, settagitem] = useState([]);
@@ -70,7 +80,6 @@ const Creatediscussion = props => {
       });
   };
 
-  console.log('images', Images);
 
   const removeitem = item => {
     const indexOfObject = Images.findIndex(object => {
@@ -84,19 +93,19 @@ const Creatediscussion = props => {
   const AddDiscussion = () => {
     let ImagesArray = [];
     Images.map((v, index) => {
-      ImagesArray.push({url: v.path});
+      ImagesArray.push({ url: v.path });
     });
 
     let data = {
       user_pic: require('../../../assets/icons/temp/user_profile_pic.png'),
-      name: 'Mukthayar Auto New',
-      time: '20 y ago',
+      name: User?.name,
+      time: new Date().toLocaleTimeString(),
       descr: discussion,
       postImg: ImagesArray,
       like: 20,
       comment: 20,
       createrdatetime: new Date(),
-      TagProduct:TagProduct
+      TagProduct: TagProduct
     };
 
     postData.push(data);
@@ -109,7 +118,7 @@ const Creatediscussion = props => {
   const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
   const TagProduct = [...Tag1, ...Tag2];
 
-  console.log('TagProduct',TagProduct)
+  console.log('User', User?.name)
 
   return (
     <>
@@ -149,7 +158,7 @@ const Creatediscussion = props => {
                 {' '}
                 {TagProduct.length} Product{' '}
               </CountTaggedProduct>
-              <RightArrowSvg style={{position: 'absolute', right: 10}} />
+              <RightArrowSvg style={{ position: 'absolute', right: 10 }} />
             </Row>
           </TagProductWrap>
           <Label label={'Insert Image'} />
@@ -175,7 +184,7 @@ const Creatediscussion = props => {
           ) : Images.length === 1 ? (
             <View>
               <Image
-                source={{uri: Images[0].path}}
+                source={{ uri: Images[0].path }}
                 style={{
                   height: 250,
                   width: '100%',
@@ -207,11 +216,11 @@ const Creatediscussion = props => {
                 marginBottom: 20,
               }}
               data={Images}
-              renderItem={({item, index}) => {
+              renderItem={({ item, index }) => {
                 return (
                   <View key={index}>
                     <Image
-                      source={{uri: item.path}}
+                      source={{ uri: item.path }}
                       style={{
                         height: 150,
                         width: 150,
