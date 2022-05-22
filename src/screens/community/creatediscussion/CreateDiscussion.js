@@ -1,5 +1,5 @@
 //react
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 //react native
 import {
   Dimensions,
@@ -10,17 +10,13 @@ import {
   ActivityIndicator,
 } from 'react-native';
 //useNavigation
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //image picker
 import ImagePicker from 'react-native-image-crop-picker';
 
 //styled components
-import styled from 'styled-components';
-
-//Redux Store Data
-
-import { useSelector } from 'react-redux'
+import styled from 'styled-components/native';
 
 //tag svg
 import TagProductSvg from '../../../assets/svg/community/tag_product.svg';
@@ -39,24 +35,20 @@ import Row from '../../../containers/Row';
 import Header from '../../../components/common/Header/Header';
 import Button from '../../../components/common/Buttons/Button';
 //common text components
-import Smalltext from '../../../components/common/Text/SmallText';
+import SmallText from '../../../components/common/Text/SmallText';
 
 //components
 import CreateDiscussionInput from '../components/CreateDiscussionInput';
 import Label from '../components/Label';
-
-import { postData } from '../../../components/svg_data/skin_data';
+import {postData} from '../../../components/svg_data/skin_data';
+//add and remove image svg
+import AddImageSVG from '../../../assets/svg/etc/add_image.svg';
+import RemoveImageSVG from '../../../assets/svg/etc/image_remove.svg';
 
 const Creatediscussion = props => {
-
-
   const navigation = useNavigation();
-  const User = useSelector((state) => { return state?.persistedReducer?.AuthReducer?.UserDetail })
 
-  console.log('images', new Date().toLocaleTimeString());
-
-
-  const [Images, setImages] = useState([]);
+  const [images, setImages] = useState([]);
   const [tagitem, settagitem] = useState([]);
   const [tagextaitem, settagextaitem] = useState([]);
   const [discussion, setdiscussion] = useState();
@@ -64,7 +56,7 @@ const Creatediscussion = props => {
   const [loading, setloading] = useState(false);
   const setUpdate = props?.route?.params;
 
-  const imagepicker = () => {
+  const imagePicker = () => {
     setloading(true);
     ImagePicker.openPicker({
       width: 300,
@@ -72,7 +64,7 @@ const Creatediscussion = props => {
       multiple: true,
     })
       .then(image => {
-        setImages([...Images, ...image]);
+        setImages([...images, ...image]);
         setloading(false);
       })
       .catch(() => {
@@ -80,32 +72,33 @@ const Creatediscussion = props => {
       });
   };
 
+  console.log('images', images);
 
-  const removeitem = item => {
-    const indexOfObject = Images.findIndex(object => {
+  const removeItem = item => {
+    const indexOfObject = images.findIndex(object => {
       return object.path === item.path;
     });
-    Images.splice(indexOfObject, 1);
-    setImages(Images);
+    images.splice(indexOfObject, 1);
+    setImages(images);
     setrefresh(!refresh);
   };
 
   const AddDiscussion = () => {
     let ImagesArray = [];
-    Images.map((v, index) => {
-      ImagesArray.push({ url: v.path });
+    images.map((v, index) => {
+      ImagesArray.push({url: v.path});
     });
 
     let data = {
       user_pic: require('../../../assets/icons/temp/user_profile_pic.png'),
-      name: User?.name,
-      time: new Date().toLocaleTimeString(),
+      name: 'Mukthayar Auto New',
+      time: '20 y ago',
       descr: discussion,
       postImg: ImagesArray,
       like: 20,
       comment: 20,
       createrdatetime: new Date(),
-      TagProduct: TagProduct
+      TagProduct: TagProduct,
     };
 
     postData.push(data);
@@ -117,8 +110,6 @@ const Creatediscussion = props => {
   const Tag1 = tagitem.filter(tagitem => tagitem.isselect === true);
   const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
   const TagProduct = [...Tag1, ...Tag2];
-
-  console.log('User', User?.name)
 
   return (
     <>
@@ -155,21 +146,19 @@ const Creatediscussion = props => {
               <TagProductSvg />
               <TagProductText>Tag Product</TagProductText>
               <CountTaggedProduct>
-                {' '}
-                {TagProduct.length} Product{' '}
+                {TagProduct.length} Product
               </CountTaggedProduct>
-              <RightArrowSvg style={{ position: 'absolute', right: 10 }} />
+              <RightArrowSvg style={{position: 'absolute', right: 10}} />
             </Row>
           </TagProductWrap>
-          <Label label={'Insert Image'} />
-
-          {Images.length === 0 ? (
+          <Label label={'Insert Image'} marginBottom={13.37} />
+          {images.length === 0 ? (
             <>
               {loading === false ? (
-                <UploadImgBigWrap activeOpacity={0.7} onPress={imagepicker}>
+                <UploadImgBigWrap activeOpacity={0.7} onPress={imagePicker}>
                   <UploadImg />
                   <Spacer height={9.18} />
-                  <Smalltext
+                  <SmallText
                     title={'Insert Image max 2mb'}
                     textAlign={'center'}
                     fontSize={12}
@@ -181,71 +170,32 @@ const Creatediscussion = props => {
                 </View>
               )}
             </>
-          ) : Images.length === 1 ? (
-            <View>
-              <Image
-                source={{ uri: Images[0].path }}
-                style={{
-                  height: 250,
-                  width: '100%',
-                  alignSelf: 'center',
-                  borderRadius: 10,
-                }}
-              />
-              <TouchableOpacity
-                onPress={() => setImages([])}
-                style={{
-                  position: 'absolute',
-                  right: -5,
-                  top: -10,
-                  backgroundColor: 'black',
-                  height: 30,
-                  width: 30,
-                  borderRadius: 20,
-                }}
-              />
-            </View>
           ) : (
-            <FlatList
-              extraData={refresh}
-              showsHorizontalScrollIndicator={false}
-              numColumns={2}
-              columnWrapperStyle={{
-                justifyContent: 'space-between',
-                padding: 10,
-                marginBottom: 20,
-              }}
-              data={Images}
-              renderItem={({ item, index }) => {
-                return (
-                  <View key={index}>
-                    <Image
-                      source={{ uri: item.path }}
-                      style={{
-                        height: 150,
-                        width: 150,
-                        alignSelf: 'center',
-                        borderRadius: 10,
-                      }}
-                    />
-                    <TouchableOpacity
-                      onPress={() => removeitem(item)}
-                      style={{
-                        position: 'absolute',
-                        right: -5,
-                        top: -10,
-                        backgroundColor: 'black',
-                        height: 30,
-                        width: 30,
-                        borderRadius: 20,
-                      }}
-                    />
-                  </View>
-                );
-              }}
-            />
+            <ImagesWrap>
+              <AddImageBtn onPress={imagePicker} activeOpacity={0.7}>
+                <AddImageSVG />
+                <AddImageText>Add Image</AddImageText>
+              </AddImageBtn>
+              <FlatList
+                showsHorizontalScrollIndicator={false}
+                extraData={refresh}
+                horizontal
+                data={images}
+                renderItem={({item, index}) => {
+                  return (
+                    <Container key={index}>
+                      <Images source={{uri: item.path}} />
+                      <RemoveImageBtn
+                        onPress={() => removeItem(item)}
+                        activeOpacity={0.7}>
+                        <RemoveImageSVG />
+                      </RemoveImageBtn>
+                    </Container>
+                  );
+                }}
+              />
+            </ImagesWrap>
           )}
-          <Button title={'Add More Images'} onPress={imagepicker} />
         </ScrollableView>
       </>
       <BtnWrap>
@@ -285,7 +235,6 @@ const TagProductText = styled.Text`
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-
   color: #323234;
 `;
 const CountTaggedProduct = styled.Text`
@@ -313,4 +262,40 @@ const UploadImgBigWrap = styled.TouchableOpacity`
   align-self: center;
   justify-content: center;
   align-items: center;
+`;
+
+const ImagesWrap = styled.View`
+  flex-direction: row;
+`;
+
+const AddImageBtn = styled.TouchableOpacity`
+  width: 103px;
+  height: 103px;
+  border-width: 1px;
+  border-color: #0000001a;
+  justify-content: center;
+  align-items: center;
+`;
+const AddImageText = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #323234;
+`;
+
+const Container = styled.View`
+  margin-left: 8px;
+`;
+const Images = styled.Image`
+  width: 103px;
+  height: 103px;
+`;
+
+const RemoveImageBtn = styled.TouchableOpacity`
+  position: absolute;
+  top: 4px;
+  right: 4px;
 `;
