@@ -1,11 +1,11 @@
 //react
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 //flatlist
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
 //@react-navigation/native
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //react-native-bouncy-checkbox
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -41,44 +41,42 @@ import Delete from '../../../assets/svg/community/delete.svg';
 //temp
 
 //demo data
-import { POPULAR_PRODUCT_DEMO_DATA, linkedProductData } from '../../../components/svg_data/skin_data';
+import {
+  POPULAR_PRODUCT_DEMO_DATA,
+  linkedProductData,
+} from '../../../components/svg_data/skin_data';
 
 const width = Dimensions.get('window').width;
 
-const TagProducts = (props) => {
-
-  const { setTagProduct1, setTagProduct2 } = props?.route?.params;
+const TagProducts = props => {
+  const {setTagProduct1, setTagProduct2} = props?.route?.params;
 
   const [Refresh, setRefresh] = useState(false);
   const navigation = useNavigation();
-  const [LinkProduct, setLinkProduct] = useState(linkedProductData)
+  const [LinkProduct, setLinkProduct] = useState(linkedProductData);
   const [searchTerm, setSearchTerm] = useState('');
 
-
-  let FilterLinkProducts = POPULAR_PRODUCT_DEMO_DATA.filter((val) => {
-    if (searchTerm == "") {
-      return val
-    }
-    else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+  let FilterLinkProducts = POPULAR_PRODUCT_DEMO_DATA.filter(val => {
+    if (searchTerm == '') {
+      return val;
+    } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
       return val;
     }
-  })
+  });
 
-
-
-  const onTagItem = (index) => {
+  const onTagItem = index => {
     const newData = [...POPULAR_PRODUCT_DEMO_DATA];
     newData[index].isselect = !newData[index].isselect;
     setRefresh(!Refresh);
-    setTagProduct1(newData)
-  }
+    setTagProduct1(newData);
+  };
 
-  const onTagItem2 = (index) => {
+  const onTagItem2 = index => {
     const newData = [...LinkProduct];
     newData[index].isselect = !newData[index].isselect;
     setRefresh(!Refresh);
     setTagProduct2(newData);
-  }
+  };
 
   const removeitem = (item, index) => {
     const indexOfObject = LinkProduct.findIndex((object, i) => {
@@ -88,11 +86,7 @@ const TagProducts = (props) => {
     setRefresh(!Refresh);
     let exm = LinkProduct.filter(tagextaitem => tagextaitem.isselect === true);
     setTagProduct2(exm);
-  }
-
-
-
-
+  };
 
   return (
     <Viewcontainer>
@@ -109,7 +103,7 @@ const TagProducts = (props) => {
           // autoFocus={true}
           returnKeyType={'search'}
           placeholderTextColor={'#b1b1b1'}
-          onChangeText={(e) => setSearchTerm(e)}
+          onChangeText={e => setSearchTerm(e)}
           placeholder={'Search Product or brand here'}
         />
       </SearchWrap>
@@ -132,7 +126,7 @@ const TagProducts = (props) => {
                 </Column>
                 <BouncyCheckBoxWrap>
                   <BouncyCheckbox
-                    iconStyle={{ borderRadius: 5 }}
+                    iconStyle={{borderRadius: 5}}
                     disableBuiltInState
                     isChecked={item?.isselect}
                     onPress={() => onTagItem(index)}
@@ -147,7 +141,16 @@ const TagProducts = (props) => {
           })}
         </SearchedDataWrap>
 
-        <ProductLinkWrap onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh, edit: false })}>
+        <ProductLinkWrap
+          onPress={() =>
+            navigation.navigate('ProductLink', {
+              setLinkProduct,
+              LinkProduct,
+              setRefresh,
+              Refresh,
+              edit: false,
+            })
+          }>
           <Row justifyContent={'flex-start'} alignItems={'center'}>
             <TagProductLink />
             <Spacer width={8} />
@@ -169,19 +172,18 @@ const TagProducts = (props) => {
           <>
             <Spacer height={14.37} />
             {LinkProduct.map((item, index) => {
-
-              console.log('item===>', index)
               return (
                 <LinkedProductWrap key={index}>
                   <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
-
-                    {item.uri === true ?
-                      <SearchedItemImg source={{ uri: item.img }} /> :
-
+                    {item.uri === true ? (
+                      <SearchedItemImg source={{uri: item.img}} />
+                    ) : (
                       <SearchedItemImg source={item.img} />
-                    }
+                    )}
 
-                    <Column alignItems={'flex-start'} onPress={() => onTagItem(index)}>
+                    <Column
+                      alignItems={'flex-start'}
+                      onPress={() => onTagItem(index)}>
                       <SearchItemTitle>{item.title}</SearchItemTitle>
                       <LinkedItemLink>{item.link}</LinkedItemLink>
                       <Spacer height={8.35} />
@@ -200,7 +202,7 @@ const TagProducts = (props) => {
 
                     <BouncyCheckBoxWrap>
                       <BouncyCheckbox
-                        iconStyle={{ borderRadius: 5 }}
+                        iconStyle={{borderRadius: 5}}
                         disableBuiltInState
                         isChecked={item?.isselect}
                         onPress={() => onTagItem2(index)}
@@ -216,11 +218,23 @@ const TagProducts = (props) => {
                   <Spacer height={12} />
 
                   <Row justifyContent={'flex-start'} alignItems={'center'}>
-                    <LinkedItemBottomIconsBtn onPress={() => navigation.navigate('ProductLink', { setLinkProduct, LinkProduct, setRefresh, Refresh, edit: true, Editdata: item, UpdateId: index })}>
+                    <LinkedItemBottomIconsBtn
+                      onPress={() =>
+                        navigation.navigate('ProductLink', {
+                          setLinkProduct,
+                          LinkProduct,
+                          setRefresh,
+                          Refresh,
+                          edit: true,
+                          Editdata: item,
+                          UpdateId: index,
+                        })
+                      }>
                       <Edit />
                     </LinkedItemBottomIconsBtn>
                     <Spacer width={10} />
-                    <LinkedItemBottomIconsBtn onPress={() => removeitem(item, index)}>
+                    <LinkedItemBottomIconsBtn
+                      onPress={() => removeitem(item, index)}>
                       <Delete />
                     </LinkedItemBottomIconsBtn>
                   </Row>
@@ -234,7 +248,7 @@ const TagProducts = (props) => {
         {/* WILL BE REMOVED */}
       </ScrollableView>
 
-      <BtnWrap >
+      <BtnWrap>
         <Button title={'Ok'} onPress={() => navigation.goBack()} />
       </BtnWrap>
     </Viewcontainer>

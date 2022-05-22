@@ -53,7 +53,6 @@ import SmallDiscountBanner from '../../assets/svg/promo/small_discount_banner.sv
 
 import LinkedProductImg from '../../assets/temp/product_10.png';
 
-
 export const SKIN_TYPE_DATA = [
   {
     skin_type_svg: Normal,
@@ -111,10 +110,10 @@ export const SKIN_UNDER_TONE_DATA = [
 ];
 
 export const CATEGORY_ROUND_DATA = [
-  { id: 0, svg: Face, name: 'Face' },
-  { id: 1, svg: Eyes, name: 'Eyes' },
-  { id: 2, svg: Lips, name: 'Lips' },
-  { id: 3, svg: Skin, name: 'Skin' },
+  {id: 0, svg: Face, name: 'Face'},
+  {id: 1, svg: Eyes, name: 'Eyes'},
+  {id: 2, svg: Lips, name: 'Lips'},
+  {id: 3, svg: Skin, name: 'Skin'},
 ];
 
 export const POPULAR_PRODUCT_DEMO_DATA = [
@@ -130,7 +129,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product2,
@@ -144,7 +143,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product3,
@@ -158,7 +157,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product4,
@@ -172,7 +171,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product5,
@@ -186,7 +185,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product6,
@@ -200,7 +199,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product7,
@@ -214,7 +213,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product8,
@@ -228,7 +227,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product9,
@@ -242,7 +241,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
   {
     icon: Product10,
@@ -256,7 +255,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
     discount_amount_percentage: '50',
     discount_amount_in_price: '10.000',
     heart_like: HeartnotLiked,
-    isselect: false
+    isselect: false,
   },
 ];
 
@@ -309,8 +308,12 @@ export const postData = [
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
     postImg: [
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
+      {
+        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+      },
+      {
+        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+      },
     ],
     like: 7,
     comment: 8,
@@ -322,7 +325,11 @@ export const postData = [
     createrdatetime: '2022-05-17T08:18:01.639Z',
     descr:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [{ url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }],
+    postImg: [
+      {
+        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+      },
+    ],
     like: 13,
     comment: 89,
   },
@@ -333,9 +340,14 @@ export const postData = [
     createrdatetime: '2022-05-18T08:18:01.639Z',
     descr: 'Amet minim mollit non deserunt',
     postImg: [
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' },
-      { url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde' }
-    ], like: 500,
+      {
+        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+      },
+      {
+        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+      },
+    ],
+    like: 500,
     comment: 300,
   },
 ];

@@ -1,14 +1,7 @@
 //react
 import React, {useState} from 'react';
 //react native
-import {
-  Dimensions,
-  Image,
-  View,
-  TouchableOpacity,
-  FlatList,
-  ActivityIndicator,
-} from 'react-native';
+import {Dimensions, View, FlatList, ActivityIndicator} from 'react-native';
 //useNavigation
 import {useNavigation} from '@react-navigation/native';
 
@@ -17,6 +10,9 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 //styled components
 import styled from 'styled-components/native';
+//Redux Store Data
+
+import {useSelector} from 'react-redux';
 
 //tag svg
 import TagProductSvg from '../../../assets/svg/community/tag_product.svg';
@@ -47,6 +43,9 @@ import RemoveImageSVG from '../../../assets/svg/etc/image_remove.svg';
 
 const Creatediscussion = props => {
   const navigation = useNavigation();
+  const User = useSelector(state => {
+    return state?.persistedReducer?.AuthReducer?.UserDetail;
+  });
 
   const [images, setImages] = useState([]);
   const [tagitem, settagitem] = useState([]);
@@ -88,11 +87,10 @@ const Creatediscussion = props => {
     images.map((v, index) => {
       ImagesArray.push({url: v.path});
     });
-
     let data = {
       user_pic: require('../../../assets/icons/temp/user_profile_pic.png'),
-      name: 'Mukthayar Auto New',
-      time: '20 y ago',
+      name: User?.name,
+      time: new Date().toLocaleTimeString(),
       descr: discussion,
       postImg: ImagesArray,
       like: 20,
