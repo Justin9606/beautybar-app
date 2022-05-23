@@ -97,6 +97,7 @@ const CreateProductLink = (props) => {
 
   }
 
+
   return (
     <Viewcontainer>
       <Header
@@ -125,6 +126,8 @@ const CreateProductLink = (props) => {
           numberOfLines={1}
           multiline={false}
           defaultValue={data.title}
+          name="name"
+          onChangeText={(e) => setData({ ...data, title: e })}
         />
         <Label label={'Description'} marginTop={31} />
         <Input
@@ -135,6 +138,8 @@ const CreateProductLink = (props) => {
           defaultValue={
             data.description !== '' ? data.description : ''
           }
+          onChangeText={(e) => setData({ ...data, description: e })}
+
           multiline={true}
         />
         <Label label={'Preview'} marginTop={32} />
@@ -153,7 +158,7 @@ const CreateProductLink = (props) => {
 
         <LinkedProductWrap>
           <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
-            <SearchedItemImg source={data.images} />
+            <SearchedItemImg source={{uri: data.img}} />
 
             <Column alignItems={'flex-start'}>
               <SearchItemTitle>{data.title}</SearchItemTitle>

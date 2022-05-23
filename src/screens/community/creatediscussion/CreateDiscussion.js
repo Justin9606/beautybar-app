@@ -1,9 +1,9 @@
 //react
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 //react native
-import {Dimensions, View, FlatList, ActivityIndicator} from 'react-native';
+import { Dimensions, View, FlatList, ActivityIndicator } from 'react-native';
 //useNavigation
-import {useNavigation} from '@react-navigation/native';
+import { Link, useNavigation } from '@react-navigation/native';
 
 //image picker
 import ImagePicker from 'react-native-image-crop-picker';
@@ -12,7 +12,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import styled from 'styled-components/native';
 //Redux Store Data
 
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 //tag svg
 import TagProductSvg from '../../../assets/svg/community/tag_product.svg';
@@ -36,10 +36,14 @@ import SmallText from '../../../components/common/Text/SmallText';
 //components
 import CreateDiscussionInput from '../components/CreateDiscussionInput';
 import Label from '../components/Label';
-import {postData} from '../../../components/svg_data/skin_data';
+import { postData } from '../../../components/svg_data/skin_data';
 //add and remove image svg
 import AddImageSVG from '../../../assets/svg/etc/add_image.svg';
 import RemoveImageSVG from '../../../assets/svg/etc/image_remove.svg';
+import {
+  POPULAR_PRODUCT_DEMO_DATA,
+  linkedProductData,
+} from '../../../components/svg_data/skin_data';
 
 const Creatediscussion = props => {
   const navigation = useNavigation();
@@ -53,6 +57,7 @@ const Creatediscussion = props => {
   const [discussion, setdiscussion] = useState();
   const [refresh, setrefresh] = useState(false);
   const [loading, setloading] = useState(false);
+
   const setUpdate = props?.route?.params;
 
   const imagePicker = () => {
@@ -82,10 +87,19 @@ const Creatediscussion = props => {
     setrefresh(!refresh);
   };
 
+  const Tag1 = tagitem.filter(tagitem => tagitem.isselect === true);
+  const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
+  const TagProduct = [...Tag1, ...Tag2];
+
+  const TagProductSaveCopy = [...POPULAR_PRODUCT_DEMO_DATA]
+  const LinkProductSaveCopy = [...linkedProductData]
+
+
   const AddDiscussion = () => {
+
     let ImagesArray = [];
     images.map((v, index) => {
-      ImagesArray.push({url: v.path});
+      ImagesArray.push({ url: v.path });
     });
     let data = {
       user_pic: require('../../../assets/icons/temp/user_profile_pic.png'),
@@ -103,11 +117,19 @@ const Creatediscussion = props => {
     setrefresh(!refresh);
     setUpdate.setUpdate(data);
     navigation.goBack();
+
+    //Reset Tag Product
+    POPULAR_PRODUCT_DEMO_DATA.length = 0
+    linkedProductData.length = 0;
+
+    let TagProductNewArray = TagProductSaveCopy.map(value => value.isselect == true ? Object.assign({}, value, { isselect: false }) : value);
+    let LinkProductNewArray = LinkProductSaveCopy.map(element => element.isselect == true ? Object.assign({}, element, { isselect: false }) : element);
+
+    POPULAR_PRODUCT_DEMO_DATA.push(...TagProductNewArray);
+    linkedProductData.push(...LinkProductNewArray)
   };
 
-  const Tag1 = tagitem.filter(tagitem => tagitem.isselect === true);
-  const Tag2 = tagextaitem.filter(tagextaitem => tagextaitem.isselect === true);
-  const TagProduct = [...Tag1, ...Tag2];
+
 
   return (
     <>
@@ -146,7 +168,7 @@ const Creatediscussion = props => {
               <CountTaggedProduct>
                 {TagProduct.length} Product
               </CountTaggedProduct>
-              <RightArrowSvg style={{position: 'absolute', right: 10}} />
+              <RightArrowSvg style={{ position: 'absolute', right: 10 }} />
             </Row>
           </TagProductWrap>
           <Label label={'Insert Image'} marginBottom={13.37} />
@@ -179,10 +201,10 @@ const Creatediscussion = props => {
                 extraData={refresh}
                 horizontal
                 data={images}
-                renderItem={({item, index}) => {
+                renderItem={({ item, index }) => {
                   return (
                     <Container key={index}>
-                      <Images source={{uri: item.path}} />
+                      <Images source={{ uri: item.path }} />
                       <RemoveImageBtn
                         onPress={() => removeItem(item)}
                         activeOpacity={0.7}>

@@ -57,6 +57,33 @@ const CommunityMain = ({}) => {
       tag: 'Oily-Skin',
     },
   ];
+  const linkedProductData = [
+    {
+      id: 1,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+    },
+    {
+      id: 2,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+    },
+    {
+      id: 3,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+    },
+  ];
 
   return (
     <>
@@ -148,18 +175,26 @@ const CommunityMain = ({}) => {
                   {item?.TagProduct !== undefined ? (
                     <>
                       {item?.TagProduct?.map((value, i) => {
-                        console.log('VLAU IMAGE', value);
+                        console.log('Dtata===>', value?.img);
                         return (
                           <TaggedProductsRenderWrap activeOpacity={0.7} key={i}>
-                            <TaggedProductsImg
-                              source={value?.img}
-                              resizeMode="contain"
-                            />
+                            {value?.icon ? (
+                              <TaggedProductsImg
+                                source={value?.icon}
+                                resizeMode="contain"
+                              />
+                            ) : null}
+                            {value?.img ? (
+                              <TaggedProductsImg
+                                source={{uri: value?.img}}
+                                resizeMode="contain"
+                              />
+                            ) : null}
                             <Spacer width={10} />
                             <Column alignItems={'flex-start'}>
                               <Spacer height={5} />
                               <ProductTitle
-                                title={value?.name || 'No Title'}
+                                title={value?.title || value?.name}
                                 ellipsizeMode={'tail'}
                                 numberOfLines={1}
                               />
