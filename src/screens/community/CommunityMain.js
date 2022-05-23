@@ -1,8 +1,8 @@
 //react
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 //react native
-import {FlatList, useWindowDimensions} from 'react-native';
+import { FlatList, useWindowDimensions } from 'react-native';
 
 //styled
 import styled from 'styled-components';
@@ -26,11 +26,11 @@ import PostBottomBtns from './components/PostBottomBtns';
 //Slider
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
-import {postData} from '../../components/svg_data/skin_data';
+import { postData } from '../../components/svg_data/skin_data';
 
 import LinkedProductImg from '../../assets/temp/product_10.png';
 
-const CommunityMain = ({}) => {
+const CommunityMain = ({ }) => {
   const height = useWindowDimensions().height;
   const [tagSelected, setTagSelected] = useState(0);
   const [update, setUpdate] = useState(false);
@@ -57,6 +57,34 @@ const CommunityMain = ({}) => {
       tag: 'Oily-Skin',
     },
   ];
+  const linkedProductData = [
+    {
+      id: 1,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+    },
+    {
+      id: 2,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+    },
+    {
+      id: 3,
+      img: LinkedProductImg,
+      title: 'MAYBELLINE - Volum Expres',
+      link: 'www.maybeline.com',
+      brandType: 'Mascara',
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+    },
+  ];
+
 
   return (
     <>
@@ -73,7 +101,7 @@ const CommunityMain = ({}) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={tagsData}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return (
               <TagsBtn
                 index={index}
@@ -93,7 +121,10 @@ const CommunityMain = ({}) => {
           scrollEnabled={false}
           data={SortedData}
           extraData={update}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
+
+
+
             return (
               <>
                 <Row justifyContent={'flex-start'} alignItems={'flex-start'}>
@@ -145,21 +176,29 @@ const CommunityMain = ({}) => {
                   onPress={() => alert('3 DOTS Pressed')}
                 />
                 <TaggedProductsWrapper>
-                  {item?.TagProduct !== undefined ? (
+                  {item?.TagProduct !== undefined ?
                     <>
                       {item?.TagProduct?.map((value, i) => {
-                        console.log('VLAU IMAGE', value);
+
+                        console.log('Dtata===>', value?.img)
                         return (
                           <TaggedProductsRenderWrap activeOpacity={0.7} key={i}>
-                            <TaggedProductsImg
-                              source={value?.img}
-                              resizeMode="contain"
-                            />
+                            {value?.icon ?
+                              <TaggedProductsImg
+                                source={value?.icon}
+                                resizeMode="contain"
+                              />
+                              : null}
+                            {value?.img ?
+                              <TaggedProductsImg
+                                source={{ uri: value?.img }}
+                                resizeMode="contain"
+                              /> : null}
                             <Spacer width={10} />
                             <Column alignItems={'flex-start'}>
                               <Spacer height={5} />
                               <ProductTitle
-                                title={value?.title || 'No Title'}
+                                title={value?.title || value?.name}
                                 ellipsizeMode={'tail'}
                                 numberOfLines={1}
                               />
@@ -181,52 +220,53 @@ const CommunityMain = ({}) => {
                             </Column>
                             <Spacer width={10} />
                           </TaggedProductsRenderWrap>
-                        );
+                        )
                       })}
                     </>
-                  ) : // <FlatList
-                  //   horizontal={true}
-                  //   showsHorizontalScrollIndicator={false}
-                  //   data={item?.TagProduct}
-                  //   keyExtractor={index => index.id}
-                  //   renderItem={({ value, index }) => {
-                  //     console.log('item?.SortedData',value)
-                  //     return (
-                  //       <TaggedProductsRenderWrap activeOpacity={0.7}>
-                  //         <TaggedProductsImg
-                  //           source={value?.img}
-                  //           resizeMode="contain"
-                  //         />
-                  //         <Spacer width={10} />
-                  //         <Column alignItems={'flex-start'}>
-                  //           <Spacer height={5} />
-                  //           <ProductTitle
-                  //             title={value?.title == undefined ? item?.brandType : value?.title}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //           <ProductBrand
-                  //             brand={item?.brandType}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //           <ProductLink
-                  //             link={item?.link}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //           <ProductDescription
-                  //             description={item?.description}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //         </Column>
-                  //         <Spacer width={10} />
-                  //       </TaggedProductsRenderWrap>
-                  //     );
-                  //   }}
-                  // />
-                  null}
+                    // <FlatList
+                    //   horizontal={true}
+                    //   showsHorizontalScrollIndicator={false}
+                    //   data={item?.TagProduct}
+                    //   keyExtractor={index => index.id}
+                    //   renderItem={({ value, index }) => {
+                    //     console.log('item?.SortedData',value)
+                    //     return (
+                    //       <TaggedProductsRenderWrap activeOpacity={0.7}>
+                    //         <TaggedProductsImg
+                    //           source={value?.img}
+                    //           resizeMode="contain"
+                    //         />
+                    //         <Spacer width={10} />
+                    //         <Column alignItems={'flex-start'}>
+                    //           <Spacer height={5} />
+                    //           <ProductTitle
+                    //             title={value?.title == undefined ? item?.brandType : value?.title}
+                    //             ellipsizeMode={'tail'}
+                    //             numberOfLines={1}
+                    //           />
+                    //           <ProductBrand
+                    //             brand={item?.brandType}
+                    //             ellipsizeMode={'tail'}
+                    //             numberOfLines={1}
+                    //           />
+                    //           <ProductLink
+                    //             link={item?.link}
+                    //             ellipsizeMode={'tail'}
+                    //             numberOfLines={1}
+                    //           />
+                    //           <ProductDescription
+                    //             description={item?.description}
+                    //             ellipsizeMode={'tail'}
+                    //             numberOfLines={1}
+                    //           />
+                    //         </Column>
+                    //         <Spacer width={10} />
+                    //       </TaggedProductsRenderWrap>
+                    //     );
+                    //   }}
+                    // />
+                    :
+                    null}
                 </TaggedProductsWrapper>
 
                 <Spacer height={25.5} />
