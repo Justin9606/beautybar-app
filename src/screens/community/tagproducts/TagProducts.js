@@ -25,7 +25,7 @@ import Header from '../../../components/common/Header/Header';
 import Button from '../../../components/common/Buttons/Button';
 
 //common Texts
-import Smalltext from '../../../components/common/Text/SmallText';
+import SmallText from '../../../components/common/Text/SmallText';
 
 //community components
 import Divider from '../components/Divider';
@@ -78,7 +78,7 @@ const TagProducts = props => {
     setTagProduct2(newData);
   };
 
-  const removeitem = (item, index) => {
+  const remoteIte = (item, index) => {
     const indexOfObject = LinkProduct.findIndex((object, i) => {
       return i === index;
     });
@@ -154,7 +154,7 @@ const TagProducts = props => {
           <Row justifyContent={'flex-start'} alignItems={'center'}>
             <TagProductLink />
             <Spacer width={8} />
-            <Smalltext
+            <SmallText
               title={'Product Link (Optional)'}
               textAlign={'center'}
               fontSize={16}
@@ -187,7 +187,7 @@ const TagProducts = props => {
                       <SearchItemTitle>{item.title}</SearchItemTitle>
                       <LinkedItemLink>{item.link}</LinkedItemLink>
                       <Spacer height={8.35} />
-                      <Smalltext
+                      <SmallText
                         title="Description"
                         fontSize={11}
                         textAlign={'left'}
@@ -234,7 +234,7 @@ const TagProducts = props => {
                     </LinkedItemBottomIconsBtn>
                     <Spacer width={10} />
                     <LinkedItemBottomIconsBtn
-                      onPress={() => removeitem(item, index)}>
+                      onPress={() => remoteIte(item, index)}>
                       <Delete />
                     </LinkedItemBottomIconsBtn>
                   </Row>

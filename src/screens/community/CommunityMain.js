@@ -159,7 +159,7 @@ const CommunityMain = ({}) => {
                             <Column alignItems={'flex-start'}>
                               <Spacer height={5} />
                               <ProductTitle
-                                title={value?.title || 'No Title'}
+                                title={value?.name || 'No Title'}
                                 ellipsizeMode={'tail'}
                                 numberOfLines={1}
                               />

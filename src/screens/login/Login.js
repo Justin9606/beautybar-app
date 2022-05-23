@@ -55,8 +55,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <Header /> */}
-
       <ScrollableView
         contentContainerStyle={{justifyContent: 'center', flex: 1}}>
         <Spacer height={26} />
