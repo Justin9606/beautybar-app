@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { LoginUser } from '../../store/reducer/auth_reducer/Auth_Reducer'
-
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {LoginUser} from '../../store/reducer/auth_reducer/Auth_Reducer';
 
 //react-navigation-native
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //react-i18next
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 //styled components
 import styled from 'styled-components';
@@ -19,12 +18,11 @@ import ControlAlignCenter from '../../containers/ControlAlignCenter';
 import Spacer from '../../containers/Spacer';
 
 //Texts
-import Smalltext from '../../components/common/Text/SmallText';
+import SmallText from '../../components/common/Text/SmallText';
 import Largetext from '../../components/common/Text/LargeText';
 
 //Common ui
 import Button from '../../components/common/Buttons/Button';
-import Header from '../../components/common/Header/Header';
 import TextInput from '../../components/common/TextInputs/TextInput';
 
 //
@@ -32,50 +30,47 @@ import TextInput from '../../components/common/TextInputs/TextInput';
 //Login Components starts
 const Login = () => {
   const navigation = useNavigation();
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const dispatch = useDispatch();
 
-  const [phone, setphone] = useState(null)
+  const [phone, setPhone] = useState(null);
 
-
-  const PhoneCheck = useSelector((state) => { return state.persistedReducer.AuthReducer })
-
-
-
-
-
+  const PhoneCheck = useSelector(state => {
+    return state.persistedReducer.AuthReducer;
+  });
 
   const signIn = () => {
-
     if (PhoneCheck.UserPhone == phone) {
-      dispatch(LoginUser(true))
+      dispatch(LoginUser(true));
     } else {
       if (phone != null && phone != ' ') {
-        navigation.navigate('Verification', { Phone: phone })
+        navigation.navigate('Verification', {Phone: phone});
       } else {
-        alert('Please Enter Phone Number')
+        alert('Please Enter Phone Number');
       }
     }
+  };
 
-
-  }
-
+  const signInWith = ['Enter your registered', 'Phone Number to Sign in'];
 
   return (
     <>
       {/* <Header /> */}
 
       <ScrollableView
-        contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+        contentContainerStyle={{justifyContent: 'center', flex: 1}}>
         <Spacer height={26} />
         <Largetext title={t('welcomeback')} textAlign="center" />
         <ControlAlignCenter>
-          <Smalltext
-            textAlign="center"
-            title="Enter your registered Phone Number to Sign in"
-            width={200}
-            height={35}
-          />
+          {signInWith.map(signInText => {
+            return (
+              <SmallText
+                key={signInText}
+                textAlign="center"
+                title={signInText}
+              />
+            );
+          })}
         </ControlAlignCenter>
         <Spacer height={36} />
 
@@ -84,17 +79,17 @@ const Login = () => {
           inputeLabel={t('phoneNumber')}
           placeholder="01083960506"
           keyboardType={'phone-pad'}
-          onChangeText={(e) => setphone(e)}
+          onChangeText={e => setPhone(e)}
         />
         <Spacer height={35} />
         <Button
           title={t('signIn')}
-          onPress={() => signIn()}
-        // onPress={()=>Login()}
+          onPress={signIn}
+          // onPress={()=>Login()}
         />
       </ScrollableView>
       <HavingTroubleWrap onPress={() => alert('Having trouble?')}>
-        <Smalltext
+        <SmallText
           title="Trouble Signing in?"
           width={140}
           height={30}

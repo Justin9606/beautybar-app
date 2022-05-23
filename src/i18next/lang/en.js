@@ -3,6 +3,7 @@ export default {
     start: 'Start',
     agreementToThePolicyandTerms:
       'By clicking Sign Up or Sign In, you agree with our Terms of Service and Privacy Policy',
+    signInWith: ['Enter your registered', 'Phone Number to Sign in'],
     welcomeback: 'Welcome Back',
     phoneNumber: 'Phone Number',
     signIn: 'Sign in',
