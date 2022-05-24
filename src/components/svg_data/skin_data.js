@@ -110,10 +110,10 @@ export const SKIN_UNDER_TONE_DATA = [
 ];
 
 export const CATEGORY_ROUND_DATA = [
-  {id: 0, svg: Face, name: 'Face'},
-  {id: 1, svg: Eyes, name: 'Eyes'},
-  {id: 2, svg: Lips, name: 'Lips'},
-  {id: 3, svg: Skin, name: 'Skin'},
+  { id: 0, svg: Face, name: 'Face' },
+  { id: 1, svg: Eyes, name: 'Eyes' },
+  { id: 2, svg: Lips, name: 'Lips' },
+  { id: 3, svg: Skin, name: 'Skin' },
 ];
 
 export const POPULAR_PRODUCT_DEMO_DATA = [
@@ -259,95 +259,102 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
   },
 ];
 
-export const linkedProductData = [
-  {
-    img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
-    isselect: false,
-    title: 'MAYBELLINE - Volum Expres 1',
-    link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
-    description:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-  },
+export const linkedProductData = [];
 
-  {
-    img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
-    isselect: false,
-    title: 'MAYBELLINE - Volum Expres 2',
-    link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
-    description:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-  },
-  {
-    img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
-    isselect: false,
-    title: 'MAYBELLINE - Volum Expres 3',
-    link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
-    description:
-      'Amet minim mollit non deserunt ullamco est sjhjkhjkhjkhjkhkjkhkjhjkhjkhjkjjkljjlkjkljklghfghfghfghfghfghfghjkllkjkljkljlkjklgffghfghkljkjkljkhjkhkjhkjkljlkjlkit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-  },
-];
+export const postData = [];
 
-export const postData = [
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Beauty Bar',
-    time: '2 min ago',
-    createrdatetime: '2022-05-15T08:18:01.639Z',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
 
-    postImg: '',
-    like: 12,
-    comment: 5,
-  },
-  {
-    user_pic: '',
-    name: 'Justin',
-    time: '2 min ago',
-    createrdatetime: '2022-05-16T08:18:01.639Z',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [
-      {
-        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
-      },
-      {
-        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
-      },
-    ],
-    like: 7,
-    comment: 8,
-  },
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Soap Bar',
-    time: '20 min ago',
-    createrdatetime: '2022-05-17T08:18:01.639Z',
-    descr:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    postImg: [
-      {
-        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
-      },
-    ],
-    like: 13,
-    comment: 89,
-  },
-  {
-    user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
-    name: 'Lux Bar',
-    time: '2 min ago',
-    createrdatetime: '2022-05-18T08:18:01.639Z',
-    descr: 'Amet minim mollit non deserunt',
-    postImg: [
-      {
-        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
-      },
-      {
-        url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
-      },
-    ],
-    like: 500,
-    comment: 300,
-  },
-];
+// export const linkedProductData = [
+//   {
+//     img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
+//     isselect: false,
+//     title: 'MAYBELLINE - Volum Expres 1',
+//     link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
+//     description:
+//       'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+//   },
+
+//   {
+//     img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
+//     isselect: false,
+//     title: 'MAYBELLINE - Volum Expres 2',
+//     link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
+//     description:
+//       'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+//   },
+//   {
+//     img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
+//     isselect: false,
+//     title: 'MAYBELLINE - Volum Expres 3',
+//     link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
+//     description:
+//       'Amet minim mollit non deserunt ullamco est sjhjkhjkhjkhjkhkjkhkjhjkhjkhjkjjkljjlkjkljklghfghfghfghfghfghfghjkllkjkljkljlkjklgffghfghkljkjkljkhjkhkjhkjkljlkjlkit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
+//   },
+// ];
+
+
+
+// export const postData = [
+//   {
+//     user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
+//     name: 'Beauty Bar',
+//     time: '2 min ago',
+//     createrdatetime: '2022-05-15T08:18:01.639Z',
+//     descr:
+//       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+
+//     postImg: '',
+//     like: 12,
+//     comment: 5,
+//   },
+//   {
+//     user_pic: '',
+//     name: 'Justin',
+//     time: '2 min ago',
+//     createrdatetime: '2022-05-16T08:18:01.639Z',
+//     descr:
+//       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+//     postImg: [
+//       {
+//         url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+//       },
+//       {
+//         url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+//       },
+//     ],
+//     like: 7,
+//     comment: 8,
+//   },
+//   {
+//     user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
+//     name: 'Soap Bar',
+//     time: '20 min ago',
+//     createrdatetime: '2022-05-17T08:18:01.639Z',
+//     descr:
+//       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+//     postImg: [
+//       {
+//         url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+//       },
+//     ],
+//     like: 13,
+//     comment: 89,
+//   },
+//   {
+//     user_pic: require('../../assets/icons/temp/user_profile_pic.png'),
+//     name: 'Lux Bar',
+//     time: '2 min ago',
+//     createrdatetime: '2022-05-18T08:18:01.639Z',
+//     descr: 'Amet minim mollit non deserunt',
+//     postImg: [
+//       {
+//         url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+//       },
+//       {
+//         url: 'https://cdn-icons.flaticon.com/png/512/1807/premium/1807383.png?token=exp=1652703846~hmac=c847b1053703359c973a984be7c9dfde',
+//       },
+//     ],
+//     like: 500,
+//     comment: 300,
+//   },
+// ];
