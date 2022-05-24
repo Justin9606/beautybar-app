@@ -4,7 +4,6 @@ import {
   Image,
   StyleSheet,
   FlatList,
-  Modal,
   Dimensions,
   Text,
   TouchableOpacity,

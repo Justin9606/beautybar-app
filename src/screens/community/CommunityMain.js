@@ -27,7 +27,6 @@ import PostBottomBtns from './components/PostBottomBtns';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
 import {postData} from '../../components/svg_data/skin_data';
-console.log('POST DATA>>>>> ', postData);
 
 const CommunityMain = ({}) => {
   const height = useWindowDimensions().height;
@@ -122,7 +121,6 @@ const CommunityMain = ({}) => {
                   //   style={{height: height / 4.2}}
                   // />
                   <>
-                    {console.log('ITEM DAT>>>>', item.postImg)}
                     <ImageSlider images={item?.postImg} />
                   </>
                 ) : (
@@ -149,96 +147,62 @@ const CommunityMain = ({}) => {
                 <TaggedProductsWrapper>
                   {item?.TagProduct !== undefined ? (
                     <>
-                      {item?.TagProduct?.map((value, i) => {
-                        console.log('Dtata===>', value?.img);
-                        return (
-                          <TaggedProductsRenderWrap activeOpacity={0.7} key={i}>
-                            {value?.icon ? (
-                              <TaggedProductsImg
-                                source={value?.icon}
-                                resizeMode="contain"
-                              />
-                            ) : null}
-                            {value?.img ? (
-                              <TaggedProductsImg
-                                source={{uri: value?.img}}
-                                resizeMode="contain"
-                              />
-                            ) : null}
-                            <Spacer width={10} />
-                            <Column alignItems={'flex-start'}>
-                              <Spacer height={5} />
-                              <ProductTitle
-                                title={value?.title || value?.name}
-                                ellipsizeMode={'tail'}
-                                numberOfLines={1}
-                              />
-                              <ProductBrand
-                                brand={value?.brandType}
-                                ellipsizeMode={'tail'}
-                                numberOfLines={1}
-                              />
-                              <ProductLink
-                                link={value?.link}
-                                ellipsizeMode={'tail'}
-                                numberOfLines={1}
-                              />
-                              <ProductDescription
-                                description={value?.description}
-                                ellipsizeMode={'tail'}
-                                numberOfLines={1}
-                              />
-                            </Column>
-                            <Spacer width={10} />
-                          </TaggedProductsRenderWrap>
-                        );
-                      })}
+                      <FlatList
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        data={item?.TagProduct}
+                        keyExtractor={index => index.id}
+                        renderItem={({item, index}) => {
+                          return (
+                            <TaggedProductsRenderWrap activeOpacity={0.7}>
+                              {item?.icon ? (
+                                <TaggedProductsImg
+                                  source={item?.icon}
+                                  resizeMode="contain"
+                                />
+                              ) : null}
+                              {item?.img ? (
+                                <TaggedProductsImg
+                                  source={{uri: item?.img}}
+                                  resizeMode="contain"
+                                />
+                              ) : null}
+                              <Spacer width={10} />
+                              <Column alignItems={'flex-start'}>
+                                <Spacer height={5} />
+                                <ProductTitle
+                                  title={
+                                    item?.title == undefined
+                                      ? item?.brandType
+                                      : item?.title
+                                  }
+                                  ellipsizeMode={'tail'}
+                                  numberOfLines={1}
+                                />
+                                <ProductBrand
+                                  brand={item?.brandType}
+                                  ellipsizeMode={'tail'}
+                                  numberOfLines={1}
+                                />
+                                <ProductLink
+                                  link={item?.link}
+                                  ellipsizeMode={'tail'}
+                                  numberOfLines={1}
+                                />
+                                <ProductDescription
+                                  description={item?.description}
+                                  ellipsizeMode={'tail'}
+                                  numberOfLines={1}
+                                />
+                              </Column>
+                              <Spacer width={10} />
+                            </TaggedProductsRenderWrap>
+                          );
+                        }}
+                      />
                     </>
-                  ) : // <FlatList
-                  //   horizontal={true}
-                  //   showsHorizontalScrollIndicator={false}
-                  //   data={item?.TagProduct}
-                  //   keyExtractor={index => index.id}
-                  //   renderItem={({ value, index }) => {
-                  //     console.log('item?.SortedData',value)
-                  //     return (
-                  //       <TaggedProductsRenderWrap activeOpacity={0.7}>
-                  //         <TaggedProductsImg
-                  //           source={value?.img}
-                  //           resizeMode="contain"
-                  //         />
-                  //         <Spacer width={10} />
-                  //         <Column alignItems={'flex-start'}>
-                  //           <Spacer height={5} />
-                  //           <ProductTitle
-                  //             title={value?.title == undefined ? item?.brandType : value?.title}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //           <ProductBrand
-                  //             brand={item?.brandType}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //           <ProductLink
-                  //             link={item?.link}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //           <ProductDescription
-                  //             description={item?.description}
-                  //             ellipsizeMode={'tail'}
-                  //             numberOfLines={1}
-                  //           />
-                  //         </Column>
-                  //         <Spacer width={10} />
-                  //       </TaggedProductsRenderWrap>
-                  //     );
-                  //   }}
-                  // />
-                  null}
+                  ) : null}
                 </TaggedProductsWrapper>
-
                 <Spacer height={25.5} />
               </>
             );
