@@ -25,7 +25,7 @@ import Header from '../../../components/common/Header/Header';
 import Button from '../../../components/common/Buttons/Button';
 
 //common Texts
-import SmallText from '../../../components/common/Text/SmallText';
+import Smalltext from '../../../components/common/Text/SmallText';
 
 //community components
 import Divider from '../components/Divider';
@@ -65,7 +65,7 @@ const TagProducts = props => {
   });
 
   const onTagItem = index => {
-    const newData = [...POPULAR_PRODUCT_DEMO_DATA];
+    const newData = [...FilterLinkProducts];
     newData[index].isselect = !newData[index].isselect;
     setRefresh(!Refresh);
     setTagProduct1(newData);
@@ -78,7 +78,7 @@ const TagProducts = props => {
     setTagProduct2(newData);
   };
 
-  const remoteIte = (item, index) => {
+  const removeitem = (item, index) => {
     const indexOfObject = LinkProduct.findIndex((object, i) => {
       return i === index;
     });
@@ -154,7 +154,7 @@ const TagProducts = props => {
           <Row justifyContent={'flex-start'} alignItems={'center'}>
             <TagProductLink />
             <Spacer width={8} />
-            <SmallText
+            <Smalltext
               title={'Product Link (Optional)'}
               textAlign={'center'}
               fontSize={16}
@@ -178,7 +178,7 @@ const TagProducts = props => {
                     {item.uri === true ? (
                       <SearchedItemImg source={{uri: item.img}} />
                     ) : (
-                      <SearchedItemImg source={item.img} />
+                      <SearchedItemImg source={{uri: item.img}} />
                     )}
 
                     <Column
@@ -187,7 +187,7 @@ const TagProducts = props => {
                       <SearchItemTitle>{item.title}</SearchItemTitle>
                       <LinkedItemLink>{item.link}</LinkedItemLink>
                       <Spacer height={8.35} />
-                      <SmallText
+                      <Smalltext
                         title="Description"
                         fontSize={11}
                         textAlign={'left'}
@@ -234,7 +234,7 @@ const TagProducts = props => {
                     </LinkedItemBottomIconsBtn>
                     <Spacer width={10} />
                     <LinkedItemBottomIconsBtn
-                      onPress={() => remoteIte(item, index)}>
+                      onPress={() => removeitem(item, index)}>
                       <Delete />
                     </LinkedItemBottomIconsBtn>
                   </Row>

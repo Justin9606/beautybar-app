@@ -17,6 +17,7 @@ import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';
+import BottomBtnWrapper from '../../components/common/Buttons/BottomBtnWrapper';
 import Header from '../../components/common/Header/Header';
 
 //skin profile svg step_1
@@ -202,9 +203,9 @@ const SkinProfile_2 = props => {
         <Spacer height={100} />
       </ScrollableView>
 
-      <Absolutebutton>
+      <BottomBtnWrapper>
         <Button title={'Next'} onPress={() => NextStep()} />
-      </Absolutebutton>
+      </BottomBtnWrapper>
     </ViewContainer>
   );
 };

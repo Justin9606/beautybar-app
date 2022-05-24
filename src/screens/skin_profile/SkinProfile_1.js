@@ -9,7 +9,7 @@ import {normalize} from '../../constants/responsive';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 //
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 //containers
 import ViewContainer from '../../containers/ViewContainer';
@@ -20,6 +20,7 @@ import AbsoluteButton from '../../containers/AbsoluteButton';
 
 //common ui
 import Button from '../../components/common/Buttons/Button';
+import BottomBtnWrapper from '../../components/common/Buttons/BottomBtnWrapper';
 import Header from '../../components/common/Header/Header';
 import TextInput from '../../components/common/TextInputs/TextInput';
 
@@ -113,9 +114,9 @@ const SkinProfile_1 = () => {
           </BounyCheckBoxContainer>
         </GenderSelectionWrap>
       </ScrollableView>
-      <AbsoluteButton>
+      <BottomBtnWrapper>
         <Button title="Next" onPress={() => NextStep()} />
-      </AbsoluteButton>
+      </BottomBtnWrapper>
     </ViewContainer>
   );
 };

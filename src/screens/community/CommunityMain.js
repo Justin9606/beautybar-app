@@ -27,8 +27,7 @@ import PostBottomBtns from './components/PostBottomBtns';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 
 import {postData} from '../../components/svg_data/skin_data';
-
-import LinkedProductImg from '../../assets/temp/product_10.png';
+console.log('POST DATA>>>>> ', postData);
 
 const CommunityMain = ({}) => {
   const height = useWindowDimensions().height;
@@ -55,33 +54,6 @@ const CommunityMain = ({}) => {
     {
       id: 3,
       tag: 'Oily-Skin',
-    },
-  ];
-  const linkedProductData = [
-    {
-      id: 1,
-      img: LinkedProductImg,
-      title: 'MAYBELLINE - Volum Expres',
-      link: 'www.maybeline.com',
-      brandType: 'Mascara',
-    },
-    {
-      id: 2,
-      img: LinkedProductImg,
-      title: 'MAYBELLINE - Volum Expres',
-      link: 'www.maybeline.com',
-      brandType: 'Mascara',
-      description:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
-    },
-    {
-      id: 3,
-      img: LinkedProductImg,
-      title: 'MAYBELLINE - Volum Expres',
-      link: 'www.maybeline.com',
-      brandType: 'Mascara',
-      description:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
     },
   ];
 
@@ -149,7 +121,10 @@ const CommunityMain = ({}) => {
                   //   source={item?.postImg}
                   //   style={{height: height / 4.2}}
                   // />
-                  <ImageSlider images={item?.postImg} />
+                  <>
+                    {console.log('ITEM DAT>>>>', item.postImg)}
+                    <ImageSlider images={item?.postImg} />
+                  </>
                 ) : (
                   <Spacer height={10.25} />
                 )}

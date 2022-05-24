@@ -261,7 +261,7 @@ export const POPULAR_PRODUCT_DEMO_DATA = [
 
 export const linkedProductData = [
   {
-    img: LinkedProductImg,
+    img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
     isselect: false,
     title: 'MAYBELLINE - Volum Expres 1',
     link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
@@ -270,7 +270,7 @@ export const linkedProductData = [
   },
 
   {
-    img: LinkedProductImg,
+    img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
     isselect: false,
     title: 'MAYBELLINE - Volum Expres 2',
     link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',
@@ -278,7 +278,7 @@ export const linkedProductData = [
       'Amet minim mollit non deserunt ullamco est sit aliqua dol odo amet sint. Velit officia consequat duis enim velit mollit.',
   },
   {
-    img: LinkedProductImg,
+    img: 'https://m.media-amazon.com/images/I/61w2YJkX8tL._SX679_.jpg',
     isselect: false,
     title: 'MAYBELLINE - Volum Expres 3',
     link: 'https://www.youtube.com/watch?v=hym-0eGiuoY',

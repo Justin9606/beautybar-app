@@ -30,6 +30,7 @@ const ImageSlider = ({images}) => {
   const renderItem = ({item, index}) => {
     return (
       <TouchableOpacity
+        activeOpacity={0.7}
         onPress={() => {
           setIsVisible(true);
         }}>
@@ -85,11 +86,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   dot: {
-    color: '#888',
+    color: '#E3659C',
     fontSize: 50,
+    opacity: 0.6,
   },
   activeDot: {
-    color: '#FFF',
+    color: '#E74779',
     fontSize: 50,
   },
 });
