@@ -17,7 +17,6 @@ import Header from '../../components/common/Header/Header';
 
 //containers
 import ScrollableView from '../../containers/ScrollableView';
-import SafeAreaContainer from '../../containers/SafeAreaContainer';
 import Spacer from '../../containers/Spacer';
 
 //texts

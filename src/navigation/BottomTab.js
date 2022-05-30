@@ -100,12 +100,27 @@ const BottomTabs = () => {
       <Tab.Screen
         name={'Product'}
         component={ProductStack}
-        options={{
+        options={route => ({
           headerShown: false,
           tabBarIcon: ({focused}) => {
             return <>{focused ? <ProductActive /> : <Product />}</>;
           },
-        }}
+          tabBarStyle: {
+            display: getRouteName(route),
+            height: Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 85,
+            backgroundColor: '#fff',
+            position: 'absolute',
+            borderTopWidth: 0,
+            shadowColor: 'rgb(5, 7, 22)',
+            shadowOffset: {
+              width: 0,
+              height: -5,
+            },
+            shadowOpacity: 0.06,
+            shadowRadius: 19,
+            elevation: 5,
+          },
+        })}
       />
 
       <Tab.Screen

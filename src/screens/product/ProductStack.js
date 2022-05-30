@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //screens
 import ProductMain from './ProductMain';
 import ProductDetailscreen from './productDetailScreen.js/ProductDetailScreen';
+import TryOnMakeUp from '../tryonMakeup/TryonMakeupMainPage';
 
 const ProductStacks = () => {
   const ProductStack = createNativeStackNavigator();
@@ -15,6 +16,7 @@ const ProductStacks = () => {
         component={ProductDetailscreen}
         name="ProductDetail"
       />
+      <ProductStack.Screen component={TryOnMakeUp} name="TryOnMakeUp" />
     </ProductStack.Navigator>
   );
 };

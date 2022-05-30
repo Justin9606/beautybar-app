@@ -8,15 +8,14 @@ import {
 } from 'react-native';
 import Header from '../../components/common/Header/Header';
 
-import { useDispatch ,useSelector} from 'react-redux';
-import { LogOutUser } from '../../store/reducer/auth_reducer/Auth_Reducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {LogOutUser} from '../../store/reducer/auth_reducer/Auth_Reducer';
 
 const Profilemainpage = () => {
-  const User = useSelector((state) => { return state?.persistedReducer?.AuthReducer?.UserDetail })
+  const User = useSelector(state => {
+    return state?.persistedReducer?.AuthReducer?.UserDetail;
+  });
   const dispatch = useDispatch();
-
-  
-
 
   return (
     <View>
@@ -29,7 +28,6 @@ const Profilemainpage = () => {
       <Text>Profile main page</Text>
       <Text>NAME : {User?.name}</Text>
       <Text>AGE : {User?.age}</Text>
-
 
       <TouchableOpacity onPress={() => dispatch(LogOutUser(false))}>
         <Text>LOGOUT ME</Text>

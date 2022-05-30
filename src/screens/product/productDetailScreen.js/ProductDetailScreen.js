@@ -3,7 +3,7 @@ import React from 'react';
 import {Dimensions} from 'react-native';
 
 //react navigation native
-import {useRoute} from '@react-navigation/native';
+import {useRoute, useNavigation} from '@react-navigation/native';
 //styled components
 import styled from 'styled-components/native';
 
@@ -16,23 +16,25 @@ import VectorRight from '../../../assets/svg/productDetail/vector_right.svg';
 import ShareIcon from '../../../assets/svg/productDetail/shareIcon.svg';
 import FilterIcon from '../../../assets/svg/productDetail/filter.svg';
 import AddLikeIcon from '../../../assets/svg/productDetail/addLike.svg';
-import BuyIcon from '../../../assets/svg/productDetail/buyIcon.svg';
+import AddtoCartIcon from '../../../assets/svg/productDetail/buyIcon.svg';
 import CameraIcon from '../../../assets/svg/productDetail/camera.svg';
 
 //common components
 import Header from '../../../components/common/Header/Header';
+import BottomBtnWrapper from '../../../components/common/Buttons/BottomBtnWrapper';
 
 //containers
 import ScrollableView from '../../../containers/ScrollableView';
+import Viewcontainer from '../../../containers/ViewContainer';
+import Spacer from '../../../containers/Spacer';
 
 const ProductDetailScreen = () => {
   const route = useRoute();
 
   const {data} = route.params;
-  console.log('DATA>>>', data);
-
+  const navigation = useNavigation();
   return (
-    <>
+    <Viewcontainer>
       <Header
         back_with_rec_icon={'back_with_tail_icon'}
         small_right_search={'small_right_search'}
@@ -59,7 +61,26 @@ const ProductDetailScreen = () => {
           <BrandAndShareWrap></BrandAndShareWrap>
         </BodyContainer>
       </ScrollableView>
-    </>
+
+      <TryOnCameraWrap onPress={() => navigation.navigate('TryOnMakeUp')}>
+        <CameraIcon />
+      </TryOnCameraWrap>
+      <BottomBtnWrapper>
+        <BottomElementsWrap>
+          <AddLikeIconWrap activeOpacity={0.7}>
+            <AddLikeIcon />
+          </AddLikeIconWrap>
+          <Spacer width={22} />
+          <AddLikeIconWrap activeOpacity={0.7}>
+            <AddtoCartIcon />
+          </AddLikeIconWrap>
+          <Spacer width={22} />
+          <BuyButton activeOpacity={0.7}>
+            <BuyNowText>Buy Now</BuyNowText>
+          </BuyButton>
+        </BottomElementsWrap>
+      </BottomBtnWrapper>
+    </Viewcontainer>
   );
 };
 
@@ -129,3 +150,53 @@ const RightVectorWrap = styled.View`
 const BodyContainer = styled.View``;
 
 const BrandAndShareWrap = styled.View``;
+
+const TryOnCameraWrap = styled.TouchableOpacity`
+  background-color: #e74779;
+  border-radius: 27px;
+  justify-content: center;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  right: 23px;
+  bottom: 120px;
+  filter: drop-shadow(0px 4px 20px rgba(213, 48, 120, 0.15));
+`;
+
+const BottomElementsWrap = styled.View`
+  flex-direction: row;
+  padding-horizontal: 24px;
+  align-items: center;
+`;
+
+const AddLikeIconWrap = styled.TouchableOpacity`
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  width: 48px;
+  height: 48px;
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+`;
+
+const BuyButton = styled.TouchableOpacity`
+  width: 188px;
+  height: 64px;
+  background: #e74779;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+`;
+
+const BuyNowText = styled.Text`
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+`;

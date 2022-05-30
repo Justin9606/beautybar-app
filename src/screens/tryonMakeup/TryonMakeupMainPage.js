@@ -1,14 +1,43 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {useWindowDimensions, ActivityIndicator} from 'react-native';
 
-const Tryonmakeupmainpage = () => {
+//webView
+import {WebView} from 'react-native-webview';
+import styled from 'styled-components/native';
+
+//common components
+import Header from '../../components/common/Header/Header';
+
+//containers
+import ScrollableView from '../../containers/ScrollableView';
+import Viewcontainer from '../../containers/ViewContainer';
+
+const TryOnMakeUp = () => {
+  const width = useWindowDimensions().width;
+  const height = useWindowDimensions().height;
+
   return (
-    <View>
-      <Text>Try on mage up page</Text>
-    </View>
+    <Viewcontainer>
+      <Header back_with_rec_icon={'back_with_tail_icon'} />
+      <ScrollableView>
+        <WebView
+          source={{
+            uri: 'https://beachsandsoft.cafe24.com/beautybar.php',
+          }}
+          style={{height: height, width: width}}
+          originWhitelist={['*']}
+          allowsInlineMediaPlayback={true}
+          allowsFullscreenVideo={true}
+          javaScriptEnabled={true}
+          scalesPageToFit
+          startInLoadingState
+          javaScriptEnabledAndroid
+          useWebkit
+          domStorageEnabled={true}
+        />
+      </ScrollableView>
+    </Viewcontainer>
   );
 };
 
-const styles = StyleSheet.create({});
-
-export default Tryonmakeupmainpage;
+export default TryOnMakeUp;
