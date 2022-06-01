@@ -12,7 +12,7 @@ import Header from '../../components/common/Header/Header';
 import ScrollableView from '../../containers/ScrollableView';
 import Viewcontainer from '../../containers/ViewContainer';
 
-const TryOnMakeUp = () => {
+const TryOnMakeUpMainPage = () => {
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
 
@@ -20,7 +20,7 @@ const TryOnMakeUp = () => {
     <Viewcontainer>
       <Header back_with_rec_icon={'back_with_tail_icon'} />
       <ScrollableView>
-        <WebView
+        {/* <WebView
           source={{
             uri: 'https://beachsandsoft.cafe24.com/beautybar.php',
           }}
@@ -34,10 +34,10 @@ const TryOnMakeUp = () => {
           javaScriptEnabledAndroid
           useWebkit
           domStorageEnabled={true}
-        />
+        /> */}
       </ScrollableView>
     </Viewcontainer>
   );
 };
 
-export default TryOnMakeUp;
+export default TryOnMakeUpMainPage;
