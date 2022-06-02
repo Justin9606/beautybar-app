@@ -87,8 +87,6 @@ const Wrapper = styled.TouchableOpacity`
   justify-content: center;
   background-color: white;
   width: ${Dimensions.get('window').width / 2.4}px;
-  /* width: ${props => props.cardWidth || 160}px; */
-  /* height: 235px; */
   border-radius: 12px;
   elevation: 5;
 `;

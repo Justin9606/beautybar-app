@@ -8,6 +8,7 @@ export const getRouteName = ({route}) => {
     'TagProducts',
     'ProductLink',
     'ProductDetail',
+    'MakeupToEarn',
   ];
 
   if (tabVisibleFalseArr?.includes(routeName)) {

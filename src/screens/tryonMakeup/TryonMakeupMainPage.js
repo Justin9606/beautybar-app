@@ -1,43 +1,57 @@
 import React from 'react';
-import {useWindowDimensions, ActivityIndicator} from 'react-native';
-
+import {useWindowDimensions} from 'react-native';
+//react navigation/native
+import {useNavigation} from '@react-navigation/native';
 //webView
 import {WebView} from 'react-native-webview';
 import styled from 'styled-components/native';
 
-//common components
-import Header from '../../components/common/Header/Header';
-
 //containers
 import ScrollableView from '../../containers/ScrollableView';
-import Viewcontainer from '../../containers/ViewContainer';
+import SafeAreaContainer from '../../containers/SafeAreaContainer';
 
-const TryOnMakeUpMainPage = () => {
+//png images
+import LiveOn from '../../assets/icons/temp/liveOn.png';
+import MakeupToEarn from '../../assets/icons/temp/makeupToEarn.png';
+import TrendMakeupSet from '../../assets/icons/temp/trendMakeupSet.png';
+
+const TryOnMakeupBtn = ({onPress, source}) => {
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
+  return (
+    <BodyWrapper activeOpacity={0.7} onPress={onPress}>
+      <Images source={source} height={height} width={width} />
+    </BodyWrapper>
+  );
+};
+
+const TryOnMakeUpMainPage = () => {
+  const navigation = useNavigation();
 
   return (
-    <Viewcontainer>
-      <Header back_with_rec_icon={'back_with_tail_icon'} />
+    <SafeAreaContainer>
       <ScrollableView>
-        {/* <WebView
-          source={{
-            uri: 'https://beachsandsoft.cafe24.com/beautybar.php',
-          }}
-          style={{height: height, width: width}}
-          originWhitelist={['*']}
-          allowsInlineMediaPlayback={true}
-          allowsFullscreenVideo={true}
-          javaScriptEnabled={true}
-          scalesPageToFit
-          startInLoadingState
-          javaScriptEnabledAndroid
-          useWebkit
-          domStorageEnabled={true}
-        /> */}
+        <TryOnMakeupBtn
+          source={LiveOn}
+          onPress={() => navigation.navigate('LiveOnMakeUp')}
+        />
+        <TryOnMakeupBtn
+          source={MakeupToEarn}
+          onPress={() => navigation.navigate('MakeupToEarn')}
+        />
+        <TryOnMakeupBtn source={TrendMakeupSet} />
       </ScrollableView>
-    </Viewcontainer>
+    </SafeAreaContainer>
   );
 };
 
 export default TryOnMakeUpMainPage;
+
+const BodyWrapper = styled.TouchableOpacity`
+  align-items: center;
+`;
+
+const Images = styled.Image`
+  width: ${props => props.width}px;
+  height: 180px;
+`;

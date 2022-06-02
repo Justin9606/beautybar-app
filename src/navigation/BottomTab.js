@@ -36,7 +36,7 @@ const BottomTabs = () => {
   //checking DeviceModel
   const model = Device.getModel();
 
-  const screenOptions = {
+  const screenOptions = route => ({
     tabBarHideOnKeyboard: true,
     headerShown: false,
     tabBarActiveTintColor: '#000',
@@ -48,6 +48,7 @@ const BottomTabs = () => {
     },
 
     tabBarStyle: {
+      display: getRouteName(route),
       height: Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 85,
       backgroundColor: '#fff',
       position: 'absolute',
@@ -55,13 +56,13 @@ const BottomTabs = () => {
       shadowColor: 'rgb(5, 7, 22)',
       shadowOffset: {
         width: 0,
-        height: -5,
+        height: -8,
       },
-      shadowOpacity: 0.06,
+      shadowOpacity: 0.07,
       shadowRadius: 19,
       elevation: 5,
     },
-  };
+  });
 
   return (
     <Tab.Navigator screenOptions={screenOptions}>
@@ -105,21 +106,6 @@ const BottomTabs = () => {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             return <>{focused ? <ProductActive /> : <Product />}</>;
-          },
-          tabBarStyle: {
-            display: getRouteName(route),
-            height: Platform.OS === 'android' || model === 'iPhone 8' ? 70 : 85,
-            backgroundColor: '#fff',
-            position: 'absolute',
-            borderTopWidth: 0,
-            shadowColor: 'rgb(5, 7, 22)',
-            shadowOffset: {
-              width: 0,
-              height: -5,
-            },
-            shadowOpacity: 0.06,
-            shadowRadius: 19,
-            elevation: 5,
           },
         })}
       />

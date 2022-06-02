@@ -1,7 +1,7 @@
 import React from 'react';
 
 //react-navigation-native
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 //styled
 import styled from 'styled-components';
@@ -63,7 +63,7 @@ const Header = ({
           <ButtonWrap
             onPress={() => navigation.goBack()}
             activeOpacity={0.7}
-            style={{ top: 10 }}>
+            style={{top: 10}}>
             <BackButton />
           </ButtonWrap>
         )}
@@ -71,7 +71,7 @@ const Header = ({
           <ButtonWrap
             onPress={() => navigation.goBack()}
             activeOpacity={0.7}
-            style={{ paddingBottom: 7 }}>
+            style={{paddingBottom: 7}}>
             <BackButtonWithTail />
           </ButtonWrap>
         )}
@@ -124,7 +124,11 @@ const Header = ({
             <>
               <Spacer width={16.98} />
               <ButtonWrap
-                onPress={() => navigation.navigate('Creatediscussion', { setUpdate: setUpdate })}
+                onPress={() =>
+                  navigation.navigate('Creatediscussion', {
+                    setUpdate: setUpdate,
+                  })
+                }
                 activeOpacity={0.7}>
                 <CreatePostImg
                   source={require('../../../assets/icons/community/create_post.png')}
