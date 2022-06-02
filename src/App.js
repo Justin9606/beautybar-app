@@ -12,7 +12,12 @@ import './i18next/i18next';
 
 //react-i18next
 import {useTranslation} from 'react-i18next';
-
+//codepusher
+import codePush from 'react-native-code-push';
+let codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  updateDialog: {appendReleaseDescription: true},
+};
 const App = () => {
   const {t} = useTranslation();
 
@@ -38,4 +43,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default codePush(codePushOptions)(App);
