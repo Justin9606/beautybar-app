@@ -16,7 +16,7 @@ import VectorRight from '../../../assets/svg/productDetail/vector_right.svg';
 import ShareIcon from '../../../assets/svg/productDetail/shareIcon.svg';
 import FilterIcon from '../../../assets/svg/productDetail/filter.svg';
 import AddLikeIcon from '../../../assets/svg/productDetail/addLike.svg';
-import AddtoCartIcon from '../../../assets/svg/productDetail/buyIcon.svg';
+import AddToCartIcon from '../../../assets/svg/productDetail/buyIcon.svg';
 import CameraIcon from '../../../assets/svg/productDetail/camera.svg';
 
 //common components
@@ -25,7 +25,7 @@ import BottomBtnWrapper from '../../../components/common/Buttons/BottomBtnWrappe
 
 //containers
 import ScrollableView from '../../../containers/ScrollableView';
-import Viewcontainer from '../../../containers/ViewContainer';
+import ViewContainer from '../../../containers/ViewContainer';
 import Spacer from '../../../containers/Spacer';
 
 const ProductDetailScreen = () => {
@@ -34,7 +34,7 @@ const ProductDetailScreen = () => {
   const {data} = route.params;
   const navigation = useNavigation();
   return (
-    <Viewcontainer>
+    <ViewContainer>
       <Header
         back_with_rec_icon={'back_with_tail_icon'}
         small_right_search={'small_right_search'}
@@ -72,7 +72,7 @@ const ProductDetailScreen = () => {
           </AddLikeIconWrap>
           <Spacer width={22} />
           <AddLikeIconWrap activeOpacity={0.7}>
-            <AddtoCartIcon />
+            <AddToCartIcon />
           </AddLikeIconWrap>
           <Spacer width={22} />
           <BuyButton activeOpacity={0.7}>
@@ -80,7 +80,7 @@ const ProductDetailScreen = () => {
           </BuyButton>
         </BottomElementsWrap>
       </BottomBtnWrapper>
-    </Viewcontainer>
+    </ViewContainer>
   );
 };
 

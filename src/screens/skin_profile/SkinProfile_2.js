@@ -12,7 +12,7 @@ import {normalize} from '../../constants/responsive';
 import ViewContainer from '../../containers/ViewContainer';
 import Spacer from '../../containers/Spacer';
 import ScrollableView from '../../containers/ScrollableView';
-import Absolutebutton from '../../containers/AbsoluteButton';
+
 import ControlAlignCenter from '../../containers/ControlAlignCenter';
 
 //common ui
