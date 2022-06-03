@@ -66,6 +66,7 @@ const Creatediscussion = props => {
       width: 300,
       height: 400,
       multiple: true,
+      mediaType: 'any',
     })
       .then(image => {
         setImages([...images, ...image]);
